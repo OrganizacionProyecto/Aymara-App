@@ -41,7 +41,7 @@ Nombre y apellido de los integrantes y los roles:
 Aquí se compartirán las reuniones, quienes asistieron, que hicimos y si avisaron, si faltaban
 
 1) Reunión -> Planning
-2) 
+
 14/08/2024: Reunión donde vimos que teníamos que hacer para el sprint 0, debemos completar historias de usuario entre todos, se asigno la configuración del repositorio y lo pendiente a terminar  del proyecto del cuatrimestre anterior
 Estuvieron presentes: TODOS
 ________________________________________
