@@ -22,7 +22,7 @@ Django: Framework de desarrollo web de alto nivel, basado en Python.
 
 
 ## Integrantes:
-![Logo Code Masters](https://github.com/user-attachments/assets/29d7db23-4815-45ca-ae7d-b765980d71a4)
+![Logo Code Masters](https://github.com/user-attachments/assets/29d7db23-4815-45ca-ae7d-b765980d71a4, width="50" height="50" )
 
 
 Nombre y apellido de los integrantes y los roles:
