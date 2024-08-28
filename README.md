@@ -1,4 +1,6 @@
-### Tienda Virtual “AYMARA”![logo_curvo-removebg-preview](https://github.com/user-attachments/assets/c3d9cf97-437a-4562-b555-01671d2f93de)
+### Tienda Virtual “AYMARA”             
+![logo_curvo-removebg-preview](https://github.com/user-attachments/assets/666539d8-ac65-4db9-ba7d-865f05af36e0)
+
 
 --------
 ## Características Principales
