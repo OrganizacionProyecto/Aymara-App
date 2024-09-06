@@ -6,7 +6,7 @@
 ## Características Principales
 
 Este proyecto se trata de una Pagina Web, la cual es una tienda virtual de la dietetica llamada Aymara ha sido diseñada para ser intuitiva y fácil de usar, permitiendo a los clientes navegar por el catálogo, realizar compras y gestionar sus pedidos de manera sencilla. Cuenta con la posibilidad de publicar un amplio catálogo de productos naturales cuidadosamente seleccionados para satisfacer las necesidades y preferencias de sus clientes.Tanto los clientes como el administrador de la tienda pueden confiar en que sus datos personales y transacciones están protegidos mediante protocolos de seguridad avanzados.El panel de administración de Aymara proporciona herramientas poderosas para gestionar el catálogo de productos, procesar pedidos, realizar análisis de ventas y mucho más, todo ello de forma rápida y eficiente.
-.
+
 ------
 Tecnologías Utilizadas
 
