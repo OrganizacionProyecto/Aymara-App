@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Aymara-App"
 include(":app")
+include(":app")
  
