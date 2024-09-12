@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,3 +66,5 @@ public class PrimerFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_primer, container, false);
     }
 }
+
+

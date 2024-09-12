@@ -14,15 +14,15 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="4dp"
+        android:contentDescription="@string/producto_coco"
         android:scaleType="centerCrop"
         android:src="@drawable/search_background"
-        android:contentDescription="@string/producto_coco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.512"
-        app:srcCompat="@drawable/baseline_search_24"
-        tools:srcCompat="@drawable/search_background" />
+        app:srcCompat="@drawable/aceite_coco"
+        tools:srcCompat="@drawable/aceite_coco" />
 
     <TextView
         android:id="@+id/product_name"
