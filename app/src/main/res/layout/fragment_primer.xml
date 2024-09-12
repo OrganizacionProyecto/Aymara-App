@@ -45,6 +45,7 @@
         android:layout_width="71dp"
         android:layout_height="48dp"
         android:src="@drawable/favorito"
+        android:contentDescription="@string/contentDescription"
         app:layout_constraintBottom_toBottomOf="@+id/search_bar"
         app:layout_constraintEnd_toStartOf="@+id/title"
         app:layout_constraintHorizontal_bias="0.167"
@@ -52,5 +53,18 @@
         app:layout_constraintTop_toTopOf="@+id/title"
         app:layout_constraintVertical_bias="0.0"
         app:tint="@color/black" />
+
+
+    <!-- RecyclerView para la lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_products"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
