@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp">
@@ -21,8 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.512"
-        app:srcCompat="@drawable/aceite_coco"
-        tools:srcCompat="@drawable/aceite_coco" />
+        app:srcCompat="@drawable/aceite_coco_foreground"
+        tools:srcCompat="@drawable/aceite_coco_foreground" />
 
     <TextView
         android:id="@+id/product_name"
@@ -56,8 +57,8 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/favorito"
         android:contentDescription="@string/contentDescription"
+        android:src="@drawable/favorito"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
