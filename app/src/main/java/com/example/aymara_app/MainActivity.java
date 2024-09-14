@@ -1,12 +1,13 @@
 package com.example.aymara_app;
 
 
-import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
 import androidx.fragment.app.FragmentManager;
+import com.example.aymara_app.profile.LoginFragment;
+
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

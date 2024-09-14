@@ -1,4 +1,4 @@
-package com.example.aymara_app;
+package com.example.aymara_app.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-
+import com.example.aymara_app.R;
 
 public class LoginFragment extends Fragment {
 
@@ -45,7 +45,7 @@ public class LoginFragment extends Fragment {
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(getActivity(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             } else {
-                // Aquí agregar la lógica para autenticar al usuario
+                // Aquí puedes agregar la lógica para autenticar al usuario
                 Toast.makeText(getActivity(), "Login exitoso", Toast.LENGTH_SHORT).show();
             }
         });
@@ -57,7 +57,7 @@ public class LoginFragment extends Fragment {
 
         // Configurar evento de clic en "¿No tienes cuenta? Regístrate"
         registerText.setOnClickListener(v -> {
-            // Aquí la lógica para redirigir al fragmento o actividad de registro
+            // Aquí puedes implementar la lógica para redirigir al fragmento o actividad de registro
             Toast.makeText(getActivity(), "Redirigiendo a la página de registro", Toast.LENGTH_SHORT).show();
 
 
