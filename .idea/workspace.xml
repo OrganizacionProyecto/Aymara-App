@@ -9,74 +9,120 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85470955-0307-4675-91cb-83c73c77cdea" name="Changes" comment="Primer commit del proyecto a la main">
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/8.0/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/aymara_app/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/example/aymara_app/ExampleUnitTest.java" afterDir="false" />
+    <list default="true" id="cfaec35e-4fce-46eb-a44a-2224748e919f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/8.0/kotlin-dsl/scripts/c4fe71b5a1ba23925d59d6dbe7856d38/classes/META-INF/buildscript.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/c2d4fb1879de67539f1bb18bb6c4cb3f/classes.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/c2d4fb1879de67539f1bb18bb6c4cb3f/classes.jar.receipt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/c040f7fd3bcdbcca32f80023251103f6/transformed/appcompat-1.7.0/res/drawable/abc_ic_clear_material.xml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/c040f7fd3bcdbcca32f80023251103f6/transformed/appcompat-1.7.0/res/drawable/abc_ic_clear_material.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/plugins/PluginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/plugins/PluginManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/tasks/AntBuilderAware.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/tasks/AntBuilderAware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/internal/scopeids/id/WorkspaceScopeId.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/internal/scopeids/id/WorkspaceScopeId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/api/internal/file/copy/CopySpecMatchingTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/api/internal/file/copy/CopySpecMatchingTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/docs/dsl/org.gradle.language.objectivecpp.tasks.ObjectiveCppCompile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/docs/dsl/org.gradle.language.objectivecpp.tasks.ObjectiveCppCompile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/bestPractices/logicDuringConfiguration-do/groovy/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/bestPractices/logicDuringConfiguration-do/groovy/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/files/fileCollections/tests/fileCollectionsFiltering.sample.conf" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/files/fileCollections/tests/fileCollectionsFiltering.sample.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/kotlinDsl/interoperability-closure-of/tests/closure-of.sample.conf" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/kotlinDsl/interoperability-closure-of/tests/closure-of.sample.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/tasks/configureUsingBlock/groovy/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/tasks/configureUsingBlock/groovy/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/testKit/automaticClasspathInjectionQuickstart/kotlin/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/testKit/automaticClasspathInjectionQuickstart/kotlin/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/execution/src/main/java/org/gradle/internal/execution/steps/LoadPreviousExecutionStateStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/execution/src/main/java/org/gradle/internal/execution/steps/LoadPreviousExecutionStateStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/integ-test/src/integTest/groovy/org/gradle/integtests/MultiprojectIntegrationTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/integ-test/src/integTest/groovy/org/gradle/integtests/MultiprojectIntegrationTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/internal-testing/src/main/groovy/org/gradle/test/fixtures/concurrent/Duration.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/internal-testing/src/main/groovy/org/gradle/test/fixtures/concurrent/Duration.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/ivy/src/integTest/groovy/org/gradle/api/publish/ivy/IvyPublishEarIntegTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/ivy/src/integTest/groovy/org/gradle/api/publish/ivy/IvyPublishEarIntegTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/kotlin-dsl/src/main/kotlin/org/gradle/kotlin/dsl/cache/GradleUserHomeServices.kt" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/kotlin-dsl/src/main/kotlin/org/gradle/kotlin/dsl/cache/GradleUserHomeServices.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/launcher/src/main/java/org/gradle/launcher/daemon/server/DefaultDaemonConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/launcher/src/main/java/org/gradle/launcher/daemon/server/DefaultDaemonConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/logging/src/main/java/org/gradle/internal/logging/events/FlushOutputEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/logging/src/main/java/org/gradle/internal/logging/events/FlushOutputEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/api/internal/provider/sources/FileBytesValueSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/api/internal/provider/sources/FileBytesValueSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/native/src/main/java/org/gradle/internal/nativeintegration/NativeCapabilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/native/src/main/java/org/gradle/internal/nativeintegration/NativeCapabilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/platform-base/src/main/java/org/gradle/platform/base/internal/toolchain/ToolChainAvailability.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/platform-base/src/main/java/org/gradle/platform/base/internal/toolchain/ToolChainAvailability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/platform-jvm/src/main/java/org/gradle/jvm/toolchain/internal/JavaToolchainRepositoryInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/platform-jvm/src/main/java/org/gradle/jvm/toolchain/internal/JavaToolchainRepositoryInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/plugins/src/integTest/groovy/org/gradle/java/ParallelTestTaskIntegrationTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/plugins/src/integTest/groovy/org/gradle/java/ParallelTestTaskIntegrationTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/process-services/src/main/java/org/gradle/process/internal/health/memory/DefaultMemoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/process-services/src/main/java/org/gradle/process/internal/health/memory/DefaultMemoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/testing-jvm/src/main/java/org/gradle/api/tasks/testing/testng/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/testing-jvm/src/main/java/org/gradle/api/tasks/testing/testng/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/tooling-api/src/main/java/org/gradle/tooling/internal/protocol/ProjectVersion3.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/tooling-api/src/main/java/org/gradle/tooling/internal/protocol/ProjectVersion3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Usuario\.android\avd\Pixel_2_API_22.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Aymara-App" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Aymara-App" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Aymara-App" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Aymara-App" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="WalterCamino" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="WalterCamino" />
+        <entry key="$PROJECT_DIR$" value="CeciCogot" />
       </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2lOmWu1Xj0MOFwPzO0yGG0ulHjL" />
+  <component name="ProjectId" id="2m49KHAyh16HwmXVZky2Spa0XdV" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -84,16 +130,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dev.polek.adbwifi.settings.AdbWifiConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Aymara-App.app.main" />
@@ -165,25 +210,35 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="85470955-0307-4675-91cb-83c73c77cdea" name="Changes" comment="" />
-      <created>1725059531866</created>
+      <changelist id="cfaec35e-4fce-46eb-a44a-2224748e919f" name="Changes" comment="" />
+      <created>1726324928558</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1725059531866</updated>
+      <updated>1726324928558</updated>
     </task>
-    <task id="LOCAL-00001" summary="Primer commit del proyecto">
-      <created>1725060667602</created>
+    <task id="LOCAL-00001" summary="mezclando login">
+      <created>1726349404582</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1725060667602</updated>
+      <updated>1726349404582</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Primer commit del proyecto" />
-    <MESSAGE value="Primer commit del proyecto a la main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primer commit del proyecto a la main" />
+    <MESSAGE value="mezclando login" />
+    <option name="LAST_COMMIT_MESSAGE" value="mezclando login" />
   </component>
 </project>

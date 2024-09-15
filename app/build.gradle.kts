@@ -29,15 +29,13 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-<<<<<<< HEAD
-=======
-    implementation("androidx.fragment:fragment:1.8.3")
->>>>>>> origin/CeciCogot
+    implementation("androidx.fragment:fragment:1.8.3")  // Combinas los cambios
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
+
+
