@@ -68,6 +68,5 @@
         app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
 
-    <!-- Barra de navegación inferior -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

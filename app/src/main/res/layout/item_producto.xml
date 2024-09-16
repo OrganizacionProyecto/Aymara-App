@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <!-- Imagen del producto -->
-
     <!-- Nombre del producto -->
     <ImageView
         android:id="@+id/product_image"
@@ -28,7 +26,7 @@
         android:id="@+id/product_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/producto_coco"
+        android:text="@string/producto1"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/product_description"
