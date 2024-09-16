@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -17,10 +16,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PrimerFragment#newInstance} factory method to
+ * Use the {@link ProductFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PrimerFragment extends Fragment {
+public class ProductFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +30,7 @@ public class PrimerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PrimerFragment() {
+    public ProductFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +40,11 @@ public class PrimerFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PrimerFragment.
+     * @return A new instance of fragment PoductFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PrimerFragment newInstance(String param1, String param2) {
-        PrimerFragment fragment = new PrimerFragment();
+    public static ProductFragment newInstance(String param1, String param2) {
+        ProductFragment fragment = new ProductFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +64,7 @@ public class PrimerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflar la vista del fragmento
-        View view = inflater.inflate(R.layout.fragment_primer, container, false);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
 
         // Inicializar el RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_products);
@@ -80,7 +79,7 @@ public class PrimerFragment extends Fragment {
 
 
         // Imprimir el tamaño de la lista en la consola para verificar
-        Log.d("PrimerFragment", "Tamaño de la lista de productos: " + productList.size());
+        Log.d("ProductFragment", "Tamaño de la lista de productos: " + productList.size());
 
         // Configurar el adaptador
         ProductAdapter productAdapter = new ProductAdapter(productList);

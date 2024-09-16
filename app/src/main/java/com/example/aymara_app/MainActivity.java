@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
-import com.example.aymara_app.PrimerFragment;
+import com.example.aymara_app.ProductFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new HomeFragment();
                         break;
                     case R.id.nav_products:
-                        selectedFragment = new PrimerFragment();
+                        selectedFragment = new ProductFragment();
                         break;
                 //    case R.id.nav_contact:
                  //       selectedFragment = new ContactFragment();
