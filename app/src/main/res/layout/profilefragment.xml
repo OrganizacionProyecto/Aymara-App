@@ -1,15 +1,10 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Título de perfil -->
-
-    <!-- Botón Salir -->
-
-    <!-- Bienvenida al usuario -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingClass">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton6"
@@ -48,17 +43,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
 
-    <!-- Campos de texto con íconos de edición -->
-    <!-- Nombre -->
-
-    <!-- Apellido -->
-
-    <!-- Correo -->
-
-    <!-- Dirección -->
-
-    <!-- Botones de cambiar contraseña y eliminar cuenta -->
-
     <Button
         android:id="@+id/btnChangePassword"
         android:layout_width="wrap_content"
@@ -67,7 +51,8 @@
         android:text="Cambiar contraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="495dp" />
+        tools:layout_editor_absoluteY="495dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnDeleteAccount"
@@ -91,7 +76,8 @@
         android:text="Admin (Nombre)"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="167dp" />
+        tools:layout_editor_absoluteY="167dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etAddress"
@@ -103,7 +89,8 @@
         android:text="Direccion falsa 123"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="404dp" />
+        tools:layout_editor_absoluteY="404dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etLastName"
@@ -115,7 +102,8 @@
         android:text="Admin (Apellido)"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="241dp" />
+        tools:layout_editor_absoluteY="241dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -127,7 +115,8 @@
         android:text="admin@gmail.com"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="319dp" />
+        tools:layout_editor_absoluteY="319dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
@@ -141,7 +130,8 @@
         app:rippleColor="@color/design_default_color_error"
         app:strokeColor="@color/design_default_color_error"
         tools:layout_editor_absoluteX="304dp"
-        tools:layout_editor_absoluteY="36dp" />
+        tools:layout_editor_absoluteY="36dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton3"
@@ -172,5 +162,7 @@
         app:backgroundTint="@color/white"
         app:srcCompat="@android:drawable/ic_menu_edit"
         tools:layout_editor_absoluteX="347dp"
-        tools:layout_editor_absoluteY="167dp" />
+        tools:layout_editor_absoluteY="167dp"
+        tools:ignore="MissingConstraints" />
 
+</androidx.constraintlayout.widget.ConstraintLayout>
