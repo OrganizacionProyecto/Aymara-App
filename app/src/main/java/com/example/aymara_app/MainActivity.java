@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import android.view.MenuItem;
+import com.example.aymara_app.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
 //import com.example.aymara_app.ProductFragment;
@@ -44,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
                     //    case R.id.nav_contact:
                     //       selectedFragment = new ContactFragment();
                     //     break;
-                    // case R.id.nav_user:
-                    //   selectedFragment = new ProfileFragment();
-                    // break;
+                     case R.id.nav_user:
+                       selectedFragment = new ProfileFragment();
+                     break;
                 }
 
                 // Reemplaza el fragmento actual con el seleccionado
