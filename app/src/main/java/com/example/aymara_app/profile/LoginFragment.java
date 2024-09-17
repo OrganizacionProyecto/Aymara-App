@@ -32,10 +32,10 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         // Inicializar vistas
-        emailInput = view.findViewById(R.id.email_input);
-        passwordInput = view.findViewById(R.id.password_input);
-        loginButton = view.findViewById(R.id.login_button);
-        forgotPassword = view.findViewById(R.id.forgot_password);
+        emailInput = view.findViewById(R.id.emailEditText);
+        passwordInput = view.findViewById(R.id.passwordEditText);
+        loginButton = view.findViewById(R.id.loginButton);
+        forgotPassword = view.findViewById(R.id.forgotPasswordTextView);
 
         // Configurar evento de clic en el botón de login
         loginButton.setOnClickListener(v -> {
