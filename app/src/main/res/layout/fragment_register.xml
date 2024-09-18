@@ -15,8 +15,8 @@ tools:context=".MainActivity">
     android:layout_height="wrap_content"
     android:layout_margin="40dp"
     android:background="@drawable/custom_editex1"
-    android:cardCornerRadius="30dp"
-    android:cardElevation="20dp">
+    app:cardCornerRadius="30dp"
+    app:cardElevation="20dp">
 
 
     <LinearLayout
