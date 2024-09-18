@@ -5,7 +5,7 @@
     android:id="@+id/botonborrar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ContacFragment">
 
     <ImageView
         android:id="@+id/aymara_logo"
@@ -223,7 +223,6 @@
                 android:layout_height="35dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:src="@tools:sample/avatars"
                 app:srcCompat="@drawable/objetivo" />
 
             <TextView
