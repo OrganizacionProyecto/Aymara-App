@@ -1,4 +1,5 @@
 package com.example.aymara_app;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.productName.setText(product.getName());
         holder.productDescription.setText(product.getDescription());
         holder.productImage.setImageResource(product.getImageResId());
-        // Configura el botón de favorito aquí si es necesario
+        holder.favoriteButton.setSelected(product.isFavorite());
+        holder.favoriteButton.setOnClickListener(v -> {
+            boolean isSelected = !holder.favoriteButton.isSelected();
+            holder.favoriteButton.setSelected(isSelected);
+            product.setFavorite(isSelected);
+        });
     }
 
     @Override
