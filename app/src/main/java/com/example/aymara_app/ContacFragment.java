@@ -54,17 +54,19 @@ public class ContacFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        tv_name = tv_name.findViewById(R.id.tv_name);
-        tv_mail = tv_mail.findViewById(R.id.tv_mail);
-        tv_edad = tv_edad.findViewById(R.id.tv_edad);
-        tv_sexo = tv_sexo.findViewById(R.id.tv_sexo);
-        tv_altura = tv_altura.findViewById(R.id.tv_altura);
-        tv_peso = tv_peso.findViewById(R.id.tv_peso);
-        tv_objetivo = tv_objetivo.findViewById(R.id.tv_objetivo);
-        check_si = check_si.findViewById(R.id.check_si);
-        check_no = check_no.findViewById(R.id.check_no);
+        View view = inflater.inflate(R.layout.fragment_contac, container, false);
 
-        return inflater.inflate(R.layout.fragment_contac, container, false);
+        tv_name = view.findViewById(R.id.tv_name);
+        tv_mail = view.findViewById(R.id.tv_mail);
+        tv_edad = view.findViewById(R.id.tv_edad);
+        tv_sexo = view.findViewById(R.id.tv_sexo);
+        tv_altura = view.findViewById(R.id.tv_altura);
+        tv_peso = view.findViewById(R.id.tv_peso);
+        tv_objetivo = view.findViewById(R.id.tv_objetivo);
+        check_si = view.findViewById(R.id.check_si);
+        check_no = view.findViewById(R.id.check_no);
+
+        return view;
     }
 
     public void enviar (){
