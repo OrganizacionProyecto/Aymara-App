@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.example.aymara_app.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
-//import com.example.aymara_app.ProductFragment;
+import com.example.aymara_app.ProductFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         selectedFragment = new HomeFragment();
                         break;
-                    //case R.id.nav_products:
-                     //   selectedFragment = new ProductFragment();
-                      //  break;
+                    case R.id.nav_products:
+                        selectedFragment = new ProductFragment();
+                        break;
                     //    case R.id.nav_contact:
                     //       selectedFragment = new ContactFragment();
                     //     break;
