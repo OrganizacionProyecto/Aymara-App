@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
-//import com.example.aymara_app.ProductFragment;
+import com.example.aymara_app.ProductFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,21 +32,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
-
                 // Seleccionar fragmento según el ítem clickeado
                 switch (item.getItemId()) {
                     case R.id.nav_home:
                         selectedFragment = new HomeFragment();
                         break;
                     case R.id.nav_products:
-//                        selectedFragment = new ProductFragment();
+                        selectedFragment = new ProductFragment();
                         break;
                 //    case R.id.nav_contact:
                  //       selectedFragment = new ContactFragment();
                    //     break;
-                   // case R.id.nav_user:
-                     //   selectedFragment = new ProfileFragment();
-                       // break;
                     case R.id.nav_user:
                         selectedFragment = new LoginFragment();
                         break;
