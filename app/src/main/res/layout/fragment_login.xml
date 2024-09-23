@@ -47,7 +47,10 @@
             android:layout_height="44dp"
             android:layout_marginTop="50dp"
             android:hint="password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:drawableEnd="@drawable/invisible_login"
+            android:drawablePadding="10dp"/>
+
 
         <Button
             android:id="@+id/loginButton"
