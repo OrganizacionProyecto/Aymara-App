@@ -48,7 +48,7 @@
             android:layout_marginTop="50dp"
             android:hint="password"
             android:inputType="textPassword"
-            android:drawableEnd="@drawable/invisible_login"
+            android:drawableEnd="@drawable/Icon_invisible"
             android:drawablePadding="10dp"/>
 
 
