@@ -72,6 +72,8 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getContext(), "Función de recuperar contraseña no implementada", Toast.LENGTH_SHORT).show();
             }
         });
+        // Aquí puedes agregar cualquier configuración adicional para passwordEditText
+        passwordEditText.setHint("Introduce tu contraseña");
     }
 
     private void attemptLogin() {
