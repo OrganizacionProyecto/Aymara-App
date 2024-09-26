@@ -36,21 +36,37 @@
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="334dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginTop="70dp"
             android:hint="e-mail"
             android:inputType="textEmailAddress" />
+
+        <!-- Icono de Ojo para mostrar/ocultar contraseña -->
 
         <EditText
             android:id="@+id/passwordEditText"
             android:layout_width="334dp"
             android:layout_height="44dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:hint="password"
             android:inputType="textPassword"
-            android:drawableEnd="@drawable/icon_invisible"
-            android:drawablePadding="10dp"/>
+            android:padding="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/passwordToggle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailEditText"
+            app:layout_constraintWidth_percent="0.85"/>
 
+        <ImageView
+            android:id="@+id/passwordToggle"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="Mostrar/Ocultar Contraseña"
+            android:padding="16dp"
+            android:src="@drawable/icon_invisiblec"
+            app:layout_constraintBottom_toBottomOf="@id/passwordEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/passwordEditText"
+            app:layout_constraintTop_toTopOf="@id/passwordEditText" />
 
         <Button
             android:id="@+id/loginButton"
@@ -67,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Haz click si no estas registrado"
+        android:text="¿Olvidaste tu contraseña?"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
