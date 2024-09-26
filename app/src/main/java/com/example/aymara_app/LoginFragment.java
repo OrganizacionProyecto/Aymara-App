@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class LoginFragment extends Fragment {
 
@@ -20,11 +22,10 @@ public class LoginFragment extends Fragment {
     private Button loginButton;
     private TextView forgotPasswordTextView;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflar el layout para este fragmento
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -42,36 +43,19 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
-
-                // Validación simple de entrada
-                if (email.isEmpty()) {
-                    emailEditText.setError("Por favor, ingresa tu correo electrónico");
-                    return;
-                }
-
-                if (password.isEmpty()) {
-                    passwordEditText.setError("Por favor, ingresa tu contraseña");
-                    return;
-                }
-
-                // Lógica de autenticación (esto es solo un ejemplo)
-                if (email.equals("usuario@example.com") && password.equals("123456")) {
-                    Toast.makeText(getActivity(), "Login exitoso", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Usuario o contraseña incorrectas", Toast.LENGTH_SHORT).show();
-                }
+                attemptLogin();
             }
         });
 
         forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Implementar lógica para recuperar contraseña
-                Toast.makeText(getContext(), "Función de recuperar contraseña no implementada", Toast.LENGTH_SHORT).show();
+                // Navega al fragmento RegisterFragment o al fragmento de recuperación de contraseña
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_loginFragment_to_registerFragment); // Cambia a la acción correcta
             }
         });
+
         // Aquí puedes agregar cualquier configuración adicional para passwordEditText
         passwordEditText.setHint("Introduce tu contraseña");
     }
@@ -86,8 +70,6 @@ public class LoginFragment extends Fragment {
         }
 
         // Aquí deberías implementar tu lógica de autenticación
-        // Por ejemplo, llamar a un método de tu ViewModel o Repository
-
         // Este es solo un ejemplo, reemplaza con tu lógica real
         if (email.equals("usuario@ejemplo.com") && password.equals("contraseña123")) {
             Toast.makeText(getContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();

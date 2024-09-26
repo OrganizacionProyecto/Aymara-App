@@ -48,7 +48,7 @@
             android:layout_marginTop="50dp"
             android:hint="password"
             android:inputType="textPassword"
-            android:drawableEnd="@drawable/Icon_invisible"
+            android:drawableEnd="@drawable/icon_invisible"
             android:drawablePadding="10dp"/>
 
 
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="¿Olvidaste tu contraseña?"
+        android:text="Haz click si no estas registrado"
         android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
