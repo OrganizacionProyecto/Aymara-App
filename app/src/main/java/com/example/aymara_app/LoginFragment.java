@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 public class LoginFragment extends Fragment {
 
@@ -24,11 +26,8 @@ public class LoginFragment extends Fragment {
     private ImageView passwordToggle;
     private boolean isPasswordVisible = false;
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -43,15 +42,23 @@ public class LoginFragment extends Fragment {
         forgotPasswordTextView = view.findViewById(R.id.forgotPasswordTextView);
         passwordToggle = view.findViewById(R.id.passwordToggle);
 
+        // Configurar el listener para navegar al RegisterFragment
+        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Usar NavController para navegar
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_loginFragment_to_registerFragment);
+            }
+        });
 
-        // Configurar listeners
+        // Lógica de autenticación (esto es solo un ejemplo)
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                // Validación simple de entrada
                 if (email.isEmpty()) {
                     emailEditText.setError("Por favor, ingresa tu correo electrónico");
                     return;
@@ -62,7 +69,6 @@ public class LoginFragment extends Fragment {
                     return;
                 }
 
-                // Lógica de autenticación (esto es solo un ejemplo)
                 if (email.equals("usuario@example.com") && password.equals("123456")) {
                     Toast.makeText(getActivity(), "Login exitoso", Toast.LENGTH_SHORT).show();
                 } else {
@@ -71,29 +77,19 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Implementar lógica para recuperar contraseña
-                Toast.makeText(getContext(), "Función de recuperar contraseña no implementada", Toast.LENGTH_SHORT).show();
-            }
-        });
-        // Listener para mostrar/ocultar contraseña
+        // Listener para mostrar/ocultar la contraseña
         passwordToggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isPasswordVisible) {
-                    // Ocultar contraseña
                     passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    passwordToggle.setImageResource(R.drawable.icon_invisiblec);  //
+                    passwordToggle.setImageResource(R.drawable.icon_invisiblec);
                     isPasswordVisible = false;
                 } else {
-                    // Mostrar contraseña
                     passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    passwordToggle.setImageResource(R.drawable.icon_visiblea);  //
+                    passwordToggle.setImageResource(R.drawable.icon_visiblea);
                     isPasswordVisible = true;
                 }
-                // Mover el cursor al final del texto
                 passwordEditText.setSelection(passwordEditText.getText().length());
             }
         });

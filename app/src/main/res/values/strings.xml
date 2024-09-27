@@ -1,6 +1,7 @@
 <resources>
     <!-- Credenciales Home - APP -->
     <string name="app_name">Aymara-App</string>
+    <string name="show_password">Mostrar contraseña</string>
     <string name="version">1.0.0</string>
 
     <!-- Productos -->
