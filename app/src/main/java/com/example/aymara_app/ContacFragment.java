@@ -7,7 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,93 +17,95 @@ import android.widget.Toast;
 
 public class ContacFragment extends Fragment {
 
-    private CheckBox check_si, check_no;
-    private TextView tv_name, tv_mail, tv_edad, tv_sexo, tv_altura, tv_peso, tv_objetivo;
+    private RadioGroup sexo, nutricion;
+    private TextView name, mail, edad, altura, peso, objetivos;
+    private View fragmentView;
 
     public ContacFragment() {
         // Required empty public constructor
     }
 
-    /*
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ContacFragment.
-     */
-    /*TODO: Rename and change types and number of parameters*/
-    /*public static ContacFragment newInstance(String param1, String param2) {
-        ContacFragment fragment = new ContacFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }*/
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_contac, container, false);
+        fragmentView = inflater.inflate(R.layout.fragment_contac, container, false);
 
-        tv_name = view.findViewById(R.id.tv_name);
-        tv_mail = view.findViewById(R.id.tv_mail);
-        tv_edad = view.findViewById(R.id.tv_edad);
-        tv_sexo = view.findViewById(R.id.tv_sexo);
-        tv_altura = view.findViewById(R.id.tv_altura);
-        tv_peso = view.findViewById(R.id.tv_peso);
-        tv_objetivo = view.findViewById(R.id.tv_objetivo);
-        check_si = view.findViewById(R.id.check_si);
-        check_no = view.findViewById(R.id.check_no);
+        name = fragmentView.findViewById(R.id.ed_name);
+        mail = fragmentView.findViewById(R.id.em_mail);
+        edad = fragmentView.findViewById(R.id.en_edad);
+        sexo = fragmentView.findViewById(R.id.rbg_sexo);
+        altura = fragmentView.findViewById(R.id.end_altura);
+        peso = fragmentView.findViewById(R.id.end_peso);
+        objetivos = fragmentView.findViewById(R.id.ed_objetivo);
+        nutricion = fragmentView.findViewById(R.id.rbg_nutricion);
 
-        return view;
+        Button enviar = fragmentView.findViewById(R.id.btn_enviar);
+        Button borrar = fragmentView.findViewById(R.id.btn_borrar);
+
+        enviar.setOnClickListener(v -> enviarDatos());
+        borrar.setOnClickListener(v -> borrar());
+
+        return fragmentView;
     }
 
-    public void enviar (){
+    public void enviarDatos(){
 
-        if (verificarCampos())
-            Toast.makeText(getContext(), "Campos enviados correctamente", Toast.LENGTH_SHORT).show();
+        if(verificarCampos()){
+            Toast.makeText(getContext(), "Datos enviados correctamente " +
+                    "\nNombre: "+ name.getText().toString() +
+                    "\nMail: " + mail.getText().toString() +
+                    "\nEdad: " + edad.getText().toString() +
+                    "\nAltura: " + altura.getText().toString() +
+                    "\nPeso: " + peso.getText().toString() +
+                    "\nObjetivo: " + objetivos.getText().toString() +
+                    "\nSexo: " + opcionRadiobuton(sexo) +
+                    "\nNutricion: " + opcionRadiobuton(nutricion), Toast.LENGTH_SHORT).show();
+            borrar();
+        }
         else
-            Toast.makeText(getContext(), "Campos vacios", Toast.LENGTH_SHORT).show();
-    }
-
-    public void borrar (){
-
-        borrado();
+            Toast.makeText(getContext(), "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
 
     }
+
+    public void borrar(){
+        name.setText("");
+        mail.setText("");
+        edad.setText("");
+        altura.setText("");
+        peso.setText("");
+        objetivos.setText("");
+
+        // Deseleccionar los RadioButton
+        sexo.clearCheck();
+        nutricion.clearCheck();
+
+        // Mostrar un mensaje de confirmación
+        Toast.makeText(getContext(), "Campos borrados", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public String opcionRadiobuton(RadioGroup g){
+
+        int seleccion = g.getCheckedRadioButtonId();
+        RadioButton b = fragmentView.findViewById(seleccion);
+        if (b != null)
+            return b.getText().toString();
+        else
+            return "Opcion no seleccionada";
+    }
+
+
 
     public boolean verificarCampos(){
-        return !tv_name.getText().toString().trim().isEmpty() &&
-                !tv_mail.getText().toString().trim().isEmpty() &&
-                !tv_edad.getText().toString().trim().isEmpty() &&
-                !tv_sexo.getText().toString().trim().isEmpty() &&
-                !tv_altura.getText().toString().trim().isEmpty() &&
-                !tv_peso.getText().toString().trim().isEmpty() &&
-                !tv_objetivo.getText().toString().trim().isEmpty() &&
-                (check_si.isChecked() || check_no.isChecked());
+        return !name.getText().toString().trim().isEmpty() &&
+                !mail.getText().toString().trim().isEmpty() &&
+                !edad.getText().toString().trim().isEmpty() &&
+                !altura.getText().toString().trim().isEmpty() &&
+                !peso.getText().toString().trim().isEmpty() &&
+                !objetivos.getText().toString().trim().isEmpty() &&
+                (sexo.getCheckedRadioButtonId() != -1) &&
+                (nutricion.getCheckedRadioButtonId() != -1);
     }
 
-    private void borrado() {
-        tv_name.setText("");
-        tv_mail.setText("");
-        tv_edad.setText("");
-        tv_sexo.setText("");
-        tv_altura.setText("");
-        tv_peso.setText("");
-        tv_objetivo.setText("");
-        check_si.setChecked(false);
-        check_no.setChecked(false);
-    }
 }

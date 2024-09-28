@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="VerdeAymara">#548344</color>
+    <color name="AmarilloLogo">#FFBCDA00</color>
+    <color name="botonEnviar">#548344</color>
+    <color name="botonBorrar">#F44336</color>
 </resources>
