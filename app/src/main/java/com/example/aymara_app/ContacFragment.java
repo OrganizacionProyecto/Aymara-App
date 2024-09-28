@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class ContacFragment extends Fragment {
     private RadioGroup sexo, nutricion;
     private TextView name, mail, edad, altura, peso, objetivos;
     private View fragmentView;
+    private Button enviar, borrar;
 
     public ContacFragment() {
         // Required empty public constructor
@@ -40,8 +42,8 @@ public class ContacFragment extends Fragment {
         objetivos = fragmentView.findViewById(R.id.ed_objetivo);
         nutricion = fragmentView.findViewById(R.id.rbg_nutricion);
 
-        Button enviar = fragmentView.findViewById(R.id.btn_enviar);
-        Button borrar = fragmentView.findViewById(R.id.btn_borrar);
+        enviar = fragmentView.findViewById(R.id.btn_enviar);
+        borrar = fragmentView.findViewById(R.id.btn_borrar);
 
         enviar.setOnClickListener(v -> enviarDatos());
         borrar.setOnClickListener(v -> borrar());
