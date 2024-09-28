@@ -1,5 +1,4 @@
 package com.example.aymara_app;
-
 import com.example.aymara_app.R;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,9 +12,6 @@ import com.example.aymara_app.ProductFragment;
 import com.example.aymara_app.LoginFragment;
 import com.example.aymara_app.ContacFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,13 +19,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Configuración del NavController
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
-        NavigationUI.setupActionBarWithNavController(this, navController);
-
 
         // Inicializa el fragmento por defecto
         if (savedInstanceState == null) {
@@ -70,12 +59,5 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.nav_host_fragment);
-        NavController navController = navHostFragment.getNavController();
-        return navController.navigateUp() || super.onSupportNavigateUp();
     }
 }

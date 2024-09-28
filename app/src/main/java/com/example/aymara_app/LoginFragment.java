@@ -15,8 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-
+import androidx.navigation.Navigation;
 
 public class LoginFragment extends Fragment {
 
@@ -47,9 +46,8 @@ public class LoginFragment extends Fragment {
         forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Obtener el NavController y navegar al RegisterFragment
-                NavController navController = NavHostFragment.findNavController(LoginFragment.this);
+                // Usar NavController para navegar
+                NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_loginFragment_to_registerFragment);
             }
         });
@@ -73,7 +71,6 @@ public class LoginFragment extends Fragment {
 
                 if (email.equals("usuario@example.com") && password.equals("123456")) {
                     Toast.makeText(getActivity(), "Login exitoso", Toast.LENGTH_SHORT).show();
-
                 } else {
                     Toast.makeText(getActivity(), "Usuario o contraseña incorrectas", Toast.LENGTH_SHORT).show();
                 }
