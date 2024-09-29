@@ -22,6 +22,18 @@
     </fragment>
 
     <fragment
+        android:id="@+id/ProductFragment"
+        android:name="com.example.aymara_app.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+
+    <fragment
+        android:id="@+id/ContacFragment"
+        android:name="com.example.aymara_app.ContacFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contac" />
+
+    <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.aymara_app.RegisterFragment"
         android:label="fragment_register"

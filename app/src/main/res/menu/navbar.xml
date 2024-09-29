@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_products"
         android:title="Productos" />
     <item
-        android:id="@+id/nav_contact"
+        android:id="@+id/nav_contac"
         android:icon="@drawable/ic_contact"
         android:title="Contacto" />
     <item

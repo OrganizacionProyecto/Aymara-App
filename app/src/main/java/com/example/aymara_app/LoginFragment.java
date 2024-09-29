@@ -46,8 +46,7 @@ public class LoginFragment extends Fragment {
         forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Usar NavController para navegar
-                NavController navController = Navigation.findNavController(view);
+                NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_loginFragment_to_registerFragment);
             }
         });
