@@ -51,30 +51,28 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        // Lógica de autenticación (esto es solo un ejemplo)
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                if (email.isEmpty()) {
-                    emailEditText.setError("Por favor, ingresa tu correo electrónico");
+                if (!isValidEmail(email)) {
+                    emailEditText.setError("Por favor, ingresa un correo electrónico válido");
                     return;
                 }
 
-                if (password.isEmpty()) {
-                    passwordEditText.setError("Por favor, ingresa tu contraseña");
+                if (!isValidPassword(password)) {
+                    passwordEditText.setError("La contraseña debe tener al menos 6 caracteres e incluir al menos una letra y un número");
                     return;
                 }
 
-                if (email.equals("usuario@example.com") && password.equals("123456")) {
-                    Toast.makeText(getActivity(), "Login exitoso", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Usuario o contraseña incorrectas", Toast.LENGTH_SHORT).show();
-                }
+                // Si pasa las validaciones
+                Toast.makeText(getActivity(), "Login exitoso", Toast.LENGTH_SHORT).show();
+                // Aquí puedes añadir la lógica para navegar a otra actividad o fragment
             }
         });
+
 
         // Listener para mostrar/ocultar la contraseña
         passwordToggle.setOnClickListener(new View.OnClickListener() {
@@ -92,5 +90,34 @@ public class LoginFragment extends Fragment {
                 passwordEditText.setSelection(passwordEditText.getText().length());
             }
         });
+    }
+
+    // Verifica que el correo electrónico tenga un formato válido
+    private boolean isValidEmail(String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    // Verifica que la contraseña tenga al menos 6 caracteres y que contenga al menos una letra y un número
+    private boolean isValidPassword(String password) {
+        if (password.length() < 6) {
+            return false;
+        }
+
+        boolean hasLetter = false;
+        boolean hasDigit = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isLetter(c)) {
+                hasLetter = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            }
+
+            if (hasLetter && hasDigit) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
