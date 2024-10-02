@@ -1,5 +1,6 @@
 package com.example.aymara_app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -123,16 +124,38 @@ public class LoginFragment extends Fragment {
                 if (response.isSuccessful()) {
                     // Manejar la respuesta exitosa
                     String responseData = response.body().string();
-                    // Aquí puedes procesar el token JWT o cualquier otro dato que devuelva la API
-                    getActivity().runOnUiThread(() -> {
-                        Toast.makeText(getContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                        // Aquí puedes navegar a otra pantalla o almacenar el token
-                    });
+                    try {
+                        JSONObject jsonResponse = new JSONObject(responseData);
+                        String accessToken = jsonResponse.getString("access");
+                        String refreshToken = jsonResponse.getString("refresh");
+
+                        // Almacenar los tokens
+                        storeTokens(accessToken, refreshToken);
+
+                        getActivity().runOnUiThread(() -> {
+                            Toast.makeText(getContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
+                            // Aquí puedes navegar a otra pantalla o realizar otras acciones
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Credenciales incorrectas", Toast.LENGTH_SHORT).show());
                 }
             }
         });
+    }
+
+    private void storeTokens(String accessToken, String refreshToken) {
+        // Almacenar los tokens en SharedPreferences
+        Context context = getActivity();
+        if (context != null) {
+            context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .putString("accessToken", accessToken)
+                    .putString("refreshToken", refreshToken)
+                    .apply();
+        }
     }
 
     private boolean isValidEmail(String email) {
