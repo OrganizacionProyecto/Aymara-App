@@ -90,7 +90,7 @@
             android:ems="10"
             android:hint="@string/ed_name"
             android:inputType="text"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/em_mail"
@@ -104,7 +104,7 @@
             android:ems="10"
             android:hint="@string/em_mail"
             android:inputType="textEmailAddress"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/en_edad"
@@ -118,7 +118,7 @@
             android:ems="10"
             android:hint="@string/en_edad"
             android:inputType="numberSigned"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:id="@+id/ln_sexo"
@@ -131,8 +131,8 @@
 
             <ImageView
                 android:id="@+id/iv_sexo"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_sexocontac" />
 
             <RadioGroup
@@ -178,7 +178,7 @@
             android:ems="10"
             android:hint="@string/en_altura"
             android:inputType="numberDecimal"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/end_peso"
@@ -192,7 +192,7 @@
             android:ems="10"
             android:hint="@string/en_peso"
             android:inputType="numberDecimal"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/ed_objetivo"
@@ -206,7 +206,7 @@
             android:ems="10"
             android:hint="@string/ed_objetivo"
             android:inputType="text"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_nutricion"
@@ -234,7 +234,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cb_si"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <RadioButton
                 android:id="@+id/rb_no"
@@ -242,7 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cb_no"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
         </RadioGroup>
 
     </LinearLayout>
