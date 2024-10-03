@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
-import com.example.aymara_app.ProductFragment;
+//import com.example.aymara_app.ProductFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

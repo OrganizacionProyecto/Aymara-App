@@ -6,16 +6,22 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    private List<Product> productList;
+    private List<Product> productList = new ArrayList<>();
 
-    public ProductAdapter(List<Product> productList) {
-        this.productList = productList;
+    public void setProductList(List<Product> products) {
+        this.productList = products;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -28,14 +34,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
+
         holder.productNombre.setText(product.getNombre());
         holder.productDescripcion.setText(product.getDescripcion());
-        holder.productImagen.setImageResource(product.getImagen());
-        holder.favoriteButton.setSelected(product.isFavorite());
+        holder.productPrecio.setText("$" + product.getPrecio());
+
+
+        Glide.with(holder.itemView.getContext())
+                .load(product.getImagen())
+                .into(holder.productImagen);
+
+
         holder.favoriteButton.setOnClickListener(v -> {
-            boolean isSelected = !holder.favoriteButton.isSelected();
-            holder.favoriteButton.setSelected(isSelected);
-            product.setFavorite(isSelected);
+            product.setFavorite(!product.isFavorite());
+            notifyItemChanged(position);
         });
     }
 
@@ -44,17 +56,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
-    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView productImagen;
-        TextView productNombre;
-        TextView productDescripcion;
+        TextView productNombre, productDescripcion, productPrecio;
         ImageButton favoriteButton;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productImagen = itemView.findViewById(R.id.product_imagen);
-            productNombre = itemView.findViewById(R.id.product_nombre);
-            productDescripcion = itemView.findViewById(R.id.product_descripcion);
+            productImagen = itemView.findViewById(R.id.product_image);
+            productNombre = itemView.findViewById(R.id.product_name);
+            productDescripcion = itemView.findViewById(R.id.product_description);
+            productPrecio = itemView.findViewById(R.id.product_price);
             favoriteButton = itemView.findViewById(R.id.favorite_button);
         }
     }
