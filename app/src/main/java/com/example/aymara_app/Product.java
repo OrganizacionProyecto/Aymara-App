@@ -1,27 +1,27 @@
 package com.example.aymara_app;
 
 public class Product {
-    private String name;
-    private String description;
-    private int imageResId;
+    private String nombre;
+    private String descripcion;
+    private int imagen;
     private boolean isFavorite;
 
-    public Product(String name, String description, int imageResId) {
-        this.name = name;
-        this.description = description;
-        this.imageResId = imageResId;
+    public Product(String nombre, String descripcion, int imagen) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public int getImageResId() {
-        return imageResId;
+    public int getImagen() {
+        return imagen;
     }
 
     public boolean isFavorite() {

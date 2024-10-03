@@ -47,7 +47,7 @@
         style="@android:style/Widget.Holo.Light.ImageButton"
         android:layout_width="71dp"
         android:layout_height="48dp"
-        android:contentDescription="@string/contentDescription"
+        android:contentDescription="@string/contentDescripcion"
         android:src="@drawable/favorito"
         app:layout_constraintBottom_toBottomOf="@id/search_bar"
         app:layout_constraintEnd_toStartOf="@+id/title"

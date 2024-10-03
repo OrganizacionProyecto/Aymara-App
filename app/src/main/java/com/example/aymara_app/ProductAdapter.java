@@ -28,9 +28,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
-        holder.productName.setText(product.getName());
-        holder.productDescription.setText(product.getDescription());
-        holder.productImage.setImageResource(product.getImageResId());
+        holder.productNombre.setText(product.getNombre());
+        holder.productDescripcion.setText(product.getDescripcion());
+        holder.productImagen.setImageResource(product.getImagen());
         holder.favoriteButton.setSelected(product.isFavorite());
         holder.favoriteButton.setOnClickListener(v -> {
             boolean isSelected = !holder.favoriteButton.isSelected();
@@ -45,16 +45,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-        ImageView productImage;
-        TextView productName;
-        TextView productDescription;
+        ImageView productImagen;
+        TextView productNombre;
+        TextView productDescripcion;
         ImageButton favoriteButton;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productImage = itemView.findViewById(R.id.product_image);
-            productName = itemView.findViewById(R.id.product_name);
-            productDescription = itemView.findViewById(R.id.product_description);
+            productImagen = itemView.findViewById(R.id.product_imagen);
+            productNombre = itemView.findViewById(R.id.product_nombre);
+            productDescripcion = itemView.findViewById(R.id.product_descripcion);
             favoriteButton = itemView.findViewById(R.id.favorite_button);
         }
     }
