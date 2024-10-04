@@ -1,5 +1,7 @@
 package com.example.aymara_app.repository;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -28,16 +30,21 @@ public class ProductRepository {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.isSuccessful()) {
+                    Log.d("API", "Productos recibidos: " + response.body());
                     productData.setValue(response.body());
+                } else {
+                    Log.e("API", "Error en la respuesta: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.e("API", "Error en la llamada: " + t.getMessage());
                 productData.setValue(null);
             }
         });
 
         return productData;
     }
+
 }
