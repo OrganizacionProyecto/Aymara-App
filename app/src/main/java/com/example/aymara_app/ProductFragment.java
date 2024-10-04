@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aymara_app.repository.ProductRepository;
 
-
 public class ProductFragment extends Fragment {
 
     private RecyclerView recyclerView;
@@ -31,6 +30,7 @@ public class ProductFragment extends Fragment {
         // Inicializar el RecyclerView
         recyclerView = view.findViewById(R.id.recycler_view_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
 
         // Inicializar el adaptador y establecerlo en el RecyclerView
         productAdapter = new ProductAdapter();
@@ -40,8 +40,8 @@ public class ProductFragment extends Fragment {
         productRepository = new ProductRepository();
         productRepository.getProducts().observe(getViewLifecycleOwner(), products -> {
             if (products != null && !products.isEmpty()) {
-                productAdapter.setProductList(products);
                 Log.d("ProductFragment", "Productos obtenidos: " + products.size());
+                productAdapter.setProductList(products);
             } else {
                 Log.d("ProductFragment", "No se obtuvieron productos de la API");
             }

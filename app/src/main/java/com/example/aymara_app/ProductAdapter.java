@@ -1,4 +1,5 @@
 package com.example.aymara_app;
+import android.util.Log;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public void setProductList(List<Product> products) {
         this.productList = products;
+        Log.d("ProductAdapter", "Productos agregados al adaptador: " + products.size());
         notifyDataSetChanged();
     }
 
@@ -63,10 +65,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productImagen = itemView.findViewById(R.id.product_image);
-            productNombre = itemView.findViewById(R.id.product_name);
-            productDescripcion = itemView.findViewById(R.id.product_description);
-            productPrecio = itemView.findViewById(R.id.product_price);
+            productImagen = itemView.findViewById(R.id.product_imagen);
+            productNombre = itemView.findViewById(R.id.product_nombre);
+            productDescripcion = itemView.findViewById(R.id.product_descripcion);
+            productPrecio = itemView.findViewById(R.id.product_precio);
             favoriteButton = itemView.findViewById(R.id.favorite_button);
         }
     }

@@ -8,6 +8,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ApiService {
-    @GET("api/tablas/productos/")  // Cambia este endpoint según tu API
+    @GET("api/tablas/productos/")
     Call<List<Product>> getProducts();
 }
