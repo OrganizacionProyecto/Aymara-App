@@ -22,6 +22,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,8 +48,9 @@ public class LoginFragment extends Fragment {
     private ImageView passwordToggle;
     private boolean isPasswordVisible = false;
 
-    private OkHttpClient client = new OkHttpClient();
-    private static final String LOGIN_URL = "https://tu-api-fake.com/api/login"; // Cambia esta URL a la de tu API fake o real
+    private OkHttpClient client;
+
+    private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/login/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +67,8 @@ public class LoginFragment extends Fragment {
         forgotPasswordTextView = view.findViewById(R.id.forgotPasswordTextView);
         passwordToggle = view.findViewById(R.id.passwordToggle);
 
+        client = getUnsafeOkHttpClient();
+
         forgotPasswordTextView.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(v);
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
@@ -73,7 +84,7 @@ public class LoginFragment extends Fragment {
             }
 
             if (!isValidPassword(password)) {
-                passwordEditText.setError("La contraseña debe tener al menos 6 caracteres e incluir al menos una letra y un número");
+                passwordEditText.setError("La contraseña debe tener al menos 8 caracteres e incluir al menos una letra y un número");
                 return;
             }
 
@@ -116,7 +127,7 @@ public class LoginFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error de conexión", Toast.LENGTH_SHORT).show());
+                getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error de conexión: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             }
 
             @Override
@@ -163,6 +174,49 @@ public class LoginFragment extends Fragment {
     }
 
     private boolean isValidPassword(String password) {
-        return password.length() >= 6 && password.matches(".*[a-zA-Z].*") && password.matches(".*\\d.*");
+        return password.length() >= 8 && password.matches(".*\\d.*");
+    }
+
+    // Crea un OkHttpClient inseguro que omite la validación de certificados SSL (para desarrollo)
+    private OkHttpClient getUnsafeOkHttpClient() {
+        try {
+            // Crea un administrador de confianza que acepte cualquier certificado SSL
+            final TrustManager[] trustAllCerts = new TrustManager[]{
+                    new X509TrustManager() {
+                        @Override
+                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+
+                        @Override
+                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+
+                        @Override
+                        public X509Certificate[] getAcceptedIssuers() {
+                            return new X509Certificate[]{};
+                        }
+                    }
+            };
+
+            // Instala el administrador de confianza "ingenuo"
+            final SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+
+            // Crea un socket de fábrica que usa nuestro administrador de confianza
+            final javax.net.ssl.SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+
+            // Omite la verificación del nombre del host
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
+
+            return builder.build();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
