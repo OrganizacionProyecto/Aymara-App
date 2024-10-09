@@ -25,4 +25,25 @@ public interface ApiService {
     // Eliminar un producto de favoritos
     @POST("api/remove_from_favorites/")
     Call<ResponseBody> removeFromFavorites(@Body Map<String, Integer> productId);
+
+    @GET("api/auth/user/")
+    Call<ResponseBody> getUserDetails();
+
+    @PATCH("api/change_email/")
+    Call<ResponseBody> changeEmail(@Body Map<String, String> body);
+
+    @PATCH("api/change-direccion/")
+    Call<ResponseBody> changeAddress(@Body Map<String, String> body);
+
+    @PATCH("api/change-username/")
+    Call<ResponseBody> changeUsername(@Body Map<String, String> body);
+
+    @DELETE("api/auth/delete_account/")
+    Call<ResponseBody> deleteAccount();
+
+    @POST("api/auth/logout/")
+    Call<ResponseBody> logout();
+
 }
+
+
