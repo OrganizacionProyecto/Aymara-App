@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +46,19 @@ public class ProductFragment extends Fragment {
             } else {
                 Log.d("ProductFragment", "No se obtuvieron productos de la API");
             }
+        });
+
+        // Botón para mostrar solo favoritos
+        ImageButton favoriteButton = view.findViewById(R.id.button);
+        favoriteButton.setOnClickListener(v -> {
+            productRepository.getFavorites().observe(getViewLifecycleOwner(), favorites -> {
+                if (favorites != null && !favorites.isEmpty()) {
+                    productAdapter.setProductList(favorites);
+                    Log.d("ProductFragment", "Mostrando productos favoritos: " + favorites.size());
+                } else {
+                    Log.d("ProductFragment", "No hay productos favoritos");
+                }
+            });
         });
 
         return view;

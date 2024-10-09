@@ -47,4 +47,29 @@ public class ProductRepository {
         return productData;
     }
 
+    // Método para obtener favoritos
+    public LiveData<List<Product>> getFavorites() {
+        MutableLiveData<List<Product>> favoritesData = new MutableLiveData<>();
+
+        // Suponiendo que tienes un método en tu ApiService que obtiene los favoritos
+        apiService.getFavorites().enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.isSuccessful()) {
+                    Log.d("API", "Favoritos recibidos: " + response.body());
+                    favoritesData.setValue(response.body());
+                } else {
+                    Log.e("API", "Error en la respuesta: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.e("API", "Error en la llamada: " + t.getMessage());
+                favoritesData.setValue(null);
+            }
+        });
+
+        return favoritesData;
+    }
 }
