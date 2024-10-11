@@ -84,9 +84,11 @@
 
     <Button
         android:id="@+id/btnEditEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar"
+        android:layout_width="70dp"
+        android:layout_height="43dp"
+        android:textColorHighlight="@color/VerdeAymara"
+        android:textColorLink="@color/VerdeAymara"
+        app:icon="@android:drawable/ic_menu_edit"
         tools:layout_editor_absoluteX="307dp"
         tools:layout_editor_absoluteY="341dp" />
 
