@@ -131,16 +131,6 @@
         app:layout_constraintTop_toBottomOf="@id/btnChangePassword" />
 
     <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Guardar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnDeleteAccount" />
-
-    <Button
         android:id="@+id/button2"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
