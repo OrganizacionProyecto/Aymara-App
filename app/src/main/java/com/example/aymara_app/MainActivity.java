@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
 import com.example.aymara_app.ProductFragment;
+import com.example.aymara_app.RegisterFragment;
 import com.example.aymara_app.LoginFragment;
 import com.example.aymara_app.ContacFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -44,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_contact:
                         selectedFragment = new ContacFragment();
+                        break;
+                    case R.id.nav_register:
+                        selectedFragment = new RegisterFragment();
                         break;
                     case R.id.nav_user:
                         selectedFragment = new LoginFragment();

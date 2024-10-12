@@ -1,49 +1,124 @@
 package com.example.aymara_app;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.aymara_app.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
 
-public class RegisterFragment extends AppCompatActivity {
+/** Clase para la respuesta del registro **/
+class RegisterResponse {
+    private String message;
 
-    EditText username;
-    EditText password;
-    Button loginButton;
+    public String getMessage() {
+        return message;
+    }
 
-    /**
-     * VER: este METODO CUANDO PASEMOS A PROYECTO public View onCreateView
-     **/
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}
+
+/** Fragmento de registro **/
+public class RegisterFragment extends Fragment {
+    private EditText editTextEmail, editTextPassword, editTextUsername;
+    private TextView loginText;
+    private Button buttonRegister;
+    private Retrofit retrofit;
+    private AuthService authService;
+
+    /** Constructor vacío necesario **/
+    public RegisterFragment() {
+    }
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_register);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        /** Inflar el layout del fragmento **/
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        loginButton = findViewById(R.id.loginButton);
+        /** Inicializar los elementos de la interfaz de usuario **/
+        loginText = view.findViewById(R.id.loginText);
+        editTextUsername = view.findViewById(R.id.username);
+        editTextPassword = view.findViewById(R.id.password);
+        editTextEmail = view.findViewById(R.id.email);
+        buttonRegister = view.findViewById(R.id.registerButton);
 
-        /**Detector de clic en boton de iniciar sesion**/
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        /** Configurar Retrofit **/
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://aymara.pythonanywhere.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        authService = retrofit.create(AuthService.class);
+
+        /** Configurar el botón de registro **/
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (username.getText().toString().equals("usuario") && password.getText().toString().equals("1234")) {
-                    Toast.makeText(contex: RegisterFragment.this, "Inicio Sesión Exitoso", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                registerUser();
+            }
+        });
 
+        return view;
+    }
+
+    private void registerUser() {
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
+        String username = editTextUsername.getText().toString();  // Corregido
+
+        if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+            Toast.makeText(getContext(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        /** Llamada al servicio de autenticación **/
+        Call<RegisterResponse> call = authService.registerUser(new RegisterRequest(email, password));
+
+        call.enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getContext(), "Registro exitoso", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(contex: RegisterFragment.this, "Error Inicio Sesión", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Error en el registro: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Fallo en la conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
