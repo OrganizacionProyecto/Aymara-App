@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Aymara-app"
+rootProject.name = "Aymara-App"
 include(":app")
  
