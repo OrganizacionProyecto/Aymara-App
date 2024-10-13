@@ -1,18 +1,13 @@
 package com.example.aymara_app;
-import com.example.aymara_app.R;
-import android.annotation.SuppressLint;
+
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import android.view.MenuItem;
-import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
-import com.example.aymara_app.HomeFragment;
-import com.example.aymara_app.ProductFragment;
-import com.example.aymara_app.RegisterFragment;
-import com.example.aymara_app.LoginFragment;
-import com.example.aymara_app.ContacFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment; // Importa esto
+import androidx.navigation.Navigation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,46 +16,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializa el fragmento por defecto
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameContainer, new HomeFragment())
-                    .commit();
-        }
+        // Configurar NavController
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController(); // Obtén el NavController desde el NavHostFragment
 
-        // barra de navegación inferior
+        // Barra de navegación inferior
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
+
+        // Vincular el NavController con el BottomNavigationView
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                // Seleccionar fragmento según el ítem clickeado
                 switch (item.getItemId()) {
                     case R.id.nav_home:
-                        selectedFragment = new HomeFragment();
-                        break;
+                        navController.navigate(R.id.HomeFragment);
+                        return true;
                     case R.id.nav_products:
-                        selectedFragment = new ProductFragment();
-                        break;
-                    case R.id.nav_contact:
-                        selectedFragment = new ContacFragment();
-                        break;
-                    case R.id.nav_register:
-                        selectedFragment = new RegisterFragment();
-                        break;
+                        navController.navigate(R.id.ProductFragment);
+                        return true;
+                    case R.id.nav_contac:
+                        navController.navigate(R.id.ContacFragment);
+                        return true;
                     case R.id.nav_user:
-                        selectedFragment = new LoginFragment();
-                        break;
+                        navController.navigate(R.id.loginFragment);
+                        return true;
+                    default:
+                        return false;
                 }
-
-                // Reemplaza el fragmento actual con el seleccionado
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameContainer, selectedFragment)
-                        .addToBackStack(null)
-                        .commit();
-
-                return true;
             }
         });
     }
