@@ -1,6 +1,6 @@
 # Archivos generados por Android Studio
 *.iml
-.gradle
+.gradle/
 .idea/
 local.properties
 build/
@@ -27,3 +27,6 @@ Thumbs.db
 
 # Archivos NDK
 obj/
+
+# Archivos de caché de Gradle
+.gradle/caches/
