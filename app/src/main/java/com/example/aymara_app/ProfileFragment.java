@@ -1,5 +1,9 @@
 package com.example.aymara_app;
 
+import com.example.aymara_app.network.ApiService;
+import com.example.aymara_app.network.ApiClient;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.InputType;
@@ -14,11 +18,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AlertDialog;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
-    private EditText etName, etLastName, etEmail, etAddress;
+    private EditText etFirst_Name, etLast_Name, etEmail, etAddress; // Eliminar etUsername
     private Button btnChangePassword, btnDeleteAccount, btnLogout;
+    private ApiService apiService;
 
     @SuppressLint("MissingInflatedId")
     @Nullable
@@ -26,16 +38,18 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
-        // Inicializar los campos
-        etName = view.findViewById(R.id.etName);
-        etLastName = view.findViewById(R.id.etLastName);
+        etFirst_Name = view.findViewById(R.id.etFirst_Name);
+        etLast_Name = view.findViewById(R.id.etLast_Name);
         etEmail = view.findViewById(R.id.etEmail);
         etAddress = view.findViewById(R.id.etAddress);
         btnChangePassword = view.findViewById(R.id.btnChangePassword);
         btnDeleteAccount = view.findViewById(R.id.btnDeleteAccount);
         btnLogout = view.findViewById(R.id.btnOut);
 
-        // Configurar botones
+        apiService = ApiClient.getClient().create(ApiService.class);
+
+        loadUserData();
+
         btnChangePassword.setOnClickListener(v -> showChangePasswordDialog());
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
         btnLogout.setOnClickListener(v -> logoutUser());
@@ -43,22 +57,52 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+    private void loadUserData() {
+        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        String accessToken = prefs.getString("access_token", ""); // Asegúrate de usar el mismo nombre de clave
+
+        apiService.getUserDetails("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    try {
+                        String responseString = response.body().string();
+                        JSONObject jsonObject = new JSONObject(responseString);
+
+                        etFirst_Name.setText(jsonObject.getString("first_name"));
+                        etLast_Name.setText(jsonObject.getString("last_name"));
+                        etEmail.setText(jsonObject.getString("email"));
+                        etAddress.setText(jsonObject.getString("address")); // Asegúrate de que este campo existe en la respuesta
+
+                    } catch (JSONException | IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void showChangePasswordDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Cambiar Contraseña");
 
-        // Crear un LinearLayout para contener los EditText
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(16, 16, 16, 16); // Padding para el layout
 
-        // Crear EditText para nueva contraseña
         EditText etNewPassword = new EditText(getActivity());
         etNewPassword.setHint("Nueva Contraseña");
         etNewPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         layout.addView(etNewPassword);
 
-        // Crear EditText para confirmar contraseña
         EditText etConfirmPassword = new EditText(getActivity());
         etConfirmPassword.setHint("Confirmar Contraseña");
         etConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -84,10 +128,32 @@ public class ProfileFragment extends Fragment {
     }
 
     private void updatePassword(String newPassword) {
-        // Implementa la lógica para actualizar la contraseña
-        Toast.makeText(getActivity(), "Contraseña actualizada con éxito", Toast.LENGTH_SHORT).show();
-    }
+        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
 
+        JSONObject json = new JSONObject();
+        try {
+            json.put("new_password", newPassword);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        apiService.changePassword("Bearer " + accessToken, json.toString()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getActivity(), "Contraseña actualizada con éxito", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Error al actualizar la contraseña", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private void showDeleteAccountDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -102,25 +168,48 @@ public class ProfileFragment extends Fragment {
     }
 
     private void deleteAccount() {
-        // Aquí puedes implementar la lógica para eliminar la cuenta
-        // Por ejemplo, llamar a un método en tu ViewModel o hacer una llamada a la API
-        Toast.makeText(getActivity(), "Cuenta eliminada con éxito", Toast.LENGTH_SHORT).show();
-    }
+        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
 
+        apiService.deleteAccount("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getActivity(), "Cuenta eliminada con éxito", Toast.LENGTH_SHORT).show();
+                    logoutUser();
+                } else {
+                    Toast.makeText(getActivity(), "Error al eliminar la cuenta", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private void logoutUser() {
-        // Aquí puedes implementar la lógica para cerrar sesión
-        /*SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear(); // Eliminar todos los datos de sesión
-        editor.apply();
+        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        String accessToken = prefs.getString("access_token", "");
 
-        // Redirigir al usuario a la pantalla de inicio de sesión
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
-        getActivity().finish(); // Terminar la actividad actual
+        apiService.logout("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    prefs.edit().clear().apply();
+                    Toast.makeText(getActivity(), "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
+                    // Redirigir a la pantalla de inicio o login
+                    // Aquí puedes implementar la lógica para redirigir a la pantalla de inicio o login
+                } else {
+                    Toast.makeText(getActivity(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-         */
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
 }

@@ -34,11 +34,11 @@
         app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
 
     <EditText
-        android:id="@+id/etName"
+        android:id="@+id/etFirst_Name"
         android:layout_width="274dp"
         android:layout_height="56dp"
         android:padding="8dp"
-        android:text="Admin (Nombre)"
+        android:text="(Nombre)"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="202dp" />
@@ -63,11 +63,11 @@
         tools:layout_editor_absoluteY="141dp" />
 
     <EditText
-        android:id="@+id/etLastName"
+        android:id="@+id/etLast_Name"
         android:layout_width="272dp"
         android:layout_height="51dp"
         android:padding="8dp"
-        android:text="Admin (Apellido)"
+        android:text="(Apellido)"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="267dp" />

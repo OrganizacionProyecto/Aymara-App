@@ -62,7 +62,9 @@ public class ProductFragment extends Fragment {
         // Botón para mostrar solo favoritos
         ImageButton favoriteButton = view.findViewById(R.id.button);
         favoriteButton.setOnClickListener(v -> {
-            productRepository.getFavorites().observe(getViewLifecycleOwner(), favorites -> {
+            String token = "tu_token_aqui"; // Reemplaza esto por tu método para obtener el token
+
+            productRepository.getFavorites(token).observe(getViewLifecycleOwner(), favorites -> {
                 if (favorites != null && !favorites.isEmpty()) {
                     productList = favorites;  // Guardar la lista de favoritos
                     productAdapter.setProductList(favorites);

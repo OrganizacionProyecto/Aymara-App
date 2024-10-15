@@ -12,22 +12,18 @@ import retrofit2.http.POST;
 import retrofit2.http.PATCH;
 import retrofit2.http.DELETE;
 import retrofit2.http.Path;
-import retrofit2.http.Header; // Asegúrate de que esta línea esté presente
-
+import retrofit2.http.Header;
 import java.util.List;
 import java.util.Map;
 public interface ApiService {
     @GET("api/tablas/productos/")
     Call<List<Product>> getProducts();
 
-    // Agregar un producto a favoritos
     @POST("api/add_to_favorites/")
     Call<ResponseBody> addToFavorites(@Body Map<String, Integer> productId);
 
-    // Eliminar un producto de favoritos
     @POST("api/remove_from_favorites/")
     Call<ResponseBody> removeFromFavorites(@Body Map<String, Integer> productId);
-
 
     @GET("api/list_favorites/")
     Call<List<Product>> getFavorites(@Header("Authorization") String token);
@@ -54,7 +50,6 @@ public interface ApiService {
 
     @POST("api/auth/signup/")
     Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
-
 
 }
 
