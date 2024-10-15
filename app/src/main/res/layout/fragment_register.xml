@@ -1,103 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:card_views="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@drawable/logo2"
-android:gravity="center"
-tools:context=".MainActivity">
-
-
-<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="40dp"
-    android:background="@drawable/custom_editex1"
-    app:cardCornerRadius="30dp"
-    app:cardElevation="20dp">
+    android:layout_height="match_parent"
+    android:background="@drawable/logo2"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="16dp">
 
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_margin="40dp"
+        android:background="@drawable/custom_editex1"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
 
-        <TextView
-            android:id="@+id/loginText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:textAlignment="center"
-            android:textColor="@color/green"
-            android:textSize="36dp"
-            android:textStyle="bold" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/custom_editex1"
-            android:drawableLeft="@drawable/baseline_person_24"
-            android:hint="Usuario"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textColorHighlight="@color/cardview_dark_background" />
+            <TextView
+                android:id="@+id/loginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrarse"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textSize="36dp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_editex1"
-            android:drawableLeft="@drawable/baseline_lock_24"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textColorHighlight="@color/cardview_dark_background" />
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom_editex1"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:hint="Usuario"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background" />
 
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_editex1"
-            android:drawableLeft="@drawable/baseline_email_24"
-            android:hint="Email"
-            android:inputType="textPassword"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textColorHighlight="@color/cardview_dark_background" />
-
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/green"
-            android:text="Crear Cuenta"
-            android:textSize="18dp"
-            app:cornerRadius="20dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:passwordToggleEnabled="true">
 
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/custom_editex1"
+                    android:drawableLeft="@drawable/baseline_lock_24"
+                    android:hint="Ingrese Password"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:inputType="textPassword"/>
 
-<TextView
-    android:id="@+id/signupText"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:padding="8dp"
-    android:text="¿Aún no es Usuario? o ¿Se olvidó su contraseña? "
-    android:textAlignment="center"
-    android:textColor="@color/black"
-    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_editex1"
+                android:drawableLeft="@drawable/baseline_attach_email_24"
+                android:hint="Email"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
+
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/green"
+                android:onClick="crear"
+                android:text="Crear Cuenta"
+                android:textSize="18sp"
+                app:cornerRadius="20dp" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="8dp"
+        android:text="¿Aún no eres Usuario? o ¿Olvidó su contraseña? "
+        android:textSize="16dp"
+        android:textAlignment="center"
+        android:id="@+id/signupText"
+        android:textColor="@color/black"
+        android:layout_marginBottom="29px"/>
+
 
 </LinearLayout>
-
