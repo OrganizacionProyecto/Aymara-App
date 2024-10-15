@@ -1,17 +1,11 @@
 package com.example.aymara_app;
-import com.example.aymara_app.R;
-import android.annotation.SuppressLint;
+
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import android.view.MenuItem;
-import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
-import com.example.aymara_app.HomeFragment;
-import com.example.aymara_app.ProductFragment;
-import com.example.aymara_app.RegisterFragment;
-import com.example.aymara_app.LoginFragment;
-import com.example.aymara_app.ContacFragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,47 +15,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializa el fragmento por defecto
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameContainer, new HomeFragment())
-                    .commit();
-        }
+        // Inicializa el NavHostFragment y el NavController
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        NavController navController = navHostFragment.getNavController();
 
-        // barra de navegación inferior
+        // Configura la barra de navegación inferior
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                // Seleccionar fragmento según el ítem clickeado
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        selectedFragment = new HomeFragment();
-                        break;
-                    case R.id.nav_products:
-                        selectedFragment = new ProductFragment();
-                        break;
-                    case R.id.nav_contact:
-                        selectedFragment = new ContacFragment();
-                        break;
-                    case R.id.nav_register:
-                        selectedFragment = new RegisterFragment();
-                        break;
-                    case R.id.nav_user:
-                        selectedFragment = new LoginFragment();
-                        break;
-                }
-
-                // Reemplaza el fragmento actual con el seleccionado
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameContainer, selectedFragment)
-                        .addToBackStack(null)
-                        .commit();
-
-                return true;
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            // Seleccionar fragmento según el ítem clickeado
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    navController.navigate(R.id.HomeFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    return true;
+                case R.id.nav_products:
+                    navController.navigate(R.id.ProductFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    return true;
+                case R.id.nav_contac:
+                    navController.navigate(R.id.ContacFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    return true;
+                case R.id.nav_register:
+                    navController.navigate(R.id.registerFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    return true;
+                case R.id.nav_user:
+                    navController.navigate(R.id.loginFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    return true;
             }
+            return false;
         });
     }
 }

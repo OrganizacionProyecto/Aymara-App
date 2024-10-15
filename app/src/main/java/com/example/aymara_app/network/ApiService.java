@@ -1,11 +1,17 @@
 package com.example.aymara_app.network;
-
+import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.Product;
+import com.example.aymara_app.ProfileFragment;
+import com.example.aymara_app.RegisterFragment;
+import com.example.aymara_app.RegisterResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PATCH;
+import retrofit2.http.DELETE;
 import retrofit2.http.Path;
 
 import java.util.List;
@@ -43,6 +49,10 @@ public interface ApiService {
 
     @POST("api/auth/logout/")
     Call<ResponseBody> logout();
+
+    @POST("api/auth/signup/")
+    Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
+
 
 }
 
