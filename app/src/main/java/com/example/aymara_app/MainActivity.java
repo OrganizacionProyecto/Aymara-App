@@ -25,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
             // Seleccionar fragmento según el ítem clickeado
             switch (item.getItemId()) {
                 case R.id.nav_home:
-                    navController.navigate(R.id.HomeFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    navController.navigate(R.id.HomeFragment);
                     return true;
                 case R.id.nav_products:
-                    navController.navigate(R.id.ProductFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    navController.navigate(R.id.ProductFragment);
                     return true;
                 case R.id.nav_contac:
-                    navController.navigate(R.id.ContacFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    navController.navigate(R.id.ContacFragment);
                     return true;
                 case R.id.nav_register:
-                    navController.navigate(R.id.registerFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    navController.navigate(R.id.registerFragment);
                     return true;
                 case R.id.nav_user:
-                    navController.navigate(R.id.loginFragment); // Asegúrate de que este ID esté definido en nav_graph
+                    navController.navigate(R.id.loginFragment);
                     return true;
             }
             return false;

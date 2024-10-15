@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://aymara.pythonanywhere.com/";  // URL de nuestra API
+    private static final String BASE_URL = "https://aymara.pythonanywhere.com/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient() {

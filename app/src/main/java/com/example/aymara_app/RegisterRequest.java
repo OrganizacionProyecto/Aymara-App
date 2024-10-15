@@ -1,19 +1,24 @@
 package com.example.aymara_app;
 
-// Clase para el registro del usuario
 public class RegisterRequest {
     private String email;
     private String password;
     private String username;
+    private String first_name;
+    private String last_name;
 
-    // Constructor
-    public RegisterRequest(String email, String password, String username) {
+    private boolean is_active = true;
+    private boolean is_staff = false;
+    private boolean is_superuser = false;
+
+    public RegisterRequest(String email, String password, String username, String first_name, String last_name) {
         this.email = email;
         this.password = password;
         this.username = username;
+        this.first_name = first_name;
+        this.last_name = last_name;
     }
 
-    // Getters
     public String getEmail() {
         return email;
     }
@@ -24,5 +29,25 @@ public class RegisterRequest {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getFirstName() {
+        return first_name;
+    }
+
+    public String getLastName() {
+        return last_name;
+    }
+
+    public boolean isActive() {
+        return is_active;
+    }
+
+    public boolean isStaff() {
+        return is_staff;
+    }
+
+    public boolean isSuperuser() {
+        return is_superuser;
     }
 }

@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /** Fragmento de registro **/
 public class RegisterFragment extends Fragment {
-    private EditText editTextEmail, editTextPassword, editTextUsername;
+    private EditText editTextEmail, editTextPassword, editTextUsername, editTextFirstName, editTextLastName;
     private TextView loginText;
     private Button buttonRegister;
     private Retrofit retrofit;
@@ -42,6 +42,8 @@ public class RegisterFragment extends Fragment {
         editTextUsername = view.findViewById(R.id.username);
         editTextPassword = view.findViewById(R.id.password);
         editTextEmail = view.findViewById(R.id.email);
+        editTextFirstName = view.findViewById(R.id.firstname);
+        editTextLastName = view.findViewById(R.id.lastname);
         buttonRegister = view.findViewById(R.id.registerButton);
 
         /** Configurar Retrofit **/
@@ -67,14 +69,16 @@ public class RegisterFragment extends Fragment {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
         String username = editTextUsername.getText().toString();
+        String firstname = editTextFirstName.getText().toString();
+        String lastname = editTextLastName.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || username.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
             Toast.makeText(getContext(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
         /** Llamada al servicio de autenticación **/
-        RegisterRequest registerRequest = new RegisterRequest(email, password, username);
+        RegisterRequest registerRequest = new RegisterRequest(email, password, username, firstname, lastname);
         Call<RegisterResponse> call = apiService.registerUser(registerRequest);
 
         call.enqueue(new Callback<RegisterResponse>() {

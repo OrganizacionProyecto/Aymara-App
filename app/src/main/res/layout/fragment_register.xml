@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="745dp"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp">
@@ -49,6 +49,33 @@
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
+            <EditText
+                android:id="@+id/firstname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom_editex1"
+                android:baselineAligned="false"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:hint="Nombre"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
+            <EditText
+                android:id="@+id/lastname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom_editex1"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:hint="Apellido"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
@@ -65,10 +92,10 @@
                     android:background="@drawable/custom_editex1"
                     android:drawableLeft="@drawable/baseline_lock_24"
                     android:hint="Ingrese Password"
+                    android:inputType="textPassword"
                     android:padding="8dp"
                     android:textColor="@color/black"
-                    android:textColorHighlight="@color/cardview_dark_background"
-                    android:inputType="textPassword"/>
+                    android:textColorHighlight="@color/cardview_dark_background" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +113,6 @@
                 android:textColorHighlight="@color/cardview_dark_background" />
 
 
-
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
@@ -101,19 +127,6 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="8dp"
-        android:text="¿Aún no eres Usuario? o ¿Olvidó su contraseña? "
-        android:textSize="16dp"
-        android:textAlignment="center"
-        android:id="@+id/signupText"
-        android:textColor="@color/black"
-        android:layout_marginBottom="29px"/>
 
 
 </LinearLayout>
