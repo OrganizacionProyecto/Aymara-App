@@ -31,10 +31,12 @@
         android:autofillHints="search"
         android:drawableStart="@drawable/search_icon"
         android:drawablePadding="10dp"
+        android:foregroundTint="@color/black"
         android:hint="@string/buscar"
         android:inputType="text"
         android:paddingStart="16dp"
         android:paddingEnd="56dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +49,7 @@
         style="@android:style/Widget.Holo.Light.ImageButton"
         android:layout_width="71dp"
         android:layout_height="48dp"
-        android:contentDescription="@string/contentDescription"
+        android:contentDescription="@string/contentDescripcion"
         android:src="@drawable/favorito"
         app:layout_constraintBottom_toBottomOf="@id/search_bar"
         app:layout_constraintEnd_toStartOf="@+id/title"
@@ -66,7 +68,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
