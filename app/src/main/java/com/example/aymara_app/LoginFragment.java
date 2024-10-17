@@ -178,18 +178,16 @@ public class LoginFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     String userProfileData = response.body().string();
-                    Log.d("UserProfileResponse", userProfileData); // Depuración
+                    Log.d("UserProfileResponse", userProfileData);
                     try {
                         JSONObject jsonUserProfile = new JSONObject(userProfileData);
-                        // Modifica según los campos disponibles
                         String email = jsonUserProfile.getString("email");
-                        // Elimina la línea que intenta acceder a "username"
 
                         // Navegar al fragmento de perfil
                         getActivity().runOnUiThread(() -> {
                             NavController navController = Navigation.findNavController(getView());
                             Bundle bundle = new Bundle();
-                            bundle.putString("email", email); // Solo pasando el email ahora
+                            bundle.putString("email", email);
 
                             navController.navigate(R.id.action_loginFragment_to_profileFragment, bundle);
                         });

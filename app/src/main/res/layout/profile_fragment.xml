@@ -7,18 +7,16 @@
 
     <TextView
         android:id="@+id/tvProfileTitle"
-        android:layout_width="85dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="Perfil"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/tvWelcome"
@@ -26,167 +24,161 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:gravity="center"
-        android:text='Bienvenido, "User"!'
+        android:text="¡Bienvenido!"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
+
+    <Button
+        android:id="@+id/btnOut"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salir"
+        android:textColor="@color/design_default_color_error"
+        app:rippleColor="@color/design_default_color_error"
+        app:strokeColor="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"/>
 
     <LinearLayout
         android:id="@+id/myLinearLayout"
         android:layout_width="360dp"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvWelcome">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Username"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnEditUsername"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@color/VerdeAymara"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="1dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etFirst_Name"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Nombre"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etLast_Name"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Apellido"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="Direccion falsa 123"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnEditDireccion"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@color/VerdeAymara"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="1dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="admin@gmail.com"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnEditEmail"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@color/VerdeAymara"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="1dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Cambiar contraseña"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Eliminar Cuenta" />
     </LinearLayout>
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="275dp"
-        android:layout_height="55dp"
-        android:padding="10dp"
-        android:text="Username"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="218dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnEditAddress"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:textColorHighlight="@color/VerdeAymara"
-        app:icon="@android:drawable/ic_menu_edit"
-        app:iconGravity="textStart"
-        app:iconPadding="1dp"
-        app:iconSize="20dp"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="426dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/etFirst_Name"
-        android:layout_width="135dp"
-        android:layout_height="55dp"
-        android:padding="10dp"
-        android:text="Nombre"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="283dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/etLast_Name"
-        android:layout_width="135dp"
-        android:layout_height="55dp"
-        android:padding="10dp"
-        android:text="Apellido"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="283dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/etAddress"
-        android:layout_width="275dp"
-        android:layout_height="55dp"
-        android:padding="8dp"
-        android:text="Direccion falsa 123"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="426dp"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="275dp"
-        android:layout_height="55dp"
-        android:padding="10dp"
-        android:text="admin@gmail.com"
-        android:textSize="15sp"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="357dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnEditUsername"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:textColorHighlight="@color/VerdeAymara"
-        app:icon="@android:drawable/ic_menu_edit"
-        app:iconGravity="textStart"
-        app:iconPadding="1dp"
-        app:iconSize="20dp"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="218dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnEditEmail"
-        android:layout_width="50dp"
-        android:layout_height="55dp"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:textColorHighlight="@color/VerdeAymara"
-        app:icon="@android:drawable/ic_menu_edit"
-        app:iconGravity="textStart"
-        app:iconPadding="1dp"
-        app:iconSize="20dp"
-        tools:layout_editor_absoluteX="325dp"
-        tools:layout_editor_absoluteY="357dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnChangePassword"
-        android:layout_width="500px"
-        android:layout_height="100px"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="Cambiar contraseña"
-        android:textColorHighlight="@color/VerdeAymara"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAddress" />
-
-    <Button
-        android:id="@+id/btnDeleteAccount"
-        android:layout_width="500px"
-        android:layout_height="100px"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="Eliminar Cuenta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnChangePassword" />
-
-
-
-    <Button
-        android:id="@+id/btnOut"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="60dp"
-        android:layout_height="65dp"
-        android:textColor="@color/design_default_color_error"
-        android:backgroundTint="@color/material_dynamic_neutral90"
-        app:icon="@android:drawable/ic_lock_power_off"
-        app:iconGravity="textStart"
-        app:iconPadding="1dp"
-        app:iconSize="20dp"
-        app:rippleColor="@color/design_default_color_error"
-        app:strokeColor="@color/design_default_color_error"
-        tools:layout_editor_absoluteX="335dp"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

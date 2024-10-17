@@ -3,6 +3,7 @@ package com.example.aymara_app.network;
 import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.Product;
 import com.example.aymara_app.RegisterResponse;
+import okhttp3.RequestBody;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -40,8 +41,8 @@ public interface ApiService {
     @PATCH("api/change-username/")
     Call<ResponseBody> changeUsername(@Header("Authorization") String token, @Body Map<String, String> body);
 
-    @POST("api/change-password/") Call<ResponseBody> changePassword(@Header("Authorization") String authorization, @Body String json);
-
+    @POST("api/change-password/")
+    Call<ResponseBody> changePassword(@Header("Authorization") String authorization, @Body RequestBody body);
     @DELETE("api/auth/delete_account/")
     Call<ResponseBody> deleteAccount(@Header("Authorization") String token);
 

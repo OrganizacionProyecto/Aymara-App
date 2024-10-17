@@ -33,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_contac:
                     navController.navigate(R.id.ContacFragment);
                     return true;
-                case R.id.nav_register:
-                    navController.navigate(R.id.registerFragment);
-                    return true;
+
                 case R.id.nav_user:
                     navController.navigate(R.id.loginFragment);
+                    return true;
+                case R.id.nav_profile:
+                    navController.navigate(R.id.profileFragment);
                     return true;
             }
             return false;

@@ -17,8 +17,8 @@
         android:icon="@drawable/ic_user"
         android:title="Usuario" />
     <item
-        android:id="@+id/nav_register"
+        android:id="@+id/nav_profile"
         android:icon="@drawable/ic_user"
-        android:title="Registro" />
+        android:title="Perfil" />
 
 </menu>
