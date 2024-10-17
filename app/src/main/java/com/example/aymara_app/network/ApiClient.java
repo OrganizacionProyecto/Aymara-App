@@ -17,11 +17,9 @@ public class ApiClient {
 
     public static Retrofit getClient() {
         if (retrofit == null) {
-            // Configurar el interceptor
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
             logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            // Crear TrustManager que confíe en todos los certificados
             TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         public X509Certificate[] getAcceptedIssuers() {
@@ -33,24 +31,21 @@ public class ApiClient {
             };
 
             try {
-                // Crear un contexto SSL que use el TrustManager anterior
                 SSLContext sslContext = SSLContext.getInstance("SSL");
                 sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 
-                // Crear el cliente OkHttp
                 OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
                 httpClient.sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0]);
-                httpClient.hostnameVerifier((hostname, session) -> true); // Ignorar la verificación del nombre del host
-                httpClient.addInterceptor(logging); // Añadir el interceptor de logging
+                httpClient.hostnameVerifier((hostname, session) -> true);
+                httpClient.addInterceptor(logging);
 
-                // Construir Retrofit con el cliente OkHttp
                 retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
-                        .client(httpClient.build()) // Añadir el cliente con logging y configuración SSL
+                        .client(httpClient.build())
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
             } catch (Exception e) {
-                e.printStackTrace(); // Manejo de excepciones
+                e.printStackTrace();
             }
         }
         return retrofit;

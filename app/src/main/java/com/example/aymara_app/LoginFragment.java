@@ -106,7 +106,6 @@ public class LoginFragment extends Fragment {
         });
     }
     private void storeTokens(String accessToken, String refreshToken) {
-        // Almacenar los tokens en SharedPreferences
         Context context = getActivity();
         if (context != null) {
             context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
@@ -148,7 +147,6 @@ public class LoginFragment extends Fragment {
                         String refreshToken = jsonResponse.getString("refresh");
                         storeTokens(accessToken, refreshToken);
 
-                        // Obtener la información del usuario
                         fetchUserProfile(accessToken);
                     } catch (JSONException e) {
                         e.printStackTrace();

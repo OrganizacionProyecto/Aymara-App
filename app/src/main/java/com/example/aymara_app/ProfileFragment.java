@@ -144,7 +144,7 @@ public class ProfileFragment extends Fragment {
 
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(16, 16, 16, 16); // Padding para el layout
+        layout.setPadding(16, 16, 16, 16);
 
         EditText etOldPassword = new EditText(getActivity());
         etOldPassword.setHint("Contraseña Antigua");
@@ -248,7 +248,6 @@ public class ProfileFragment extends Fragment {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
 
-        // Crear el cuerpo de la solicitud
         Map<String, String> body = new HashMap<>();
         body.put("direccion", newAddress);
 
@@ -273,7 +272,6 @@ public class ProfileFragment extends Fragment {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
 
-        // Crear el cuerpo de la solicitud
         Map<String, String> body = new HashMap<>();
         body.put("username", newUsername);
 
@@ -337,8 +335,7 @@ public class ProfileFragment extends Fragment {
                 if (response.isSuccessful()) {
                     prefs.edit().clear().apply();
                     Toast.makeText(getActivity(), "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
-                    // Redirigir a la pantalla de inicio o login
-                    // Aquí puedes implementar la lógica para redirigir a la pantalla de inicio o login
+
                 } else {
                     Toast.makeText(getActivity(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
                 }

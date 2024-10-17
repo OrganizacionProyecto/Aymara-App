@@ -12,7 +12,6 @@ import androidx.viewpager.widget.ViewPager;
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     @Nullable
@@ -26,7 +25,6 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Configura el ViewPager para el carrusel de imágenes
         ViewPager viewPager = view.findViewById(R.id.viewPager);
         ImageSliderAdapter adapter = new ImageSliderAdapter(getContext());
         viewPager.setAdapter(adapter);
