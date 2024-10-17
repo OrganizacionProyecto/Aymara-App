@@ -6,6 +6,12 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.fragment.app.Fragment;
+import android.view.MenuItem;
+import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
+import com.example.aymara_app.HomeFragment;
+//import com.example.aymara_app.ProductFragment;
+import com.example.aymara_app.ContacFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

@@ -23,4 +23,25 @@
     <string name="contentDescripcion">Favorito</string>
 
 
+    <string name="app_name">Aymara-app</string>
+    <string name="tv_contacto">Contacto</string>
+    <string name="txt_instrucciones"> Por favor, completa el formulario
+        a continuación para ponerte en contacto con nosotros. Respondemos a la brevedad.</string>
+    <string name="ed_name"> Apellido y Nombre</string>
+    <string name="em_mail">Mail</string>
+    <string name="en_edad">Edad</string>
+    <string name="tv_sexo">Sexo</string>
+    <string name="en_altura">Altura (cm)</string>
+    <string name="en_peso">Peso (kg)</string>
+    <string name="ed_objetivo">Objetivos</string>
+    <string name="ed_nutricion">Desea recibir informacion nutricional?</string>
+    <string name="cb_si">Si</string>
+    <string name="cb_no">No</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="btn_borrar">Borrar</string>
+    <string name="rb_masculino">Masculino</string>
+    <string name="rb_femenino">Femenino</string>
+    <string name="rb_otro">Otro</string>
 </resources>
+
+
