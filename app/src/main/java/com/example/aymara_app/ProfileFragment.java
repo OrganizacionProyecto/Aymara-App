@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +44,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
+        // Inicialización de vistas
         etUsername = view.findViewById(R.id.etUsername);
         etFirst_Name = view.findViewById(R.id.etFirst_Name);
         etLast_Name = view.findViewById(R.id.etLast_Name);
@@ -58,33 +60,44 @@ public class ProfileFragment extends Fragment {
 
         loadUserData();
 
+        // Configuración de listeners
         btnChangePassword.setOnClickListener(v -> showChangePasswordDialog());
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
         btnLogout.setOnClickListener(v -> logoutUser());
         btnEditUsername.setOnClickListener(v -> showChangeUsernameDialog());
         btnEditDireccion.setOnClickListener(v -> showChangeAddressDialog());
+        etUsername.setEnabled(false);
+        etFirst_Name.setEnabled(false);
+        etLast_Name.setEnabled(false);
+        etEmail.setEnabled(false);
+        etDireccion.setEnabled(false);
 
         return view;
     }
 
-
     private void loadUserData() {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", ""); // Asegúrate de usar el mismo nombre de clave
+        String accessToken = prefs.getString("access_token", "");
 
         apiService.getUserDetails("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    try {
-                        String responseString = response.body().string();
+                    try (ResponseBody responseBody = response.body()) {
+                        String responseString = responseBody.string();
                         JSONObject jsonObject = new JSONObject(responseString);
+
+                        // Establecer los valores en los EditText
                         etUsername.setText(jsonObject.getString("username"));
                         etFirst_Name.setText(jsonObject.getString("first_name"));
                         etLast_Name.setText(jsonObject.getString("last_name"));
                         etEmail.setText(jsonObject.getString("email"));
                         etDireccion.setText(jsonObject.getString("direccion"));
 
+                        // Actualizar el TextView del título
+                        TextView tvProfileTitle = getView().findViewById(R.id.tvProfileTitle);
+                        String username = jsonObject.getString("username");
+                        tvProfileTitle.setText("Perfil de " + username);
                     } catch (JSONException | IOException e) {
                         e.printStackTrace();
                         Toast.makeText(getActivity(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
@@ -95,13 +108,14 @@ public class ProfileFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void updatePassword(String oldPassword, String newPassword) {
+
+    private void updatePassword(@NonNull String oldPassword, @NonNull String newPassword) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
 
@@ -113,12 +127,11 @@ public class ProfileFragment extends Fragment {
             e.printStackTrace();
         }
 
-        // Crear RequestBody a partir del JSON
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), json.toString());
 
         apiService.changePassword("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Contraseña actualizada con éxito", Toast.LENGTH_SHORT).show();
                 } else {
@@ -132,7 +145,7 @@ public class ProfileFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
@@ -177,11 +190,13 @@ public class ProfileFragment extends Fragment {
 
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(16, 16, 16, 16); // Padding para el layout
+        layout.setPadding(16, 16, 16, 16);
 
         EditText etNewAddress = new EditText(getActivity());
         etNewAddress.setHint("Nueva Dirección");
         layout.addView(etNewAddress);
+
+
 
         builder.setView(layout)
                 .setPositiveButton("Confirmar", (dialog, which) -> {
@@ -199,10 +214,10 @@ public class ProfileFragment extends Fragment {
 
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(16, 16, 16, 16); // Padding para el layout
+        layout.setPadding(16, 16, 16, 16);
 
         EditText etNewUsername = new EditText(getActivity());
-        etNewUsername.setHint("Nuevo Nombre de Usuario");
+        etNewUsername.setHint("Nuevo Nombre");
         layout.addView(etNewUsername);
 
         builder.setView(layout)
@@ -215,82 +230,85 @@ public class ProfileFragment extends Fragment {
                 .show();
     }
 
-    private boolean isValidEmail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches(); // Validación simple
+    private boolean isValidEmail(@NonNull String email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    private void updateEmail(String newEmail) {
+    private void updateEmail(@NonNull String newEmail) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
+        String accessToken = prefs.getString("access_token", "");
 
-        // Crear el cuerpo de la solicitud
         Map<String, String> body = new HashMap<>();
         body.put("email", newEmail);
 
         apiService.changeEmail("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Correo electrónico actualizado con éxito", Toast.LENGTH_SHORT).show();
+                    loadUserData();
                 } else {
                     Toast.makeText(getActivity(), "Error al actualizar el correo electrónico", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void updateAddress(String newAddress) {
+    private void updateAddress(@NonNull String newAddress) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
+        String accessToken = prefs.getString("access_token", "");
 
         Map<String, String> body = new HashMap<>();
         body.put("direccion", newAddress);
 
         apiService.changeAddress("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Dirección actualizada con éxito", Toast.LENGTH_SHORT).show();
+                    loadUserData();
                 } else {
                     Toast.makeText(getActivity(), "Error al actualizar la dirección", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void updateUsername(String newUsername) {
+    private void updateUsername(@NonNull String newUsername) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
+        String accessToken = prefs.getString("access_token", "");
 
         Map<String, String> body = new HashMap<>();
         body.put("username", newUsername);
 
         apiService.changeUsername("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Nombre de usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
+                    loadUserData();
                 } else {
                     Toast.makeText(getActivity(), "Error al actualizar el nombre de usuario", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     private void showDeleteAccountDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Eliminar Cuenta")
@@ -305,11 +323,11 @@ public class ProfileFragment extends Fragment {
 
     private void deleteAccount() {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", ""); // Obtener el token de acceso
+        String accessToken = prefs.getString("access_token", "");
 
         apiService.deleteAccount("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Cuenta eliminada con éxito", Toast.LENGTH_SHORT).show();
                     logoutUser();
@@ -319,7 +337,7 @@ public class ProfileFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
@@ -331,18 +349,18 @@ public class ProfileFragment extends Fragment {
 
         apiService.logout("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     prefs.edit().clear().apply();
                     Toast.makeText(getActivity(), "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
-
+                    loadUserData();
                 } else {
                     Toast.makeText(getActivity(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });

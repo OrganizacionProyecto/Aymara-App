@@ -22,5 +22,7 @@
 
     <string name="contentDescripcion">Favorito</string>
 
+    <!--Profile-->
+    <string name="cambiar_contraseña">Cambiar contraseña</string>
 
 </resources>
