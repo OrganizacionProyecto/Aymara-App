@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Context;
 import android.content.SharedPreferences;
-
+import org.json.JSONObject;
+import org.json.JSONException;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -117,8 +118,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         String token = getAccessToken(context);
 
         if (!token.isEmpty()) {
+            int idDelProducto = product.getIdProducto();
+
+            // Verifica el ID antes de enviarlo
+            Log.d("ProductAdapter", "Añadiendo a favoritos el producto con ID: " + idDelProducto);
+
+            if (idDelProducto <= 0) {
+                Log.e("ProductAdapter", "ID del producto inválido: " + idDelProducto);
+                return; // No hacer nada si el ID es inválido
+            }
+
             Map<String, Integer> productId = new HashMap<>();
-            productId.put("producto_id", product.getIdProducto());
+            productId.put("producto_id", idDelProducto);
 
             Gson gson = new Gson();
             String json = gson.toJson(productId);
@@ -143,6 +154,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Log.e("ProductAdapter", "Token no encontrado");
         }
     }
+
 
     private void removeFromFavorites(Product product, Context context) {
         String token = getAccessToken(context);
