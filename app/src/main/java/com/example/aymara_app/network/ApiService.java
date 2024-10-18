@@ -21,10 +21,10 @@ public interface ApiService {
     Call<List<Product>> getProducts();
 
     @POST("api/add_to_favorites/")
-    Call<ResponseBody> addToFavorites(@Body Map<String, Integer> productId);
+    Call<ResponseBody> addToFavorites(@Body RequestBody body, @Header("Authorization") String token);
 
     @POST("api/remove_from_favorites/")
-    Call<ResponseBody> removeFromFavorites(@Body Map<String, Integer> productId);
+    Call<ResponseBody> removeFromFavorites(@Body Map<String, Integer> productId, @Header("Authorization") String token);
 
     @GET("api/list_favorites/")
     Call<List<Product>> getFavorites(@Header("Authorization") String token);

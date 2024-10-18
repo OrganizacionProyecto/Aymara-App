@@ -105,7 +105,13 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
+                    if (response.code() == 401) {
+                        // Token expirado, redirigir a login
+                        Toast.makeText(getActivity(), "Sesión expirada. Por favor inicie sesión de nuevo.", Toast.LENGTH_SHORT).show();
+                        logoutUser(); // O redirigir directamente a LoginFragment
+                    } else {
+                        Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -115,6 +121,7 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
 
 
     private void updatePassword(@NonNull String oldPassword, @NonNull String newPassword) {

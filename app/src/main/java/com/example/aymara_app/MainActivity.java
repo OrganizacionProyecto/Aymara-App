@@ -52,6 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isUserLoggedIn() {
         SharedPreferences prefs = getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        return prefs.getBoolean("is_logged_in", false); // Retorna true si está logueado
+        return prefs.getBoolean("is_logged_in", false);
     }
 }
