@@ -50,6 +50,7 @@ public class LoginFragment extends Fragment {
     private boolean isPasswordVisible = false;
 
     private OkHttpClient client;
+
     private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/login/";
 
     @Override
@@ -75,42 +76,35 @@ public class LoginFragment extends Fragment {
         });
 
         loginButton.setOnClickListener(v -> {
-            String email = emailEditText.getText().toString().trim();
-            String password = passwordEditText.getText().toString().trim();
+            String email = emailEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
 
-            if (validateInputs(email, password)) {
-                loginWithJWT(email, password);
+            if (!isValidEmail(email)) {
+                emailEditText.setError("Por favor, ingresa un correo electrónico válido");
+                return;
             }
+
+            if (!isValidPassword(password)) {
+                passwordEditText.setError("La contraseña debe tener al menos 8 caracteres e incluir al menos una letra y un número");
+                return;
+            }
+
+            loginWithJWT(email, password);
         });
 
-        passwordToggle.setOnClickListener(v -> togglePasswordVisibility());
+        passwordToggle.setOnClickListener(v -> {
+            if (isPasswordVisible) {
+                passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                passwordToggle.setImageResource(R.drawable.icon_invisiblec);
+                isPasswordVisible = false;
+            } else {
+                passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                passwordToggle.setImageResource(R.drawable.icon_visiblea);
+                isPasswordVisible = true;
+            }
+            passwordEditText.setSelection(passwordEditText.getText().length());
+        });
     }
-
-    private boolean validateInputs(String email, String password) {
-        if (!isValidEmail(email)) {
-            emailEditText.setError("Por favor, ingresa un correo electrónico válido");
-            return false;
-        }
-        if (!isValidPassword(password)) {
-            passwordEditText.setError("La contraseña debe tener al menos 8 caracteres e incluir al menos una letra y un número");
-            return false;
-        }
-        return true;
-    }
-
-    private void togglePasswordVisibility() {
-        if (isPasswordVisible) {
-            passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-            passwordToggle.setImageResource(R.drawable.icon_invisiblec);
-            isPasswordVisible = false;
-        } else {
-            passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-            passwordToggle.setImageResource(R.drawable.icon_visiblea);
-            isPasswordVisible = true;
-        }
-        passwordEditText.setSelection(passwordEditText.getText().length());
-    }
-
     private void storeTokens(String accessToken, String refreshToken) {
         Context context = getActivity();
         if (context != null) {
@@ -141,34 +135,33 @@ public class LoginFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                showToast("Error de conexión: " + e.getMessage());
+                getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error de conexión: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    handleLoginSuccess(response.body().string());
+                    String responseData = response.body().string();
+                    try {
+                        JSONObject jsonResponse = new JSONObject(responseData);
+                        String accessToken = jsonResponse.getString("access");
+                        String refreshToken = jsonResponse.getString("refresh");
+                        storeTokens(accessToken, refreshToken);
+
+                        fetchUserProfile(accessToken);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 } else {
-                    showToast("Credenciales incorrectas");
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Credenciales incorrectas", Toast.LENGTH_SHORT).show());
                 }
             }
         });
     }
 
-    private void handleLoginSuccess(String responseData) {
-        try {
-            JSONObject jsonResponse = new JSONObject(responseData);
-            String accessToken = jsonResponse.getString("access");
-            String refreshToken = jsonResponse.getString("refresh");
-            storeTokens(accessToken, refreshToken);
-            fetchUserProfile(accessToken);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void fetchUserProfile(String accessToken) {
         String userProfileUrl = "https://aymara.pythonanywhere.com/api/auth/user/";
+
         Request request = new Request.Builder()
                 .url(userProfileUrl)
                 .addHeader("Authorization", "Bearer " + accessToken)
@@ -177,51 +170,36 @@ public class LoginFragment extends Fragment {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                showToast("Error al obtener perfil: " + e.getMessage());
+                getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error al obtener perfil: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    handleUserProfileResponse(response.body().string());
+                    String userProfileData = response.body().string();
+                    Log.d("UserProfileResponse", userProfileData);
+                    try {
+                        JSONObject jsonUserProfile = new JSONObject(userProfileData);
+                        String email = jsonUserProfile.getString("email");
+
+                        // Navegar al fragmento de perfil
+                        getActivity().runOnUiThread(() -> {
+                            NavController navController = Navigation.findNavController(getView());
+                            Bundle bundle = new Bundle();
+                            bundle.putString("email", email);
+
+                            navController.navigate(R.id.action_loginFragment_to_profileFragment, bundle);
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 } else {
-                    showToast("Error al obtener perfil");
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error al obtener perfil", Toast.LENGTH_SHORT).show());
                 }
             }
         });
     }
 
-    private void handleUserProfileResponse(String userProfileData) {
-        try {
-            JSONObject jsonUserProfile = new JSONObject(userProfileData);
-            String email = jsonUserProfile.getString("email");
-
-            // Guardar perfil en SharedPreferences
-            Context context = getActivity();
-            if (context != null) {
-                context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
-                        .edit()
-                        .putString("user_email", email)
-                        .apply();
-            }
-
-            // Navegar al fragmento de perfil
-            getActivity().runOnUiThread(() -> {
-                NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
-                Bundle bundle = new Bundle();
-                bundle.putString("email", email);
-                navController.navigate(R.id.action_loginFragment_to_profileFragment, bundle);
-            });
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void showToast(String message) {
-        if (getContext() != null) {
-            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private boolean isValidEmail(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -251,8 +229,11 @@ public class LoginFragment extends Fragment {
             final SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 
+            final javax.net.ssl.SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0]);
+            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
+
             builder.hostnameVerifier(new HostnameVerifier() {
                 @Override
                 public boolean verify(String hostname, SSLSession session) {
