@@ -163,13 +163,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Map<String, Integer> productId = new HashMap<>();
             productId.put("producto_id", product.getIdProducto());
 
-            apiService.removeFromFavorites(productId, token).enqueue(new retrofit2.Callback<ResponseBody>() {
+            // Asegúrate de que estás incluyendo el token en el encabezado
+            apiService.removeFromFavorites(productId, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.d("ProductAdapter", "Producto eliminado de favoritos");
                     } else {
-                        Log.e("ProductAdapter", "Error al eliminar de favoritos: " + response.message());
+                        Log.e("ProductAdapter", "Error al eliminar de favoritos: " + response.code() + " " + response.message());
                     }
                 }
 
