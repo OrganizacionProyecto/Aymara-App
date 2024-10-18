@@ -12,6 +12,8 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -353,7 +355,10 @@ public class ProfileFragment extends Fragment {
                 if (response.isSuccessful()) {
                     prefs.edit().clear().apply();
                     Toast.makeText(getActivity(), "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
-                    loadUserData();
+
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.navigate(R.id.action_profileFragment_to_loginFragment);
+
                 } else {
                     Toast.makeText(getActivity(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
                 }
@@ -365,4 +370,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
 }
