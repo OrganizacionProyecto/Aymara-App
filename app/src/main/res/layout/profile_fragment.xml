@@ -1,20 +1,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFEBEE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:ignore="MissingClass">
 
     <TextView
         android:id="@+id/tvProfileTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Perfil"
-        android:textSize="30sp"
+        android:textColor="@color/VerdeAymara"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,6 +29,7 @@
         android:layout_marginTop="60dp"
         android:gravity="center"
         android:text="¡Bienvenido!"
+        android:textColor="@color/grey"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +75,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Username"
+                android:textColor="@color/grey"
                 android:textSize="15sp" />
 
             <Button
@@ -97,6 +103,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Nombre"
+                android:textColor="@color/grey"
                 android:textSize="15sp" />
 
             <EditText
@@ -106,6 +113,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Apellido"
+                android:textColor="@color/grey"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -122,7 +130,8 @@
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:text="Direccion falsa 123"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textColor="@color/grey"/>
 
             <Button
                 android:id="@+id/btnEditDireccion"
@@ -149,6 +158,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="admin@gmail.com"
+                android:textColor="@color/grey"
                 android:textSize="15sp" />
 
             <Button
@@ -178,7 +188,9 @@
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Eliminar Cuenta" />
+            android:text="Eliminar Cuenta"
+            android:textColor="@color/white"
+            />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

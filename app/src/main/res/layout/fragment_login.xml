@@ -38,7 +38,9 @@
             android:layout_height="44dp"
             android:layout_marginTop="70dp"
             android:hint="e-mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:selectAllOnFocus="false"
+            android:textColor="@color/grey" />
 
         <RelativeLayout
             android:layout_width="334dp"
@@ -51,6 +53,7 @@
                 android:layout_marginTop="50dp"
                 android:drawablePadding="10dp"
                 android:hint="password"
+                android:textColor="@color/grey"
                 android:inputType="textPassword" />
 
             <ImageView
@@ -69,10 +72,11 @@
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="319dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/VerdeAymara"
+            android:textColor="@color/white"
             android:text="Login" />
 
     </LinearLayout>

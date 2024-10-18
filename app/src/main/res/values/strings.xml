@@ -22,6 +22,8 @@
 
     <string name="contentDescripcion">Favorito</string>
 
+    <!--Profile-->
+    <string name="cambiar_contraseña">Cambiar contraseña</string>
 
     <string name="app_name">Aymara-app</string>
     <string name="tv_contacto">Contacto</string>
