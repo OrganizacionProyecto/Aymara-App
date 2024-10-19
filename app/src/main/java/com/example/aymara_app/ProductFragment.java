@@ -1,5 +1,7 @@
 package com.example.aymara_app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
@@ -13,7 +15,9 @@ import com.example.aymara_app.repository.ProductRepository;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +28,7 @@ public class ProductFragment extends Fragment {
     private ProductRepository productRepository;
     private List<Product> productList = new ArrayList<>();
     private EditText searchBar;
+    private SharedPreferences sharedPreferences;
 
     public ProductFragment() {
         // Required empty public constructor
@@ -31,49 +36,62 @@ public class ProductFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_product, container, false);
 
-        // Inicializar el RecyclerView
+        sharedPreferences = getContext().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+
+        boolean isLoggedIn = checkIfUserIsLoggedIn();
+
+        initializeRecyclerView(view, isLoggedIn);
+
+        searchBar = view.findViewById(R.id.search_bar);
+        setupSearchBar();
+
+        initializeProductRepository(isLoggedIn, view);
+
+        setupFavoriteButton(view, isLoggedIn);
+
+        return view;
+    }
+
+    private void initializeRecyclerView(View view, boolean isLoggedIn) {
         recyclerView = view.findViewById(R.id.recycler_view_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        // Inicializar el adaptador y establecerlo en el RecyclerView
-        productAdapter = new ProductAdapter();
+        productAdapter = new ProductAdapter(isLoggedIn, requireContext());
         recyclerView.setAdapter(productAdapter);
+    }
 
-        // Inicializar la barra de búsqueda
-        searchBar = view.findViewById(R.id.search_bar);
-        setupSearchBar();
+    private void setupFavoriteButton(View view, boolean isLoggedIn) {
+        ImageButton favoriteButton = view.findViewById(R.id.button);
+        if (isLoggedIn) {
+            favoriteButton.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.favoritesFragment);
+            });
+        } else {
+            favoriteButton.setVisibility(View.GONE);
+        }
+    }
 
-        // Inicializar el repositorio y obtener productos desde la API
+
+    private void initializeProductRepository(boolean isLoggedIn, View view) {
         productRepository = new ProductRepository();
         productRepository.getProducts().observe(getViewLifecycleOwner(), products -> {
             if (products != null && !products.isEmpty()) {
                 Log.d("ProductFragment", "Productos obtenidos: " + products.size());
-                productList = products;  // Guardar la lista de productos
+                productList = products;
                 productAdapter.setProductList(products);
             } else {
                 Log.d("ProductFragment", "No se obtuvieron productos de la API");
             }
         });
+    }
 
-        // Botón para mostrar solo favoritos
-        ImageButton favoriteButton = view.findViewById(R.id.button);
-        favoriteButton.setOnClickListener(v -> {
-            productRepository.getFavorites().observe(getViewLifecycleOwner(), favorites -> {
-                if (favorites != null && !favorites.isEmpty()) {
-                    productList = favorites;  // Guardar la lista de favoritos
-                    productAdapter.setProductList(favorites);
-                    Log.d("ProductFragment", "Mostrando productos favoritos: " + favorites.size());
-                } else {
-                    Log.d("ProductFragment", "No hay productos favoritos");
-                }
-            });
-        });
-
-        return view;
+    private boolean checkIfUserIsLoggedIn() {
+        String token = sharedPreferences.getString("access_token", null);
+        return token != null;
     }
 
     private void setupSearchBar() {
@@ -103,5 +121,11 @@ public class ProductFragment extends Fragment {
             }
         }
         productAdapter.setProductList(filteredList);
+    }
+
+    public void refreshProductList() {
+        boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);
+        productAdapter.setIsLoggedIn(isLoggedIn);
+        productAdapter.notifyDataSetChanged();
     }
 }

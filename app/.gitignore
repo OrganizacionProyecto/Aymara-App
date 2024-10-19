@@ -1,4 +1,6 @@
 # Archivos generados por Android Studio
+local.properties
+
 *.iml
 .gradle/
 .idea/

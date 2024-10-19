@@ -11,35 +11,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import com.example.aymara_app.network.ApiService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
 
-/** Clase para la respuesta del registro **/
-class RegisterResponse {
-    private String message;
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-}
 
 /** Fragmento de registro **/
 public class RegisterFragment extends Fragment {
-    private EditText editTextEmail, editTextPassword, editTextUsername;
+    private EditText editTextEmail, editTextPassword, editTextUsername, editTextFirstName, editTextLastName;
     private TextView loginText;
     private Button buttonRegister;
     private Retrofit retrofit;
-    private AuthService authService;
+    private ApiService apiService;
 
     /** Constructor vacío necesario **/
     public RegisterFragment() {
@@ -56,6 +42,8 @@ public class RegisterFragment extends Fragment {
         editTextUsername = view.findViewById(R.id.username);
         editTextPassword = view.findViewById(R.id.password);
         editTextEmail = view.findViewById(R.id.email);
+        editTextFirstName = view.findViewById(R.id.firstname);
+        editTextLastName = view.findViewById(R.id.lastname);
         buttonRegister = view.findViewById(R.id.registerButton);
 
         /** Configurar Retrofit **/
@@ -64,7 +52,7 @@ public class RegisterFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        authService = retrofit.create(AuthService.class);
+        apiService = retrofit.create(ApiService.class); // Cambiar a ApiService
 
         /** Configurar el botón de registro **/
         buttonRegister.setOnClickListener(new View.OnClickListener() {
@@ -80,15 +68,18 @@ public class RegisterFragment extends Fragment {
     private void registerUser() {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
-        String username = editTextUsername.getText().toString();  // Corregido
+        String username = editTextUsername.getText().toString();
+        String firstname = editTextFirstName.getText().toString();
+        String lastname = editTextLastName.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || username.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
             Toast.makeText(getContext(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
         /** Llamada al servicio de autenticación **/
-        Call<RegisterResponse> call = authService.registerUser(new RegisterRequest(email, password));
+        RegisterRequest registerRequest = new RegisterRequest(email, password, username, firstname, lastname);
+        Call<RegisterResponse> call = apiService.registerUser(registerRequest);
 
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -107,18 +98,3 @@ public class RegisterFragment extends Fragment {
         });
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

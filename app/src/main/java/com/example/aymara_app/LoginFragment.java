@@ -2,6 +2,7 @@ package com.example.aymara_app;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +89,6 @@ public class LoginFragment extends Fragment {
                 return;
             }
 
-            // Realizar el login con el backend
             loginWithJWT(email, password);
         });
 
@@ -105,9 +105,19 @@ public class LoginFragment extends Fragment {
             passwordEditText.setSelection(passwordEditText.getText().length());
         });
     }
+    private void storeTokens(String accessToken, String refreshToken) {
+        Context context = getActivity();
+        if (context != null) {
+            context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("is_logged_in", true)
+                    .putString("access_token", accessToken)
+                    .putString("refresh_token", refreshToken)
+                    .apply();
+        }
+    }
 
     private void loginWithJWT(String email, String password) {
-        // Crea el objeto JSON con las credenciales
         JSONObject json = new JSONObject();
         try {
             json.put("email", email);
@@ -116,14 +126,12 @@ public class LoginFragment extends Fragment {
             e.printStackTrace();
         }
 
-        // Crea la solicitud
         RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json; charset=utf-8"));
         Request request = new Request.Builder()
                 .url(LOGIN_URL)
                 .post(body)
                 .build();
 
-        // Enviar la solicitud
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -133,20 +141,14 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    // Manejar la respuesta exitosa
                     String responseData = response.body().string();
                     try {
                         JSONObject jsonResponse = new JSONObject(responseData);
                         String accessToken = jsonResponse.getString("access");
                         String refreshToken = jsonResponse.getString("refresh");
-
-                        // Almacenar los tokens
                         storeTokens(accessToken, refreshToken);
 
-                        getActivity().runOnUiThread(() -> {
-                            Toast.makeText(getContext(), "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                            // Aquí puedes navegar a otra pantalla o realizar otras acciones
-                        });
+                        fetchUserProfile(accessToken);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -157,17 +159,47 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    private void storeTokens(String accessToken, String refreshToken) {
-        // Almacenar los tokens en SharedPreferences
-        Context context = getActivity();
-        if (context != null) {
-            context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
-                    .edit()
-                    .putString("accessToken", accessToken)
-                    .putString("refreshToken", refreshToken)
-                    .apply();
-        }
+    private void fetchUserProfile(String accessToken) {
+        String userProfileUrl = "https://aymara.pythonanywhere.com/api/auth/user/";
+
+        Request request = new Request.Builder()
+                .url(userProfileUrl)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error al obtener perfil: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String userProfileData = response.body().string();
+                    Log.d("UserProfileResponse", userProfileData);
+                    try {
+                        JSONObject jsonUserProfile = new JSONObject(userProfileData);
+                        String email = jsonUserProfile.getString("email");
+
+                        // Navegar al fragmento de perfil
+                        getActivity().runOnUiThread(() -> {
+                            NavController navController = Navigation.findNavController(getView());
+                            Bundle bundle = new Bundle();
+                            bundle.putString("email", email);
+
+                            navController.navigate(R.id.action_loginFragment_to_profileFragment, bundle);
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    getActivity().runOnUiThread(() -> Toast.makeText(getContext(), "Error al obtener perfil", Toast.LENGTH_SHORT).show());
+                }
+            }
+        });
     }
+
 
     private boolean isValidEmail(String email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -177,10 +209,8 @@ public class LoginFragment extends Fragment {
         return password.length() >= 8 && password.matches(".*\\d.*");
     }
 
-    // Crea un OkHttpClient inseguro que omite la validación de certificados SSL (para desarrollo)
     private OkHttpClient getUnsafeOkHttpClient() {
         try {
-            // Crea un administrador de confianza que acepte cualquier certificado SSL
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override
@@ -196,17 +226,14 @@ public class LoginFragment extends Fragment {
                     }
             };
 
-            // Instala el administrador de confianza "ingenuo"
             final SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 
-            // Crea un socket de fábrica que usa nuestro administrador de confianza
             final javax.net.ssl.SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
 
-            // Omite la verificación del nombre del host
             builder.hostnameVerifier(new HostnameVerifier() {
                 @Override
                 public boolean verify(String hostname, SSLSession session) {

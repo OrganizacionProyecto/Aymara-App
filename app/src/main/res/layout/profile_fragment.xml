@@ -1,21 +1,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFEBEE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:ignore="MissingClass">
 
     <TextView
         android:id="@+id/tvProfileTitle"
-        android:layout_width="85dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Perfil"
-        android:textSize="34sp"
+        android:textColor="@color/VerdeAymara"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.184"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,117 +26,18 @@
         android:id="@+id/tvWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="60dp"
         android:gravity="center"
-        android:text='Bienvenido, "User"!'
+        android:text="¡Bienvenido!"
+        android:textColor="@color/grey"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="274dp"
-        android:layout_height="56dp"
-        android:padding="8dp"
-        android:text="Admin (Nombre)"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="202dp" />
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="274dp"
-        android:layout_height="51dp"
-        android:padding="8dp"
-        android:text="Username"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="138dp" />
-
-
     <Button
-        android:id="@+id/btnEditUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="141dp" />
-
-    <EditText
-        android:id="@+id/etLastName"
-        android:layout_width="272dp"
-        android:layout_height="51dp"
-        android:padding="8dp"
-        android:text="Admin (Apellido)"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="267dp" />
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="273dp"
-        android:layout_height="52dp"
-        android:padding="8dp"
-        android:text="admin@gmail.com"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="338dp" />
-
-    <Button
-        android:id="@+id/btnEditEmail"
-        android:layout_width="70dp"
-        android:layout_height="43dp"
-        android:textColorHighlight="@color/VerdeAymara"
-        android:textColorLink="@color/VerdeAymara"
-        app:icon="@android:drawable/ic_menu_edit"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="341dp" />
-
-    <EditText
-        android:id="@+id/etAddress"
-        android:layout_width="276dp"
-        android:layout_height="54dp"
-        android:padding="8dp"
-        android:text="Direccion falsa 123"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="407dp" />
-
-    <Button
-        android:id="@+id/btnEditAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="407dp" />
-
-    <Button
-        android:id="@+id/btnChangePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="Cambiar contraseña"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAddress" />
-
-    <Button
-        android:id="@+id/btnDeleteAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="Eliminar Cuenta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnChangePassword" />
-
-    <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnOut"
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,7 +45,152 @@
         android:textColor="@color/design_default_color_error"
         app:rippleColor="@color/design_default_color_error"
         app:strokeColor="@color/design_default_color_error"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="30dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/myLinearLayout"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Username"
+                android:textColor="@color/grey"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnEditUsername"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@color/VerdeAymara"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="1dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etFirst_Name"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Nombre"
+                android:textColor="@color/grey"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etLast_Name"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="Apellido"
+                android:textColor="@color/grey"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="Direccion falsa 123"
+                android:textSize="15sp"
+                android:textColor="@color/grey"/>
+
+            <Button
+                android:id="@+id/btnEditDireccion"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@color/VerdeAymara"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="1dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="0dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="admin@gmail.com"
+                android:textColor="@color/grey"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btnEditEmail"
+                android:layout_width="52dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textColor="@color/VerdeAymara"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconPadding="1dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Cambiar contraseña"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnDeleteAccount"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Eliminar Cuenta"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
