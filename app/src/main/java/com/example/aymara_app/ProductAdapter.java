@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView; // Asegúrate de que esta línea está presente
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.aymara_app.network.ApiClient;
@@ -20,19 +22,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
+import com.google.gson.Gson;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-
     private List<Product> productList = new ArrayList<>();
     private ApiService apiService;
+    private boolean isLoggedIn;
 
-    public ProductAdapter() {
-        // Inicializar el ApiService
+    public ProductAdapter(boolean isLoggedIn, Context context) {
         apiService = ApiClient.getClient().create(ApiService.class);
+        this.isLoggedIn = isLoggedIn;
+    }
+
+    public void setIsLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+        notifyDataSetChanged();
     }
 
     public void setProductList(List<Product> products) {
@@ -59,24 +68,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 .load(product.getImagen())
                 .into(holder.productImagen);
 
-        // Cambiar color del botón favorito según el estado
-        if (product.isFavorite()) {
-            holder.favoriteButton.setColorFilter(holder.itemView.getContext().getResources().getColor(R.color.red));
+        if (isLoggedIn) {
+            holder.favoriteButton.setVisibility(View.VISIBLE);
+            holder.favoriteButton.setColorFilter(product.isFavorite() ?
+                    holder.itemView.getContext().getResources().getColor(R.color.red) :
+                    holder.itemView.getContext().getResources().getColor(R.color.grey));
+
+            holder.favoriteButton.setOnClickListener(v -> {
+                product.setFavorite(!product.isFavorite());
+                notifyItemChanged(position);
+                if (product.isFavorite()) {
+                    addToFavorites(product, holder.itemView.getContext());
+                } else {
+                    removeFromFavorites(product, holder.itemView.getContext());
+                }
+            });
         } else {
-            holder.favoriteButton.setColorFilter(holder.itemView.getContext().getResources().getColor(R.color.grey));
+            holder.favoriteButton.setVisibility(View.GONE);
         }
-
-        holder.favoriteButton.setOnClickListener(v -> {
-            product.setFavorite(!product.isFavorite());
-            notifyItemChanged(position);
-
-            // Aquí podrías llamar a la API para agregar o quitar de favoritos
-            if (product.isFavorite()) {
-                addToFavorites(product); // Llamar a la API
-            } else {
-                removeFromFavorites(product); // Llamar a la API
-            }
-        });
     }
 
     @Override
@@ -99,41 +108,66 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
     }
 
-    private void addToFavorites(Product product) {
-        Map<String, Integer> productId = new HashMap<>();
-        productId.put("producto_id", product.getIdProducto());
-
-        apiService.addToFavorites(productId).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Log.d("ProductAdapter", "Producto añadido a favoritos");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("ProductAdapter", "Error al añadir a favoritos: " + t.getMessage());
-            }
-        });
+    private String getAccessToken(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        return prefs.getString("access_token", ""); // Devuelve una cadena vacía si no hay token
     }
 
-    private void removeFromFavorites(Product product) {
-        Map<String, Integer> productId = new HashMap<>();
-        productId.put("producto_id", product.getIdProducto());
+    private void addToFavorites(Product product, Context context) {
+        String token = getAccessToken(context);
 
-        apiService.removeFromFavorites(productId).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Log.d("ProductAdapter", "Producto eliminado de favoritos");
+        if (!token.isEmpty()) {
+            Map<String, Integer> productId = new HashMap<>();
+            productId.put("producto_id", product.getIdProducto());
+
+            Gson gson = new Gson();
+            String json = gson.toJson(productId);
+            RequestBody requestBody = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
+
+            apiService.addToFavorites(requestBody, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("ProductAdapter", "Producto añadido a favoritos");
+                    } else {
+                        Log.e("ProductAdapter", "Error al añadir a favoritos: " + response.message());
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.e("ProductAdapter", "Error al eliminar de favoritos: " + t.getMessage());
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Log.e("ProductAdapter", "Error de conexión: " + t.getMessage());
+                }
+            });
+        } else {
+            Log.e("ProductAdapter", "Token no encontrado");
+        }
+    }
+
+    private void removeFromFavorites(Product product, Context context) {
+        String token = getAccessToken(context);
+
+        if (!token.isEmpty()) {
+            Map<String, Integer> productId = new HashMap<>();
+            productId.put("producto_id", product.getIdProducto());
+
+            apiService.removeFromFavorites(productId, token).enqueue(new retrofit2.Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("ProductAdapter", "Producto eliminado de favoritos");
+                    } else {
+                        Log.e("ProductAdapter", "Error al eliminar de favoritos: " + response.message());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Log.e("ProductAdapter", "Error al eliminar de favoritos: " + t.getMessage());
+                }
+            });
+        } else {
+            Log.e("ProductAdapter", "Token no encontrado");
+        }
     }
 }
