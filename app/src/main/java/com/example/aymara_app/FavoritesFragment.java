@@ -47,7 +47,7 @@ public class FavoritesFragment extends Fragment {
         productAdapter = new ProductAdapter(true, getContext());
         recyclerView.setAdapter(productAdapter);
 
-        fetchFavorites();
+        fetchFavorites();  // Llamada al método para obtener los favoritos
     }
 
     private void fetchFavorites() {
@@ -58,9 +58,13 @@ public class FavoritesFragment extends Fragment {
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     if (response.isSuccessful()) {
                         List<Product> favoriteProducts = response.body();
-                        productAdapter.setProductList(favoriteProducts);
+                        if (favoriteProducts != null && !favoriteProducts.isEmpty()) {
+                            productAdapter.setProductList(favoriteProducts);  // Actualiza el adaptador
+                        } else {
+                            Toast.makeText(getContext(), "No tienes productos en favoritos", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(getContext(), "Error al obtener favoritos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Error al obtener favoritos: " + response.message(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -77,6 +81,6 @@ public class FavoritesFragment extends Fragment {
 
     private String getAccessToken(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        return prefs.getString("access_token", "");
+        return prefs.getString("access_token", "");  // Verifica que el token no sea nulo
     }
 }
