@@ -9,17 +9,389 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad81da25-0b2c-485c-9bde-f61e8cba124e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/FavoritesFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favorites.xml" afterDir="false" />
+    <list default="true" id="ad81da25-0b2c-485c-9bde-f61e8cba124e" name="Changes" comment="Se agrego el apiservice de profile y se corrigio el profile_fragment.xml">
+      <change afterPath="$PROJECT_DIR$/caches/8.0/kotlin-dsl/scripts/b3845ba872bd5139cde0725a1454aa7a/classes/META-INF/buildscript.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/2834ce4aec5962ed015a47daee86b724/init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/2834ce4aec5962ed015a47daee86b724/init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/2834ce4aec5962ed015a47daee86b724/init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/29962856c9beccfa0b6d6da4afa7a983/cp_init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/29962856c9beccfa0b6d6da4afa7a983/cp_init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/29962856c9beccfa0b6d6da4afa7a983/cp_init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/362c4aa4077c5a95cb06a57befb11efe/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/362c4aa4077c5a95cb06a57befb11efe/classes.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/362c4aa4077c5a95cb06a57befb11efe/classes.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/753225d58bbb5fdaa03563bd1dc5f1e1/cp_init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/753225d58bbb5fdaa03563bd1dc5f1e1/cp_init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/753225d58bbb5fdaa03563bd1dc5f1e1/cp_init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/9fd7dba36b5951db86be77e504508c1f/init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/9fd7dba36b5951db86be77e504508c1f/init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/9fd7dba36b5951db86be77e504508c1f/init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/a4d1c0fd784d3e5ce65ffc1c34de0d18/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/a4d1c0fd784d3e5ce65ffc1c34de0d18/classes.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/a4d1c0fd784d3e5ce65ffc1c34de0d18/classes.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/ac9eb61c749616fd8a4ddbb70cfcebff/javax.annotation-api-1.3.2.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/e5c1f431353c703b7bb905eb71c9e544/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/e5c1f431353c703b7bb905eb71c9e544/classes.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/e5c1f431353c703b7bb905eb71c9e544/classes.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.3.3/66972d0827d0ea88a644c4e7abe2926a50578c52/exifinterface-1.3.3.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.3.3/7019a8493752dd01841de592cccff677e6b8070a/exifinterface-1.3.3-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.3.3/fb98cc99d9219c875b12f24b33f66318f4784edc/exifinterface-1.3.3.aar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/androidx.exifinterface/exifinterface/1.3.3/fc881b7c1a078ddee3951b016438e0b1828f3574/exifinterface-1.3.3.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.15.1/522998b5b3d95312fb8812387a2c0c80ea574003/annotations-4.15.1.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.15.1/7edbd68932f75d4826f5f3282936b693790bac46/annotations-4.15.1-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.15.1/d0ef5967f6954f135b1d6e5f0327d1feaa8039d4/annotations-4.15.1-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.15.1/d3721a4986a833e4ea71126489d12e08964b6f07/annotations-4.15.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.15.1/db2a7acecf888a774a5ffdea37fea4dd4a9ebad6/annotations-4.15.1.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/compiler/4.15.1/11e0042c47bdcfd785ffbc0059937691143b917d/compiler-4.15.1.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/compiler/4.15.1/5818cba915529583d01d27a84e4f232f41aaf1c7/compiler-4.15.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/compiler/4.15.1/5e97c76b2f5762918960b10e5503dad269f3a9ca/compiler-4.15.1.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.15.1/1af4b9f7e1592f8799db24765de5961196766a0f/disklrucache-4.15.1.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.15.1/cb8497fbc8dad4e3c97e7c6d20f21c9032dcec28/disklrucache-4.15.1-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.15.1/e47ade981aefb5b975382750490d195fa569bbdf/disklrucache-4.15.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.15.1/e4cb695b0e6bc13fae8ff22cf3b8d3d49e7d53dd/disklrucache-4.15.1-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.15.1/987a6be9fed60c15886265ae31e859fb5b43caee/gifdecoder-4.15.1.aar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.15.1/c4d1351ef6e6b290ff50f782d94e64f21f7a258a/gifdecoder-4.15.1-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.15.1/e53293e05c7ea418a524f6b7dba10b6d5ee0156/gifdecoder-4.15.1-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.15.1/ff116efe7cc1a89c0af240447290574c399b2aa3/gifdecoder-4.15.1.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.15.1/134c816e51cb3d1e8d615cf906a4750cb8722354/glide-4.15.1-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.15.1/8788e77976804ae68bb488bdf239692737b4062b/glide-4.15.1.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.15.1/af409232fdc7f7f5fc7b2f5e858c93a257e86c0c/glide-4.15.1.aar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.15.1/c101f14d17712b35bc090b9b2d3c3ed0fda56514/glide-4.15.1-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.google.code.gson/gson-parent/2.8.5/40f295fd74fbe91f1589481c967b14f176d6e549/gson-parent-2.8.5.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/2c18fa1082aa1c422aece88244c084be50c76500/gson-2.8.5.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/a2841d93c258a70e320be81586e92208a60144f2/gson-2.8.5-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/c5b4c491aecb72e7c32a78da0b5c6b9cda8dee0f/gson-2.8.5-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/f645ed69d595b24d4cf8b3fbb64cc505bede8829/gson-2.8.5.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/4.10.0/44108e915c02b3a175f3e2a93cce54534bc9cf71/logging-interceptor-4.10.0-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/4.10.0/64314c30653b263881df1cededc2007889dfd80f/logging-interceptor-4.10.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/4.10.0/64ef3c8559f4b12ec54a36c5f09f7cebe18e3b9e/logging-interceptor-4.10.0.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/4.10.0/ae7524eec42d4ab0c3a7cb93da010cf9bcc5007c/logging-interceptor-4.10.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/4.10.0/d25276bebacca5298a87de36a58f641664a43caf/logging-interceptor-4.10.0.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.14.9/9e1332afd90bd8da42160422123341a40cf3644c/okhttp-3.14.9.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.10.0/4afcb4a940f3411594ba7dc899086a882293f22a/okhttp-4.10.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.10.0/5e9fecac09d2dfe43d2cd297c9cd652444299c4a/okhttp-4.10.0.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.10.0/982fa90054d87e7b49739908beba4f50f508fbed/okhttp-4.10.0-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.10.0/9b894f18942896644e6f65a79aea2946af72d8d0/okhttp-4.10.0.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/4.10.0/cd63657ac15770ed1420647154c9f44645533bef/okhttp-4.10.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okhttp3/parent/3.14.9/8983b1f67e8dec9f71b534c5e26cfa8a88628f3f/parent-3.14.9.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.0.0/63dca88e80ade884bc68585baa9940f5c8027bfa/okio-jvm-3.0.0.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.0.0/73e518d3b5760645d525c24934e4efc01149060a/okio-jvm-3.0.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.0.0/ab5a73fa2ccb4a36b0b5c69fe10b16d0255bcf8/okio-jvm-3.0.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.0.0/ba1a992cf86d7cbb283a33654d2f41272e000c6e/okio-jvm-3.0.0.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio-jvm/3.0.0/d80a56acc76c16c3eefae15c38ac9712e3fd6ca6/okio-jvm-3.0.0-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio/3.0.0/31b51756e20444a9cb13bcbcecc2f378ec5e470b/okio-3.0.0.module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.okio/okio/3.0.0/b2fec062f421241a455a83d82790f442fef0ea7c/okio-3.0.0.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.9.0/566f3b500a0bb427d3545205c129abae2898e06c/converter-gson-2.9.0.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.9.0/76a801b6fd4d1bbd0e04cd7c079ae0e3f9c0dbf8/converter-gson-2.9.0-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.9.0/c62a3350a231bd6b678e2cad7f23028777f51e13/converter-gson-2.9.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.9.0/fc93484fc67ab52b1e0ccbdaa3922d8a6678e097/converter-gson-2.9.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.9.0/409e80ce46c84ef7e74b6934032a73b8421eebe5/retrofit-2.9.0-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.9.0/7531ed205c184d938c4692b70f302e3ff94875/retrofit-2.9.0.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.9.0/920d425bcf21e948cf071783e9a0badbfd880fac/retrofit-2.9.0-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.9.0/d8fdfbd5da952141a665a403348b74538efc05ff/retrofit-2.9.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.6.10/9ad76ce2a9e0473c5d5d4ec01add1b061beb521d/kotlin-stdlib-jdk8-1.6.10.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/files-2.1/org.sonatype.oss/oss-parent/7/46b8a785b60a2767095b8611613b58577e96d4c9/oss-parent-7.pom" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/androidx.exifinterface/exifinterface/1.3.3/11cd36a7dcab7d14d0c14c5e6c7582e3/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.github.bumptech.glide/annotations/4.15.1/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.github.bumptech.glide/compiler/4.15.1/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.github.bumptech.glide/disklrucache/4.15.1/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.github.bumptech.glide/gifdecoder/4.15.1/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.github.bumptech.glide/glide/4.15.1/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.google.code.gson/gson-parent/2.8.5/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.google.code.gson/gson/2.8.5/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.okhttp3/logging-interceptor/4.10.0/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.okhttp3/okhttp/3.14.9/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.okhttp3/okhttp/4.10.0/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.okhttp3/parent/3.14.9/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.okio/okio-jvm/3.0.0/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.okio/okio/3.0.0/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.retrofit2/converter-gson/2.9.0/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/com.squareup.retrofit2/retrofit/2.9.0/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/descriptors/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.6.10/a8be1fe3b3911d3d3425fe720cf42835/descriptor.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/01240485dd033238f67e9709d23e7076/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/01240485dd033238f67e9709d23e7076/transformed/converter-gson-2.9.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/03083932f5278e288db17ff530260931/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/03b0078fda7331219fd3b9bbd8220f35/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/04d223cff22b359d511a4c2861b62ffd/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/05b0ef01980ca53b085a606c2e759b5e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/06557729cb7b781bab637bc872096c32/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0b269acf67588e0ea51dbb7ee9c3b434/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0c1da8eb6e6f55a1751f517d5644741b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0ddfc4d9defba89cfb62dcab103972b4/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0ddfc4d9defba89cfb62dcab103972b4/transformed/okhttp-4.10.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0e6c92be245959e498584f1700eabc7e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0e8c205213d961cb2c7e60493daef4e0/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0ecbf3b94408b8283013b7fb34e69784/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/0f0e38c3ad830b2d0b498f76512793ba/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/1495ce03e761622bbf6a38f359d3180d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/16236df82765889bf3c4ec52bb7908f3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/16236df82765889bf3c4ec52bb7908f3/transformed/kotlin-stdlib-common-1.8.22" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/16e924dadd7dffd88310f6801ed17eb1/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/172f185c136c4ff1dbd60b86422148fc/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/172f185c136c4ff1dbd60b86422148fc/transformed/androidx.exifinterface-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/1a0ee0a0fb3dcc031f4fd71869b5a5d6/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/1da92639d326add447a48a642751b9b8/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/1def03d1cc49ad1daac049ae46559562/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/1fa24ad8ac100c728e1569a6c81dce4c/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/204a4e20306365eb8cece8100a6cbe70/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/2063b7aa2e4c435adb29bd7310281098/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/20cb593b9f046223b22a6bd14bc12d0c/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/20cb593b9f046223b22a6bd14bc12d0c/transformed/okio-jvm-3.0.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/21504104ffe22b496a2d554fee3d531d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/21d1eeb5b42e6b809e7ce488c9a824d7/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/22df5ac2206f8d6813ad7488337051e4/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/2312e8f5e6597c389cc3b6aac02a2027/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/25a503339be883388edaf79f8a42a077/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/2ea6c113fed2a3064dfbe31391e384d8/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/31f8f474ebcd5ce929a36e011d1fefb9/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/322ff6a6e9ab9f4c79912e68b262b41b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/32414cdf6e194eedeead587173eeadb3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3417e39f669bc30c38b35da35e85614e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3417e39f669bc30c38b35da35e85614e/transformed/annotation-experimental-1.4.0-runtime.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3456318509c5829aa081120947f4e1bf/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3929c0715638d7d5ef3a7a9ef6eadbc9/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3929c0715638d7d5ef3a7a9ef6eadbc9/transformed/gifdecoder-4.15.1-runtime.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3d50ba74c15ac96ed7148c2890badcdc/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3dcb16e67b459e5d51c26dd707dde480/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3e2b773844433c817b8f5125032736b3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/3fd5c2bc10a005dd312510d03c3ea7cd/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/transformed/annotation-experimental-1.4.0/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/transformed/annotation-experimental-1.4.0/R.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/transformed/annotation-experimental-1.4.0/jars/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/transformed/annotation-experimental-1.4.0/jars/lint.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/transformed/annotation-experimental-1.4.0/public.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/42cae8c10647fdbbe80d1ef0cd72bc90/transformed/annotation-experimental-1.4.0/res/values/values.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/456452c5fda981d57c482f250954ed11/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/456452c5fda981d57c482f250954ed11/transformed/collection-1.1.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/46debb80177a402c28a787d2b39a70da/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/485a204cb0197601989104a6726263ab/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/488e9e4e06c878b5c367de98165077a9/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/4abc245d80e2b36339573df6f2b137eb/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/4ccd5290fa9078db32e8468eaef78c94/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/4d0dcb7c3ebb4b90ff1d9ea940d5d387/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/4ffcbe64bd48b2b9cdf8b3c6f3d8337d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/4ffcbe64bd48b2b9cdf8b3c6f3d8337d/transformed/kotlin-stdlib-1.8.22" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/50c41c02087988febcfd164103546e10/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/524a0e67457d7fe8e43a454329723b4f/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/534177b4f6d26cc2cc09e5260d4be8e2/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/546cbe15fd1e7cd31529f6bdf20e1b32/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/54ce120097dedcf5d278107dc33ac662/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/589490a37d4674ec64a58089877ebf2f/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/5a29903b822a6d9259865306625a5bea/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/5cb2f01d085f22f88de807817c03362f/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/5e18181fe1e5f5370f8faa990578e4e9/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/611f317eed577376a977500c57ceee8d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6206457e5c29384375c1d9c6228a4556/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6209498cbb03c379c37532c9b6b95312/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/63fc4846cce9bfaa43a5ea7795d84f29/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/64b9a9054777b3fb473c7a107f6958c9/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/69979dd1984f9730e8be07f79642f4a3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6b6913bbc36a6346c15aaa97d697792a/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6c82927ce8ec5a7bfd98d416a6f9f6ef/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6c82927ce8ec5a7bfd98d416a6f9f6ef/transformed/glide-4.15.1/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6c82927ce8ec5a7bfd98d416a6f9f6ef/transformed/glide-4.15.1/R.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6c82927ce8ec5a7bfd98d416a6f9f6ef/transformed/glide-4.15.1/jars/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6c82927ce8ec5a7bfd98d416a6f9f6ef/transformed/glide-4.15.1/proguard.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6c82927ce8ec5a7bfd98d416a6f9f6ef/transformed/glide-4.15.1/res/values/values.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6f6c0a1d042ada9d71a9ca60cdeffbc3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/6facc8d739a3ac7754a562ce32843e11/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/70dd00f6b9b05b22e9402144cf6f080d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/70dd00f6b9b05b22e9402144cf6f080d/transformed/gifdecoder-4.15.1/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/70dd00f6b9b05b22e9402144cf6f080d/transformed/gifdecoder-4.15.1/R.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/70dd00f6b9b05b22e9402144cf6f080d/transformed/gifdecoder-4.15.1/annotations.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/70dd00f6b9b05b22e9402144cf6f080d/transformed/gifdecoder-4.15.1/jars/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/74dcdd3a28bb3b6a0c197d90758f10b8/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/76b4159c068d20b00969bfa054d453b0/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/7d1b5e06ac23299157940e9d7a4a48b4/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/7d1b5e06ac23299157940e9d7a4a48b4/transformed/glide-4.15.1-runtime.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/7dee3f43406da1fd9863d9a497cc057d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/7e4f2eebd88f3fd542e4c9ebe7d41a34/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/7e8719026b9cde65c2f3a598c9d9052e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/7e96c993f9a3c541e9fa6c8e4401866e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/805a6f6ad158e7dc915276ccf90eaaf3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/8136ce70289ef026cb139f7268344dec/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/84c8fdf823bd5827a1dc8507d7aea12b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/8a9e824e27958827b6eeecdeb23af1e1/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/8c580a0ff4cb0bf8cd29c1a983d453b2/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/8dcb242f3f34cf8274d825b9e335790b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/8e1cd41c5612ded4eb26654de9af170b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9206fff92ca750e29cb0682283a5e67f/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9206fff92ca750e29cb0682283a5e67f/transformed/annotation-jvm-1.6.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/92ecd8309a85af2e77d4b3a217358ce5/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9437c5eb4abb1e397a029b40ad0abb0b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/950d7d4264ac4e6acb431dcb3f07d6f5/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/96464dbb6e6773ebb45749168fb706c1/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/96464dbb6e6773ebb45749168fb706c1/transformed/com.bumptech.glide.gifdecoder-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/974f02a0090a3ac82b02987fe0d71325/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/974f02a0090a3ac82b02987fe0d71325/transformed/collection-ktx-1.1.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/97b178210ffb9b928d30506ba79421cd/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9830be87df84cac425e87460880d26b0/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9bef7d2d0d895dd6957822297a0f958b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9c511063021a65d867574cb8d7399134/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/9fc1962591bb0bef90d1c20d8405face/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/a07dc2a44dfa8b70ada8807e07af72f2/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/a2475d2a460cbba18a43fcc17d449465/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/a517246ec7ba3e86e10b3bd13b13df88/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/a7281a267a52b301487b5a06e6c23839/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/acfb51f4873e8c276b74d575eb2bb7f1/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/adb4e3702a13bf46ca9177861b9dea16/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/adb4e3702a13bf46ca9177861b9dea16/transformed/annotations-4.15.1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/af4dc06e9389f8a16735dcdf4d676e53/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/af4dc06e9389f8a16735dcdf4d676e53/transformed/exifinterface-1.3.3-runtime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/af7adb96269aac7b95061fbb17235af5/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b0b422fa54046d1b360ab9d08772faf1/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b105dbf7ca0057a6d75f1352ccb646de/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b105dbf7ca0057a6d75f1352ccb646de/transformed/logging-interceptor-4.10.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b591ad6882b991c5de654b0025fa8439/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b596b0626b41fbbee5e960aff319783e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b596b0626b41fbbee5e960aff319783e/transformed/annotation-experimental-1.4.0-runtime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/b942756c595074d0a18fa56dadf54023/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/bb601b9eacbf9480b3736fe82b01f6c7/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/bb6487e61976532a6ae549eed35ced6f/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/bbc2907ba65b859e3e38313f526f6de3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c040f7fd3bcdbcca32f80023251103f6/transformed/appcompat-1.7.0/res/drawable/abc_ic_clear_material.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c1f46a3265d87dd26c67e9833a04b57c/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c1f46a3265d87dd26c67e9833a04b57c/transformed/exifinterface-1.3.3/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c1f46a3265d87dd26c67e9833a04b57c/transformed/exifinterface-1.3.3/R.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c1f46a3265d87dd26c67e9833a04b57c/transformed/exifinterface-1.3.3/annotations.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c1f46a3265d87dd26c67e9833a04b57c/transformed/exifinterface-1.3.3/jars/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c96a48f662ab63a0fbf396713f76b245/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/c96a48f662ab63a0fbf396713f76b245/transformed/gson-2.8.5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/ca8dfdf01fb7604f07c13ecf833775f7/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/caff46652dc6a880f12660d98a3305f7/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/cbd2fab01f8011c656118e670b02235d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/cbd2fab01f8011c656118e670b02235d/transformed/gifdecoder-4.15.1-runtime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/cc49db7dac30d403d0f6c4b4259c9b30/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/cf777d6f3f0fe38e21b5bb11c8c681c0/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/cfa46f692f1636d1feb9306bd3a00ac1/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d0f9e0436d596e1f9c888019b1de5097/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d1db90288f610448979797e2aab708be/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d2826f6be4706ea580729044d77946a4/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d504baa6013d9bfda624a3c5f077a749/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d6ceafb95850dc1c99f6d5ec14769b2e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d6e7e3c4a47bb9d30d063ddf5a34242d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d76661e486de92bad5517060f73d0c28/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d7b31c68aaffd85c927fbb57d7d63c51/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d94ce044a7609964580081fc7878663c/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d94ce044a7609964580081fc7878663c/transformed/exifinterface-1.3.3-runtime.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/d9e023ca1988085d5251f999b558231d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/da22b408c6a2df2229ce86668975bf70/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/da26eea3991446fcc35b3cb940c9950b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/da41a5dfb1e91c53beba561cd39e088a/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/db08fd8dc2bd048fd4e31770bf18d61e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/dbf4ba486a66da714529eda92d711bfc/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/dbf4ba486a66da714529eda92d711bfc/transformed/retrofit-2.9.0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e0b871657c0838557dc1711bbbf128b3/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e2afac5bbe55638d37b1e05f18c24d34/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e2bc053e54b1c638021c146badaf36d0/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e2dd2b8803e1b54cca30211cbf6b0793/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e39939b61350e5b3e095497abf360b9d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e3fc13a023057cceeb7a1e846b5be7d8/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/docs/dsl/org.gradle.language.objectivecpp.tasks.ObjectiveCppCompile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/files/fileCollections/tests/fileCollectionsFiltering.sample.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/kotlinDsl/interoperability-closure-of/tests/closure-of.sample.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/testKit/automaticClasspathInjectionQuickstart/kotlin/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/launcher/src/main/java/org/gradle/launcher/daemon/server/DefaultDaemonConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/api/internal/provider/sources/FileBytesValueSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/native/src/main/java/org/gradle/internal/nativeintegration/NativeCapabilities.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/platform-base/src/main/java/org/gradle/platform/base/internal/toolchain/ToolChainAvailability.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/platform-jvm/src/main/java/org/gradle/jvm/toolchain/internal/JavaToolchainRepositoryInternal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/plugins/src/integTest/groovy/org/gradle/java/ParallelTestTaskIntegrationTest.groovy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/process-services/src/main/java/org/gradle/process/internal/health/memory/DefaultMemoryManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/testing-jvm/src/main/java/org/gradle/api/tasks/testing/testng/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/tooling-api/src/main/java/org/gradle/tooling/internal/protocol/ProjectVersion3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e59fcd667dd0736dd7b9246baf414b49/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e5d267f852f1cf708b409c2df3003c1c/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e5d267f852f1cf708b409c2df3003c1c/transformed/glide-4.15.1-runtime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e6bb570b2122ba55eab0e476b2e13c55/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e7a7bf9ee5b8fdc51dd7d5527846238d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e7cb06912257b0eb7d1d3bbe2e37446c/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e7cb06912257b0eb7d1d3bbe2e37446c/transformed/androidx.annotation.experimental-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/e9fc688382ed22bd88d8575b30629d9a/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/ea00fbd2c9599550151aa90d552646ab/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/ec1f165506073dc50b38a88a29c629c6/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/ee0cd1e89fd2a5dc069b6b6b36b0109a/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/eee43db5a32e9260d264b8a46860fde8/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/ef38e2caa0d71b98bfd084677db2704d/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f08464b6d837f389de8d14bad8f68071/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f220ae1a1bcecead33abd37fc79f616e/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f257311b86829876dce03e34b7e74bfa/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f559e16018ffed26c1fa0bd1caaf59ab/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f559e16018ffed26c1fa0bd1caaf59ab/transformed/com.bumptech.glide-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f6ca56e3a339a28e8d83f8e34f61b368/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f6ca56e3a339a28e8d83f8e34f61b368/transformed/disklrucache-4.15.1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f6f33105de4c383b71387ce324efa919/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f7ee2c6daa04c7a2b90afe0df457d568/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f81c0aeca32bb39d4f296e986e8e3480/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f90b73ac94b2733dc4eede71ffde4ac0/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/f93c0d8adfacc3a1b0bd409c5a102915/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/fae37a3b06150e2d8b2a3cad922d8370/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/fbb1d5e1d0eeff8678f4778ba023bbfb/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/fbbc71a0c73d7354e7ff1aa3e9bb11a4/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/fc2edcfd41cdad4d9e4bdb3eed06a070/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/fcbbe1d9a7fe36f152606310e4878a04/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/transforms-3/fedbfbb06fb7bbec9e82740dc08bb11b/results.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daemon/8.0/daemon-11120.out.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/ProductAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/ProductAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/ProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/ProductFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/ProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/network/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/network/ApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/module-artifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/caches/modules-2/metadata-2.100/module-artifacts.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/206176058af6d5bb185984c471a86972/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/206176058af6d5bb185984c471a86972/transformed/navigation-runtime-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/2209e8963c3dea34d1b0836d3dd6b825/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/2209e8963c3dea34d1b0836d3dd6b825/transformed/annotation-experimental-1.4.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/4865f6fcbeecee01cad3fba6fb97b404/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/4865f6fcbeecee01cad3fba6fb97b404/transformed/navigation-common-ktx-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/a2304bc53a526dcd4da2506262f5d31c/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/a2304bc53a526dcd4da2506262f5d31c/transformed/navigation-fragment-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/a7b13bd26cf25cc7af3455a12167ceeb/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/a7b13bd26cf25cc7af3455a12167ceeb/transformed/slidingpanelayout-1.2.0-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/aba2328034d65e06ed3a03a8151379f7/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/aba2328034d65e06ed3a03a8151379f7/transformed/navigation-fragment-ktx-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/be317f8df0dce648f9af1cf3397d0a9c/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/be317f8df0dce648f9af1cf3397d0a9c/transformed/navigation-common-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/d3c57c7c72d603f4cca87e8ae0fd5c19/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/d3c57c7c72d603f4cca87e8ae0fd5c19/transformed/navigation-ui-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/d97caa2103af3b59db941601621cdf72/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/d97caa2103af3b59db941601621cdf72/transformed/navigation-ui-ktx-2.8.1-api.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/base-services/src/main/java/org/gradle/internal/resources/TaskExecutionLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/base-services/src/main/java/org/gradle/internal/resources/TaskExecutionLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/build-operations/src/main/java/org/gradle/internal/operations/BuildOperationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/build-operations/src/main/java/org/gradle/internal/operations/BuildOperationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/build-option/src/test/groovy/org/gradle/internal/buildoption/BooleanBuildOptionTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/build-option/src/test/groovy/org/gradle/internal/buildoption/BooleanBuildOptionTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/composite-builds/src/main/java/org/gradle/composite/internal/DefaultIncludedBuildRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/composite-builds/src/main/java/org/gradle/composite/internal/DefaultIncludedBuildRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/internal/artifacts/PublishArtifactInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/internal/artifacts/PublishArtifactInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/internal/cache/CacheResourceConfigurationInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core-api/src/main/java/org/gradle/api/internal/cache/CacheResourceConfigurationInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/api/internal/DefaultNamedDomainObjectSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/api/internal/DefaultNamedDomainObjectSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/cache/internal/UsedGradleVersionsFromGradleUserHomeCaches.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/cache/internal/UsedGradleVersionsFromGradleUserHomeCaches.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/deployment/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/deployment/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/process/internal/JavaExecHandleBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/main/java/org/gradle/process/internal/JavaExecHandleBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/api/internal/project/NewDefaultProjectTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/api/internal/project/NewDefaultProjectTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/execution/taskgraph/DefaultTaskExecutionGraphSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/execution/taskgraph/DefaultTaskExecutionGraphSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/initialization/DefaultBuildCancellationTokenSpec.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/groovy/org/gradle/initialization/DefaultBuildCancellationTokenSpec.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/resources/org/gradle/api/internal/catalog/parser/unsupported-format.toml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/core/src/test/resources/org/gradle/api/internal/catalog/parser/unsupported-format.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/docs/dsl/org.gradle.nativeplatform.NativeExecutableBinarySpec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/docs/dsl/org.gradle.nativeplatform.NativeExecutableBinarySpec.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/ant/hello/groovy/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/ant/hello/groovy/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/ant/useAntType/groovy/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/ant/useAntType/groovy/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/base/buildDashboard/groovy/config/codenarc/codenarc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/base/buildDashboard/groovy/config/codenarc/codenarc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/buildCache/integration-tests/kotlin/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/buildCache/integration-tests/kotlin/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/codeQuality/codeQuality/groovy/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/codeQuality/codeQuality/groovy/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/mavenMigration/profiles/kotlin/profile-default.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/mavenMigration/profiles/kotlin/profile-default.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/tutorial/extraProperties/tests/extraProperties.out" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/tutorial/extraProperties/tests/extraProperties.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/tutorial/groovyScope/groovy/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/docs/src/snippets/tutorial/groovyScope/groovy/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/ide/src/integTest/groovy/org/gradle/plugins/ide/AbstractIdeProjectIntegrationTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/ide/src/integTest/groovy/org/gradle/plugins/ide/AbstractIdeProjectIntegrationTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/ide/src/main/java/org/gradle/plugins/ide/eclipse/internal/LinkedResourcesCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/ide/src/main/java/org/gradle/plugins/ide/eclipse/internal/LinkedResourcesCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/integ-test/src/integTest/groovy/org/gradle/integtests/AntProjectIntegrationTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/integ-test/src/integTest/groovy/org/gradle/integtests/AntProjectIntegrationTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/jacoco/src/main/java/org/gradle/internal/jacoco/JacocoReportsContainerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/jacoco/src/main/java/org/gradle/internal/jacoco/JacocoReportsContainerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/language-native/src/main/java/org/gradle/language/assembler/tasks/Assemble.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/language-native/src/main/java/org/gradle/language/assembler/tasks/Assemble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/language-native/src/main/java/org/gradle/language/objectivec/tasks/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/language-native/src/main/java/org/gradle/language/objectivec/tasks/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/logging/src/main/java/org/gradle/internal/logging/text/StreamingStyledTextOutputFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/logging/src/main/java/org/gradle/internal/logging/text/StreamingStyledTextOutputFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/api/internal/provider/CollectionSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/api/internal/provider/CollectionSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/internal/snapshot/impl/AbstractManagedValueSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/internal/snapshot/impl/AbstractManagedValueSnapshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/model/internal/core/ModelMapModelProjection.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/model-core/src/main/java/org/gradle/model/internal/core/ModelMapModelProjection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/native/src/main/java/org/gradle/internal/nativeintegration/network/HostnameLookup.java" beforeDir="false" afterPath="$PROJECT_DIR$/caches/transforms-3/e460651b95a025c94517e29e2b3d9cda/transformed/unzipped-distribution/gradle-8.0/subprojects/native/src/main/java/org/gradle/internal/nativeintegration/network/HostnameLookup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e7e5284718262798b9b6b8aab9e07410/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/caches/transforms-3/e7e5284718262798b9b6b8aab9e07410/transformed/navigation-runtime-ktx-2.8.1-api.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +489,6 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "android-custom-viewC:/Gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED": "RecyclerView",
     "cidr.known.project.marker": "true",
-    "com.android.tools.idea.devicemanager.tab": "Physical",
     "com.google.services.firebase.aqiPopupShown": "true",
     "last_opened_file_path": "C:/Users/Usuario/AndroidStudioProjects/Aymara-App/app/src/main/java/com/example/aymara_app",
     "project.structure.last.edited": "Modules",
