@@ -1,6 +1,7 @@
 package com.example.aymara_app;
 
 import android.content.Context;
+import android.content.SharedPreferences; // Se agregó esta importación necesaria
 import android.os.Bundle;
 import android.util.Log;
 import android.text.InputType;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit; // Importación para la función de bloqueo temporal
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -51,6 +53,8 @@ public class LoginFragment extends Fragment {
 
     private OkHttpClient client;
     private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/login/";
+    private static final int MAX_FAILED_ATTEMPTS = 5; // Número máximo de intentos
+    private static final long LOCK_TIME_MINUTES = 5; // Tiempo de bloqueo en minutos
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,7 +83,11 @@ public class LoginFragment extends Fragment {
             String password = passwordEditText.getText().toString().trim();
 
             if (validateInputs(email, password)) {
-                loginWithJWT(email, password);
+                if (isAccountLocked()) {
+                    showToast("Cuenta bloqueada. Intenta de nuevo más tarde.");
+                } else {
+                    loginWithJWT(email, password);
+                }
             }
         });
 
@@ -147,9 +155,10 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
+                    resetFailedAttempts(); // Reiniciar intentos fallidos
                     handleLoginSuccess(response.body().string());
                 } else {
-                    showToast("Credenciales incorrectas");
+                    handleFailedLogin(); // Manejar intento fallido
                 }
             }
         });
@@ -217,10 +226,57 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    private void showToast(String message) {
-        if (getContext() != null) {
-            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+    private void handleFailedLogin() {
+        Context context = getActivity();
+        if (context != null) {
+            SharedPreferences preferences = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+            int failedAttempts = preferences.getInt("failed_attempts", 0) + 1;
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("failed_attempts", failedAttempts);
+            editor.apply();
+
+            if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+                lockAccount();
+            } else {
+                showToast("Credenciales incorrectas. Número de intentos fallidos: " + failedAttempts);
+            }
         }
+    }
+
+    private void lockAccount() {
+        Context context = getActivity();
+        if (context != null) {
+            SharedPreferences preferences = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            long lockTime = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(LOCK_TIME_MINUTES);
+            editor.putLong("lock_time", lockTime);
+            editor.apply();
+            showToast("Cuenta bloqueada temporalmente por múltiples intentos fallidos.");
+        }
+    }
+
+    private boolean isAccountLocked() {
+        Context context = getActivity();
+        if (context != null) {
+            SharedPreferences preferences = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+            long lockTime = preferences.getLong("lock_time", 0);
+            if (lockTime > System.currentTimeMillis()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void resetFailedAttempts() {
+        Context context = getActivity();
+        if (context != null) {
+            SharedPreferences preferences = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+            preferences.edit().putInt("failed_attempts", 0).apply();
+        }
+    }
+
+    private void showToast(final String message) {
+        getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show());
     }
 
     private boolean isValidEmail(String email) {
@@ -228,18 +284,21 @@ public class LoginFragment extends Fragment {
     }
 
     private boolean isValidPassword(String password) {
-        return password.length() >= 8 && password.matches(".*\\d.*");
+        return password.length() >= 8 && password.matches(".*[A-Za-z].*") && password.matches(".*[0-9].*");
     }
 
     private OkHttpClient getUnsafeOkHttpClient() {
         try {
+            // Configuración para permitir SSL sin verificar certificados
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override
-                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                        }
 
                         @Override
-                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                        }
 
                         @Override
                         public X509Certificate[] getAcceptedIssuers() {
@@ -251,16 +310,17 @@ public class LoginFragment extends Fragment {
             final SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
 
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0]);
-            builder.hostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
-                }
-            });
+            final javax.net.ssl.SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
 
-            return builder.build();
+            return new OkHttpClient.Builder()
+                    .sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0])
+                    .hostnameVerifier(new HostnameVerifier() {
+                        @Override
+                        public boolean verify(String hostname, SSLSession session) {
+                            return true;
+                        }
+                    })
+                    .build();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
