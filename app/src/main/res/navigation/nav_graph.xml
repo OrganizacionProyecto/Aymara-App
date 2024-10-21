@@ -23,6 +23,7 @@
             android:id="@+id/action_loginFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.aymara_app.ProfileFragment"
@@ -35,7 +36,16 @@
         android:id="@+id/ProductFragment"
         android:name="com.example.aymara_app.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.aymara_app.FavoritesFragment"
+        android:label="Favorites" />
 
     <fragment
         android:id="@+id/ContacFragment"
