@@ -8,6 +8,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.fragment.app.Fragment;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 import com.example.aymara_app.HomeFragment;
 //import com.example.aymara_app.ProductFragment;
@@ -16,16 +18,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private View banner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Referencia al banner
+        banner = findViewById(R.id.frame_baner);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> navigateToFragment(item.getItemId(), navController));
+
+        // Listener para manejar la visibilidad del banner según el fragmento
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.HomeFragment) {
+                banner.setVisibility(View.GONE);  // Ocultar el banner en HomeFragment
+            } else {
+                banner.setVisibility(View.VISIBLE);  // Mostrar el banner en los demás fragmentos
+            }
+        });
     }
 
     private boolean navigateToFragment(int itemId, NavController navController) {
