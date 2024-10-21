@@ -1,90 +1,131 @@
 package com.example.aymara_app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.util.Log;
-
+import android.widget.ImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.aymara_app.repository.ProductRepository;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProductFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProductFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecyclerView recyclerView;
+    private ProductAdapter productAdapter;
+    private ProductRepository productRepository;
+    private List<Product> productList = new ArrayList<>();
+    private EditText searchBar;
+    private SharedPreferences sharedPreferences;
 
     public ProductFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PoductFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProductFragment newInstance(String param1, String param2) {
-        ProductFragment fragment = new ProductFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+
+        sharedPreferences = getContext().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+
+        boolean isLoggedIn = checkIfUserIsLoggedIn();
+
+        initializeRecyclerView(view, isLoggedIn);
+
+        searchBar = view.findViewById(R.id.search_bar);
+        setupSearchBar();
+
+        initializeProductRepository(isLoggedIn, view);
+
+        setupFavoriteButton(view, isLoggedIn);
+
+        return view;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    private void initializeRecyclerView(View view, boolean isLoggedIn) {
+        recyclerView = view.findViewById(R.id.recycler_view_products);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+
+        productAdapter = new ProductAdapter(isLoggedIn, requireContext());
+        recyclerView.setAdapter(productAdapter);
+    }
+
+    private void setupFavoriteButton(View view, boolean isLoggedIn) {
+        ImageButton favoriteButton = view.findViewById(R.id.button);
+        if (isLoggedIn) {
+            favoriteButton.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.favoritesFragment);
+            });
+        } else {
+            favoriteButton.setVisibility(View.GONE);
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflar la vista del fragmento
-        View view = inflater.inflate(R.layout.fragment_product, container, false);
 
-        // Inicializar el RecyclerView
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_products);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    private void initializeProductRepository(boolean isLoggedIn, View view) {
+        productRepository = new ProductRepository();
+        productRepository.getProducts().observe(getViewLifecycleOwner(), products -> {
+            if (products != null && !products.isEmpty()) {
+                Log.d("ProductFragment", "Productos obtenidos: " + products.size());
+                productList = products;
+                productAdapter.setProductList(products);
+            } else {
+                Log.d("ProductFragment", "No se obtuvieron productos de la API");
+            }
+        });
+    }
 
-        // Crear una lista de productos de ejemplo
-        List<Product> productList = new ArrayList<>();
-        productList.add(new Product("Aceite de Cocos", "Suplemento dietario a base de aceite de coco. 100% natural", R.drawable.aceite_coco));
-        productList.add(new Product("Garcimax Slim", " Suplemento dietario natural de heirbas (garcinia cambogia, fucus vesiculoso, té verde y café verde) y vitamina B1", R.drawable.garcimax));
-        productList.add(new Product("Café Verde Plus", "Suplemento dietario a base de café verde, vitamina B6, L-carnitina, té verde y garcinia cambogia", R.drawable.cafe_verde));
+    private boolean checkIfUserIsLoggedIn() {
+        String token = sharedPreferences.getString("access_token", null);
+        return token != null;
+    }
 
+    private void setupSearchBar() {
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No se necesita implementar
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(s.toString());
+            }
 
-        // Imprimir el tamaño de la lista en la consola para verificar
-        Log.d("ProductFragment", "Tamaño de la lista de productos: " + productList.size());
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No se necesita implementar
+            }
+        });
+    }
 
-        // Configurar el adaptador
-        ProductAdapter productAdapter = new ProductAdapter(productList);
-        recyclerView.setAdapter(productAdapter);
+    private void filter(String text) {
+        List<Product> filteredList = new ArrayList<>();
+        for (Product product : productList) {
+            if (product.getNombre().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(product);
+            }
+        }
+        productAdapter.setProductList(filteredList);
+    }
 
-        return view;
+    public void refreshProductList() {
+        boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);
+        productAdapter.setIsLoggedIn(isLoggedIn);
+        productAdapter.notifyDataSetChanged();
     }
 }

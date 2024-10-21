@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <!-- Nombre del producto -->
+    <!-- Imagen del producto -->
     <ImageView
-        android:id="@+id/product_image"
+        android:id="@+id/product_imagen"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:layout_marginStart="4dp"
         android:contentDescription="@string/producto1"
         android:scaleType="centerCrop"
-        android:src="@drawable/search_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.512"
-        app:srcCompat="@drawable/aceite_coco"
         tools:srcCompat="@drawable/aceite_coco" />
 
+    <!-- Nombre del producto -->
     <TextView
-        android:id="@+id/product_name"
+        android:id="@+id/product_nombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/producto1"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/product_description"
+        app:layout_constraintBottom_toTopOf="@+id/product_descripcion"
         app:layout_constraintEnd_toStartOf="@+id/favorite_button"
         app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/product_image"
+        app:layout_constraintStart_toEndOf="@+id/product_imagen"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Descripción del producto -->
     <TextView
-        android:id="@+id/product_description"
+        android:id="@+id/product_descripcion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/coco_info"
         android:textColor="@color/black"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/product_precio"
+        app:layout_constraintEnd_toStartOf="@+id/favorite_button"
+        app:layout_constraintStart_toEndOf="@+id/product_imagen"
+        app:layout_constraintTop_toBottomOf="@+id/product_nombre" />
+
+    <!-- Precio del producto -->
+    <TextView
+        android:id="@+id/product_precio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/favorite_button"
-        app:layout_constraintStart_toEndOf="@+id/product_image"
-        app:layout_constraintTop_toBottomOf="@+id/product_name" />
+        app:layout_constraintStart_toEndOf="@+id/product_imagen"
+        app:layout_constraintTop_toBottomOf="@+id/product_descripcion" />
 
     <!-- Botón de favorito -->
     <ImageButton
@@ -54,11 +64,13 @@
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/favorito"
-        android:contentDescription="@string/contentDescription"
+        android:backgroundTint="#F44336"
+        android:contentDescription="@string/contentDescripcion"
+        android:src="@drawable/favorite_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

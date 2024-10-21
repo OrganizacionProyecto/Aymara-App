@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="745dp"
             android:layout_gravity="center_horizontal"
+            android:backgroundTint="#8BC34A"
             android:orientation="vertical"
             android:padding="24dp">
 

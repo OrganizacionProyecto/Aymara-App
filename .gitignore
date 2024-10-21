@@ -1,52 +1,32 @@
+# Archivos generados por Android Studio
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.gradle/
+.idea/
 local.properties
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+.navigation/
+output.json
 
-#built application files
+# Archivos generados por la construcción
 *.apk
 *.ap_
-*.aa               
-# files for the dex VM
+*.aa
 *.dex
-                            
-# Java class files
 *.class
-                            
-# generated files
+
+# Archivos generados por el sistema
 bin/
 gen/
-                            
-# Local configuration file (sdk path, etc)
-local.properties
-                        
-# Windows thumbnail db
-Thumbs.db
-                
-# OSX files
+
+# Archivos temporales del sistema operativo
 .DS_Store
-                            
-# Android Studio
-*.iml
-.idea
-#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-.gradle
-build/
-.navigation
-captures/
-output.json 
-    
-#NDK
+Thumbs.db
+
+# Archivos NDK
 obj/
-.externalNativeBuild
+
+# Archivos de caché de Gradle
+.gradle/caches/
