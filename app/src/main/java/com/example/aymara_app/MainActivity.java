@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referencia al banner
         banner = findViewById(R.id.frame_baner);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
@@ -34,12 +33,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> navigateToFragment(item.getItemId(), navController));
 
-        // Listener para manejar la visibilidad del banner según el fragmento
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.HomeFragment) {
-                banner.setVisibility(View.GONE);  // Ocultar el banner en HomeFragment
+                banner.setVisibility(View.GONE);
             } else {
-                banner.setVisibility(View.VISIBLE);  // Mostrar el banner en los demás fragmentos
+                banner.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_products:
                 navController.navigate(R.id.ProductFragment);
                 return true;
-            case R.id.nav_contac: // Corregido aquí
+            case R.id.nav_contac:
                 navController.navigate(R.id.ContacFragment);
                 return true;
             case R.id.nav_user:

@@ -1,7 +1,7 @@
 package com.example.aymara_app;
 
 import android.content.Context;
-import android.content.SharedPreferences; // Se agregó esta importación necesaria
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.text.InputType;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.concurrent.TimeUnit; // Importación para la función de bloqueo temporal
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -155,10 +155,10 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    resetFailedAttempts(); // Reiniciar intentos fallidos
+                    resetFailedAttempts();
                     handleLoginSuccess(response.body().string());
                 } else {
-                    handleFailedLogin(); // Manejar intento fallido
+                    handleFailedLogin();
                 }
             }
         });
@@ -205,7 +205,6 @@ public class LoginFragment extends Fragment {
             JSONObject jsonUserProfile = new JSONObject(userProfileData);
             String email = jsonUserProfile.getString("email");
 
-            // Guardar perfil en SharedPreferences
             Context context = getActivity();
             if (context != null) {
                 context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
@@ -214,7 +213,6 @@ public class LoginFragment extends Fragment {
                         .apply();
             }
 
-            // Navegar al fragmento de perfil
             getActivity().runOnUiThread(() -> {
                 NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
                 Bundle bundle = new Bundle();
@@ -289,7 +287,6 @@ public class LoginFragment extends Fragment {
 
     private OkHttpClient getUnsafeOkHttpClient() {
         try {
-            // Configuración para permitir SSL sin verificar certificados
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override

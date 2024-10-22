@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.aymara_app.network.ApiService;
-import com.example.aymara_app.network.ApiClient; // Importar ApiClient
+import com.example.aymara_app.network.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

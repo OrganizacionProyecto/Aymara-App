@@ -112,7 +112,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     private String getAccessToken(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        return prefs.getString("access_token", ""); // Devuelve una cadena vacía si no hay token
+        return prefs.getString("access_token", "");
     }
 
     private void addToFavorites(Product product, Context context) {
@@ -125,7 +125,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
             if (idDelProducto <= 0) {
                 Log.e("ProductAdapter", "ID del producto inválido: " + idDelProducto);
-                return; // No hacer nada si el ID es inválido
+                return;
             }
 
             Map<String, Integer> productId = new HashMap<>();
@@ -186,7 +186,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
     }
 
-    // Métodos para guardar y cargar el estado de favoritos en SharedPreferences
     private void saveFavoriteState(int productId, boolean isFavorite, Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

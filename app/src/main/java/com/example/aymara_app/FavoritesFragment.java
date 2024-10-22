@@ -59,7 +59,6 @@ public class FavoritesFragment extends Fragment {
                     if (response.isSuccessful()) {
                         List<Product> favoriteProducts = response.body();
                         if (favoriteProducts != null && !favoriteProducts.isEmpty()) {
-                            // Aquí pasamos ambos parámetros: favoriteProducts y requireContext()
                             productAdapter.setProductList(favoriteProducts, requireContext());
                         } else {
                             Toast.makeText(getContext(), "No tienes productos en favoritos", Toast.LENGTH_SHORT).show();

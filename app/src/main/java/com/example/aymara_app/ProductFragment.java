@@ -31,7 +31,6 @@ public class ProductFragment extends Fragment {
     private SharedPreferences sharedPreferences;
 
     public ProductFragment() {
-        // Required empty public constructor
     }
 
     @Override
