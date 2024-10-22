@@ -12,14 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.aymara_app.network.ApiService;
+import com.example.aymara_app.network.ApiClient; // Importar ApiClient
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-
-/** Fragmento de registro **/
 public class RegisterFragment extends Fragment {
     private EditText editTextEmail, editTextPassword, editTextUsername, editTextFirstName, editTextLastName;
     private TextView loginText;
@@ -46,13 +44,9 @@ public class RegisterFragment extends Fragment {
         editTextLastName = view.findViewById(R.id.lastname);
         buttonRegister = view.findViewById(R.id.registerButton);
 
-        /** Configurar Retrofit **/
-        retrofit = new Retrofit.Builder()
-                .baseUrl("https://aymara.pythonanywhere.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        apiService = retrofit.create(ApiService.class); // Cambiar a ApiService
+        /** Configurar Retrofit utilizando ApiClient **/
+        retrofit = ApiClient.getClient();
+        apiService = retrofit.create(ApiService.class);
 
         /** Configurar el botón de registro **/
         buttonRegister.setOnClickListener(new View.OnClickListener() {
