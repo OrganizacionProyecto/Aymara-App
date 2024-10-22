@@ -1,5 +1,7 @@
 package com.example.aymara_app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,22 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.Context;
-import android.content.SharedPreferences;
-import org.json.JSONObject;
-import org.json.JSONException;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.aymara_app.network.ApiClient;
 import com.example.aymara_app.network.ApiService;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -45,8 +42,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         notifyDataSetChanged();
     }
 
-    public void setProductList(List<Product> products) {
+    public void setProductList(List<Product> products, Context context) {
         this.productList = products;
+        for (Product product : productList) {
+            product.setFavorite(isProductFavorite(product.getIdProducto(), context));
+        }
         notifyDataSetChanged();
     }
 
@@ -77,6 +77,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
             holder.favoriteButton.setOnClickListener(v -> {
                 product.setFavorite(!product.isFavorite());
+                saveFavoriteState(product.getIdProducto(), product.isFavorite(), holder.itemView.getContext());
                 notifyItemChanged(position);
                 if (product.isFavorite()) {
                     addToFavorites(product, holder.itemView.getContext());
@@ -120,7 +121,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         if (!token.isEmpty()) {
             int idDelProducto = product.getIdProducto();
 
-            // Verifica el ID antes de enviarlo
             Log.d("ProductAdapter", "Añadiendo a favoritos el producto con ID: " + idDelProducto);
 
             if (idDelProducto <= 0) {
@@ -140,8 +140,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.d("ProductAdapter", "Producto añadido a favoritos");
+                        Toast.makeText(context, "Producto añadido a favoritos", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.e("ProductAdapter", "Error al añadir a favoritos: " + response.message());
+                        Toast.makeText(context, "Error al añadir a favoritos", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -155,7 +157,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
     }
 
-
     private void removeFromFavorites(Product product, Context context) {
         String token = getAccessToken(context);
 
@@ -163,14 +164,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Map<String, Integer> productId = new HashMap<>();
             productId.put("producto_id", product.getIdProducto());
 
-            // Asegúrate de que estás incluyendo el token en el encabezado
             apiService.removeFromFavorites(productId, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.d("ProductAdapter", "Producto eliminado de favoritos");
+                        Toast.makeText(context, "Producto eliminado de favoritos", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.e("ProductAdapter", "Error al eliminar de favoritos: " + response.code() + " " + response.message());
+                        Toast.makeText(context, "Error al eliminar de favoritos", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -182,5 +184,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         } else {
             Log.e("ProductAdapter", "Token no encontrado");
         }
+    }
+
+    // Métodos para guardar y cargar el estado de favoritos en SharedPreferences
+    private void saveFavoriteState(int productId, boolean isFavorite, Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("favorito_" + productId, isFavorite);
+        editor.apply();
+    }
+
+    private boolean isProductFavorite(int productId, Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        return prefs.getBoolean("favorito_" + productId, false);
     }
 }
