@@ -53,5 +53,3 @@ public interface ApiService {
     Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
 
 }
-
-
