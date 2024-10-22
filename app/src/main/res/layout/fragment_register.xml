@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/logo2"
     android:gravity="center"
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:padding="16dp">
+
 
 
     <androidx.cardview.widget.CardView
@@ -45,7 +45,7 @@
                 android:background="@drawable/custom_editex1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:hint="Usuario"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -59,7 +59,7 @@
                 android:baselineAligned="false"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:hint="Nombre"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -72,7 +72,7 @@
                 android:background="@drawable/custom_editex1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:hint="Apellido"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -108,7 +108,7 @@
                 android:background="@drawable/custom_editex1"
                 android:drawableLeft="@drawable/baseline_email_24"
                 android:hint="Email"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
