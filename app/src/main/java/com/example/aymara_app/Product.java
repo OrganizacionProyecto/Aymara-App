@@ -1,12 +1,16 @@
 package com.example.aymara_app;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
+    @SerializedName("id_producto")
     private int idProducto;
     private String nombre;
     private String descripcion;
     private double precio;
     private int disponibilidad;
     private String imagen;
+    @SerializedName("id_categoria")
     private int idCategoria;
     private boolean isFavorite;
 
@@ -22,6 +26,7 @@ public class Product {
         this.isFavorite = false;
     }
 
+    // Getters y Setters...
 
     public int getIdProducto() {
         return idProducto;
