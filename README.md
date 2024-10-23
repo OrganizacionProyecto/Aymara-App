@@ -34,7 +34,7 @@ Nombre y apellido de los integrantes y los roles:
 
 2. Configuración del Backend:
 
-   - El backend está desplegado en https://aymara.pythonanywhere.com/ por lo que no necesitas instalarlo localmente. Sin embargo, puedes revisar el código en el directorio backend/ del repositorio.
+   - El backend está desplegado en https://aymara.pythonanywhere.com/ por lo que no necesitas instalarlo localmente.
 
 3. Configuración del Frontend (Android Studio):
 
