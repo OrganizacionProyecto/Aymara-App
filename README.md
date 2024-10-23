@@ -42,7 +42,8 @@ Nombre y apellido de los integrantes y los roles:
 
 
 
-
+<details align="middle">
+<summary>Instalacion</summary>
 ## Instalacion
 
 1- Clonar el repositorio:
@@ -112,7 +113,7 @@ El backend ofrece una serie de endpoints que permiten la interacción con la app
 - PATCH /api/change-direccion/: Edita la Direccion del usuario.
 - DELETE /api/auth/delete_account/: Desactiva la cuenta del usuario
 
-
+<details align="middle">
 <summary>Testing de Accesibilidad</summary>
 
 ## Testing de Accesibilidad
