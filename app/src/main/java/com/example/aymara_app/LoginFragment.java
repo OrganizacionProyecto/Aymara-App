@@ -53,8 +53,8 @@ public class LoginFragment extends Fragment {
 
     private OkHttpClient client;
     private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/login/";
-    private static final int MAX_FAILED_ATTEMPTS = 5; // Número máximo de intentos
-    private static final long LOCK_TIME_MINUTES = 5; // Tiempo de bloqueo en minutos
+    private static final int MAX_FAILED_ATTEMPTS = 5;
+    private static final long LOCK_TIME_MINUTES = 5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -158,6 +158,13 @@ public class LoginFragment extends Fragment {
                     resetFailedAttempts();
                     handleLoginSuccess(response.body().string());
                 } else {
+                    if (response.code() == 401) {
+                        showToast("Usuario o contraseña incorrectos.");
+                    } else if (response.code() == 404) {
+                        showToast("Usuario no encontrado. Verifica tus credenciales.");
+                    } else {
+                        showToast("Error al iniciar sesión: " + response.message());
+                    }
                     handleFailedLogin();
                 }
             }

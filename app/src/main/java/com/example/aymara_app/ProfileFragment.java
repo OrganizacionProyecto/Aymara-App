@@ -103,7 +103,6 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
                     }
                 } else if (response.code() == 401) {
-                    // Token expirado, intentar refrescarlo
                     refreshToken();
                 } else {
                     Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
@@ -130,16 +129,14 @@ public class ProfileFragment extends Fragment {
                             String newAccessToken = jsonObject.getString("access_token");
                             String newRefreshToken = jsonObject.getString("refresh_token");
 
-                            // Guardar los nuevos tokens
                             prefs.edit().putString("access_token", newAccessToken).putString("refresh_token", newRefreshToken).apply();
 
-                            // Cargar los datos del usuario nuevamente
                             loadUserData();
                         } catch (JSONException | IOException e) {
                             e.printStackTrace();
                         }
                     } else {
-                        logoutUser();  // Redirigir a login si el refresh token también falla
+                        logoutUser();
                     }
                 }
 
@@ -149,7 +146,7 @@ public class ProfileFragment extends Fragment {
                 }
             });
         } else {
-            logoutUser();  // Si no hay refresh token, cerrar sesión
+            logoutUser();
         }
     }
 
@@ -360,7 +357,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void deleteAccount() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
 
         apiService.deleteAccount("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
@@ -368,7 +364,11 @@ public class ProfileFragment extends Fragment {
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Cuenta eliminada con éxito", Toast.LENGTH_SHORT).show();
-                    logoutUser();
+
+                    prefs.edit().clear().apply();
+
+                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                    navController.navigate(R.id.action_profileFragment_to_loginFragment);
                 } else {
                     Toast.makeText(getActivity(), "Error al eliminar la cuenta", Toast.LENGTH_SHORT).show();
                 }
@@ -380,6 +380,8 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
+
 
     private void logoutUser() {
         SharedPreferences.Editor editor = prefs.edit();
