@@ -39,7 +39,7 @@
     <TextView
         android:id="@+id/addressTextView"
         android:layout_width="377dp"
-        android:layout_height="42dp"
+        android:layout_height="48dp"
         android:layout_marginStart="62dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="48dp"
@@ -47,6 +47,7 @@
         android:drawableStart="@drawable/baseline_location_on_24"
         android:focusable="true"
         android:onClick="openMaps"
+        android:padding="13dp"
         android:text="Av. San Martin 50, Colonia Caroya, Argentina"
         android:textAlignment="viewStart"
         android:textColor="@color/white"
