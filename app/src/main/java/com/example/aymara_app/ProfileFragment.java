@@ -39,6 +39,7 @@ public class ProfileFragment extends Fragment {
     private Button btnChangePassword, btnDeleteAccount, btnLogout;
     private Button btnEditUsername, btnEditDireccion;
     private ApiService apiService;
+    private SharedPreferences prefs;
 
     @SuppressLint("MissingInflatedId")
     @Nullable
@@ -58,9 +59,11 @@ public class ProfileFragment extends Fragment {
         btnEditDireccion = view.findViewById(R.id.btnEditDireccion);
 
         apiService = ApiClient.getClient().create(ApiService.class);
+        prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
 
         loadUserData();
 
+        // Configuración de listeners
         btnChangePassword.setOnClickListener(v -> showChangePasswordDialog());
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
         btnLogout.setOnClickListener(v -> logoutUser());
@@ -76,7 +79,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void loadUserData() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
 
         apiService.getUserDetails("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
@@ -100,13 +102,11 @@ public class ProfileFragment extends Fragment {
                         e.printStackTrace();
                         Toast.makeText(getActivity(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
                     }
+                } else if (response.code() == 401) {
+                    // Token expirado, intentar refrescarlo
+                    refreshToken();
                 } else {
-                    if (response.code() == 401) {
-                        Toast.makeText(getActivity(), "Sesión expirada. Por favor inicie sesión de nuevo.", Toast.LENGTH_SHORT).show();
-                        logoutUser();
-                    } else {
-                        Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
-                    }
+                    Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -117,7 +117,41 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private void refreshToken() {
+        String refreshToken = prefs.getString("refresh_token", "");
+        if (!refreshToken.isEmpty()) {
+            apiService.refreshToken(refreshToken).enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        try {
+                            String responseString = response.body().string();
+                            JSONObject jsonObject = new JSONObject(responseString);
+                            String newAccessToken = jsonObject.getString("access_token");
+                            String newRefreshToken = jsonObject.getString("refresh_token");
 
+                            // Guardar los nuevos tokens
+                            prefs.edit().putString("access_token", newAccessToken).putString("refresh_token", newRefreshToken).apply();
+
+                            // Cargar los datos del usuario nuevamente
+                            loadUserData();
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        logoutUser();  // Redirigir a login si el refresh token también falla
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                    Toast.makeText(getActivity(), "Error al refrescar el token", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            logoutUser();  // Si no hay refresh token, cerrar sesión
+        }
+    }
 
     private void updatePassword(@NonNull String oldPassword, @NonNull String newPassword) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
@@ -348,29 +382,11 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logoutUser() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", "");
-
-        apiService.logout("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    prefs.edit().clear().apply();
-                    Toast.makeText(getActivity(), "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
-
-                    NavController navController = Navigation.findNavController(getView());
-                    navController.navigate(R.id.action_profileFragment_to_loginFragment);
-
-                } else {
-                    Toast.makeText(getActivity(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
-            }
-        });
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
+        Toast.makeText(getActivity(), "Sesión cerrada.", Toast.LENGTH_SHORT).show();
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.loginFragment);
     }
-
 }
