@@ -112,9 +112,9 @@ El backend ofrece una serie de endpoints que permiten la interacción con la app
 - PATCH /api/change-direccion/: Edita la Direccion del usuario.
 - DELETE /api/auth/delete_account/: Desactiva la cuenta del usuario
 
-<details align="middle">
+
 <summary>Testing de Accesibilidad</summary>
-<br /> 
+
 ## Testing de Accesibilidad
 Se utilizó la herramienta *Prueba de Accesibilidad* disponible en el PlayStore para evaluar la accesibilidad de la app. Se revisaron los siguientes aspectos:
 
