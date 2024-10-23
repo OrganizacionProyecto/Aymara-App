@@ -46,7 +46,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
-        // Inicialización de vistas
         etUsername = view.findViewById(R.id.etUsername);
         etFirst_Name = view.findViewById(R.id.etFirst_Name);
         etLast_Name = view.findViewById(R.id.etLast_Name);
@@ -62,7 +61,6 @@ public class ProfileFragment extends Fragment {
 
         loadUserData();
 
-        // Configuración de listeners
         btnChangePassword.setOnClickListener(v -> showChangePasswordDialog());
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
         btnLogout.setOnClickListener(v -> logoutUser());
@@ -89,14 +87,12 @@ public class ProfileFragment extends Fragment {
                         String responseString = responseBody.string();
                         JSONObject jsonObject = new JSONObject(responseString);
 
-                        // Establecer los valores en los EditText
                         etUsername.setText(jsonObject.getString("username"));
                         etFirst_Name.setText(jsonObject.getString("first_name"));
                         etLast_Name.setText(jsonObject.getString("last_name"));
                         etEmail.setText(jsonObject.getString("email"));
                         etDireccion.setText(jsonObject.getString("direccion"));
 
-                        // Actualizar el TextView del título
                         TextView tvProfileTitle = getView().findViewById(R.id.tvProfileTitle);
                         String username = jsonObject.getString("username");
                         tvProfileTitle.setText("Perfil de " + username);
@@ -106,9 +102,8 @@ public class ProfileFragment extends Fragment {
                     }
                 } else {
                     if (response.code() == 401) {
-                        // Token expirado, redirigir a login
                         Toast.makeText(getActivity(), "Sesión expirada. Por favor inicie sesión de nuevo.", Toast.LENGTH_SHORT).show();
-                        logoutUser(); // O redirigir directamente a LoginFragment
+                        logoutUser();
                     } else {
                         Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
                     }

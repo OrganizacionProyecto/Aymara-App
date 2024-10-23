@@ -7,10 +7,6 @@
     android:background="@color/white"
     tools:context=".FavoritesFragment">
 
-    <!-- Título de favoritos -->
-
-    <!-- RecyclerView para la lista de productos favoritos -->
-
     <TextView
         android:id="@+id/title_favorites"
         android:layout_width="0dp"
