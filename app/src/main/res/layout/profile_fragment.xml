@@ -1,7 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFEBEE"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
@@ -161,16 +161,6 @@
                 android:textColor="@color/grey"
                 android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/btnEditEmail"
-                android:layout_width="52dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:textColor="@color/VerdeAymara"
-                app:icon="@android:drawable/ic_menu_edit"
-                app:iconGravity="textStart"
-                app:iconPadding="1dp"
-                app:iconSize="20dp" />
         </LinearLayout>
 
         <Button
