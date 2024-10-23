@@ -79,7 +79,7 @@ Nombre y apellido de los integrantes y los roles:
    - Ve a `Build > Build APK` en Android Studio para generar el APK e instalarlo en un dispositivo físico o emulador.
 
 <details>
-<summary>## Tecnologías utilizadas</summary>
+<summary>Tecnologías utilizadas</summary>
 
 ### Frontend
 - Java (para la lógica de la app en Android)
@@ -99,7 +99,7 @@ Nombre y apellido de los integrantes y los roles:
 </details>
 
 <details>
-<summary>## API Endpoints</summary>
+<summary>API Endpoints</summary>
 
 El backend ofrece una serie de endpoints que permiten la interacción con la app. Aquí están los más relevantes:
 
@@ -119,7 +119,7 @@ El backend ofrece una serie de endpoints que permiten la interacción con la app
 </details>
 
 <details>
-<summary>## Testing de Accesibilidad</summary>
+<summary>Testing de Accesibilidad</summary>
 
 Se utilizó la herramienta *Prueba de Accesibilidad* disponible en el PlayStore para evaluar la accesibilidad de la app. Se revisaron los siguientes aspectos:
 
@@ -134,7 +134,7 @@ Se utilizó la herramienta *Prueba de Accesibilidad* disponible en el PlayStore 
 </details>
 
 <details>
-<summary>## Autenticación JWT</summary>
+<summary>Autenticación JWT</summary>
 
 La app utiliza JWT para manejar la autenticación de usuarios. A continuación, se describe cómo funciona:
 
