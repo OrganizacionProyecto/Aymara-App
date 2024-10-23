@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
-        android:background="@drawable/custom_editex1"
+        android:background="@color/white"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp">
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:backgroundTint="#8BC34A"
+            android:background="@color/white"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -46,7 +46,8 @@
                 android:hint="Usuario"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey" />
 
             <EditText
                 android:id="@+id/firstname"
@@ -58,7 +59,8 @@
                 android:hint="Nombre"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey" />
 
             <EditText
                 android:id="@+id/lastname"
@@ -70,7 +72,8 @@
                 android:hint="Apellido"
                 android:inputType="text"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout"
@@ -88,7 +91,9 @@
                     android:hint="Ingrese Password"
                     android:inputType="textPassword"
                     android:padding="8dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,7 +107,9 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"/>
+
 
             <Button
                 android:id="@+id/registerButton"
@@ -112,7 +119,7 @@
                 android:backgroundTint="@color/VerdeAymara"
                 android:onClick="crear"
                 android:text="Crear Cuenta"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:cornerRadius="20dp" />
 
         </LinearLayout>
