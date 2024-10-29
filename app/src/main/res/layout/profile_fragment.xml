@@ -71,12 +71,14 @@
             <EditText
                 android:id="@+id/etUsername"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Username"
                 android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
             <Button
                 android:id="@+id/btnEditUsername"
@@ -84,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/holo_green_light"
                 android:textColor="@color/VerdeAymara"
+                android:contentDescription="Editar username"
                 app:icon="@android:drawable/ic_menu_edit"
                 app:iconGravity="textStart"
                 app:iconPadding="1dp"
@@ -98,9 +101,11 @@
 
             <EditText
                 android:id="@+id/etFirst_Name"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_width="1sp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:padding="10dp"
                 android:text="Nombre"
                 android:textColor="@color/grey"
@@ -108,13 +113,15 @@
 
             <EditText
                 android:id="@+id/etLast_Name"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_width="1sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Apellido"
                 android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -126,7 +133,7 @@
             <EditText
                 android:id="@+id/etDireccion"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="8dp"
                 android:text="Direccion falsa 123"
@@ -139,6 +146,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/holo_green_light"
                 android:textColor="@color/VerdeAymara"
+                android:contentDescription="Editar la dirección de correo electrónico"
                 app:icon="@android:drawable/ic_menu_edit"
                 app:iconGravity="textStart"
                 app:iconPadding="1dp"
@@ -153,24 +161,17 @@
 
             <EditText
                 android:id="@+id/etEmail"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="admin@gmail.com"
                 android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"/>
 
-            <Button
-                android:id="@+id/btnEditEmail"
-                android:layout_width="52dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:textColor="@color/VerdeAymara"
-                app:icon="@android:drawable/ic_menu_edit"
-                app:iconGravity="textStart"
-                app:iconPadding="1dp"
-                app:iconSize="20dp" />
+
         </LinearLayout>
 
         <Button
