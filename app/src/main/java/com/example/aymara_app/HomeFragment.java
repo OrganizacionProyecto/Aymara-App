@@ -25,10 +25,8 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Encontrar el TextView de la dirección
         TextView addressTextView = view.findViewById(R.id.addressTextView);
 
-        // Agregar un listener de clic para abrir Google Maps
         addressTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,17 +37,13 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    // Método para abrir Google Maps con la dirección
     private void openMaps() {
-        // Dirección a buscar en Google Maps
         String address = "Av. San Martin 50, Colonia Caroya, Argentina";
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
 
-        // Crear el intent de Google Maps
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
 
-        // Verificar que Google Maps esté disponible y empezar la actividad
         if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(mapIntent);
         } else {

@@ -1,16 +1,19 @@
 package com.example.aymara_app;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
+    @SerializedName("id_producto")
     private int idProducto;
     private String nombre;
     private String descripcion;
     private double precio;
     private int disponibilidad;
     private String imagen;
+    @SerializedName("id_categoria")
     private int idCategoria;
     private boolean isFavorite;
 
-    // Constructor para inicializar
     public Product(int idProducto, String nombre, String descripcion, double precio, int disponibilidad, String imagen, int idCategoria) {
         this.idProducto = idProducto;
         this.nombre = nombre;
