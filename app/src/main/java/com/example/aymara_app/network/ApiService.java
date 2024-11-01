@@ -52,4 +52,7 @@ public interface ApiService {
     @POST("api/auth/signup/")
     Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
 
+    @POST("/api/token/refresh/")
+    Call<ResponseBody> refreshToken(@Body String refreshToken);
+
 }
