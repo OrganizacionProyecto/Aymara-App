@@ -5,19 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:padding="16dp">
-
+    android:padding="16dp"
+    tools:context=".MainActivity">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="40dp"
+        android:layout_margin="20dp"
         android:background="@drawable/custom_editex1"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
+        app:cardCornerRadius="20dp"
+        app:cardElevation="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +24,7 @@
             android:layout_gravity="center_horizontal"
             android:backgroundTint="#8BC34A"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="30dp">
 
             <TextView
                 android:id="@+id/loginText"
@@ -41,7 +40,7 @@
                 android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/custom_editex1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:hint="Usuario"
@@ -54,7 +53,7 @@
                 android:id="@+id/firstname"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/custom_editex1"
                 android:baselineAligned="false"
                 android:drawableLeft="@drawable/baseline_person_24"
@@ -68,7 +67,7 @@
                 android:id="@+id/lastname"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_editex1"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:hint="Apellido"
@@ -81,15 +80,17 @@
                 android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                app:passwordToggleEnabled="true">
+                android:layout_marginTop="20dp"
+                app:passwordToggleEnabled="true"
+                app:helperText="* La contraseña debe tener al menos 8 caracteres, una mayúscula y un número."
+                app:helperTextTextColor="@color/red">
 
 
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="25dp"
                     android:background="@drawable/custom_editex1"
                     android:drawableLeft="@drawable/baseline_lock_24"
                     android:hint="Ingrese Password"
@@ -97,6 +98,34 @@
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:passwordToggleEnabled="true">
+
+
+
+                <EditText
+                    android:id="@+id/confirpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_editex1"
+                    android:drawableLeft="@drawable/baseline_lock_24"
+                    android:hint="Confirme Password"
+                    android:inputType="textPassword"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +147,7 @@
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="@color/VerdeAymara"
                 android:onClick="crear"
                 android:text="Crear Cuenta"

@@ -41,6 +41,7 @@ public class RegisterFragment extends Fragment {
         loginText = view.findViewById(R.id.loginText);
         editTextUsername = view.findViewById(R.id.username);
         editTextPassword = view.findViewById(R.id.password);
+        editTextPassword = view.findViewById(R.id.confirpass);
         editTextEmail = view.findViewById(R.id.email);
         editTextFirstName = view.findViewById(R.id.firstname);
         editTextLastName = view.findViewById(R.id.lastname);
@@ -68,17 +69,18 @@ public class RegisterFragment extends Fragment {
     private void registerUser() {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
+        String confirpass = editTextPassword.getText().toString();
         String username = editTextUsername.getText().toString();
         String firstname = editTextFirstName.getText().toString();
         String lastname = editTextLastName.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || username.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() ||confirpass.isEmpty() || username.isEmpty() || firstname.isEmpty() || lastname.isEmpty()) {
             Toast.makeText(getContext(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
         /** Llamada al servicio de autenticación **/
-        RegisterRequest registerRequest = new RegisterRequest(email, password, username, firstname, lastname);
+        RegisterRequest registerRequest = new RegisterRequest(email, password, confirpass, username, firstname, lastname);
         Call<RegisterResponse> call = apiService.registerUser(registerRequest);
 
         call.enqueue(new Callback<RegisterResponse>() {
@@ -98,3 +100,4 @@ public class RegisterFragment extends Fragment {
         });
     }
 }
+
