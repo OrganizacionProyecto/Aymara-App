@@ -79,6 +79,17 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
+        String passwordPattern = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
+        if (!password.matches(passwordPattern)) {
+            Toast.makeText(getContext(), "La contraseña debe tener al menos 8 caracteres, una mayúscula y un número.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!password.equals(confirmPass)) {
+            Toast.makeText(getContext(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         /** Llamada al servicio de autenticación **/
         RegisterRequest registerRequest = new RegisterRequest(email, password, confirpass, username, firstname, lastname);
         Call<RegisterResponse> call = apiService.registerUser(registerRequest);
