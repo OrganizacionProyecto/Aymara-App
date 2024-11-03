@@ -67,7 +67,7 @@ public class RegisterFragment extends Fragment {
         String username = editTextUsername.getText ().toString ();
         String firstname = editTextFirstName.getText ().toString ();
         String lastname = editTextLastName.getText ().toString ();
-
+/*Validaciones*/
         if (email.isEmpty () || password.isEmpty () || confirPass.isEmpty () || username.isEmpty () || firstname.isEmpty () || lastname.isEmpty ()) {
             Toast.makeText (getContext (), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show ();
             return;
@@ -78,26 +78,24 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
-
         if (password.length() < 8) {
             Toast.makeText(getContext(), "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
             return;
         }
 
-
-        if (!password.matches(".[A-Z].")) {
+        if (!password.matches(".*[A-Z].*")) {
             Toast.makeText(getContext(), "La contraseña debe contener al menos una letra mayúscula", Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-        if (!password.matches(".[0-9].")) {
+        if (!password.matches(".*[0-9].*")) {
             Toast.makeText(getContext(), "La contraseña debe contener al menos un número", Toast.LENGTH_SHORT).show();
             return;
         }
 
 
-        if (!password.matches(".[a-zA-Z].")) {
+        if (!password.matches(".*[a-zA-Z].*")) {
             Toast.makeText(getContext(), "La contraseña debe contener al menos una letra (mayúscula o minúscula)", Toast.LENGTH_SHORT).show();
             return;
         }
