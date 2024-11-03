@@ -14,7 +14,6 @@ public class Product {
     private int idCategoria;
     private boolean isFavorite;
 
-    // Constructor para inicializar
     public Product(int idProducto, String nombre, String descripcion, double precio, int disponibilidad, String imagen, int idCategoria) {
         this.idProducto = idProducto;
         this.nombre = nombre;
@@ -26,7 +25,6 @@ public class Product {
         this.isFavorite = false;
     }
 
-    // Getters y Setters...
 
     public int getIdProducto() {
         return idProducto;

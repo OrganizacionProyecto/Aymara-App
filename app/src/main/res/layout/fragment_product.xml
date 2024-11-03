@@ -37,6 +37,7 @@
         android:paddingStart="16dp"
         android:paddingEnd="56dp"
         android:textColor="@color/black"
+        android:textColorHint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.16"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,18 +47,19 @@
     <!-- Botón de favorito (icono de corazón) -->
     <ImageButton
         android:id="@+id/button"
-        style="@android:style/Widget.Holo.Light.ImageButton"
+        style="@android:style/Widget.ImageButton"
         android:layout_width="71dp"
         android:layout_height="48dp"
-        android:contentDescription="@string/contentDescripcion"
-        android:src="@drawable/favorito"
+        android:background="@drawable/custom_editex1"
+        android:contentDescription="Fragment Favorito"
+        android:src="@drawable/favorito_color"
         app:layout_constraintBottom_toBottomOf="@id/search_bar"
         app:layout_constraintEnd_toStartOf="@+id/title"
         app:layout_constraintHorizontal_bias="0.167"
         app:layout_constraintStart_toEndOf="@+id/search_bar"
         app:layout_constraintTop_toTopOf="@+id/title"
         app:layout_constraintVertical_bias="0.0"
-        app:tint="@color/black" />
+        app:tint="@color/red" />
 
     <!-- RecyclerView para la lista de productos -->
     <androidx.recyclerview.widget.RecyclerView
