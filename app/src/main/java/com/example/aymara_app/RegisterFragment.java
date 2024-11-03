@@ -78,6 +78,30 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
+
+        if (password.length() < 8) {
+            Toast.makeText(getContext(), "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        if (!password.matches(".[A-Z].")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos una letra mayúscula", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        if (!password.matches(".[0-9].")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos un número", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        if (!password.matches(".[a-zA-Z].")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos una letra (mayúscula o minúscula)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         /* Llamada al servicio de autenticación */
         RegisterRequest registerRequest = new RegisterRequest (email, password, username, firstname, lastname);
         Call<RegisterResponse> call = apiService.registerUser (registerRequest);
