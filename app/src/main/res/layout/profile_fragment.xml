@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvProfileTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
@@ -30,7 +30,7 @@
         android:gravity="center"
         android:text="¡Bienvenido!"
         android:textColor="@color/grey"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,17 +41,18 @@
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Salir"
         android:textColor="@color/design_default_color_error"
-        app:rippleColor="@color/design_default_color_error"
-        app:strokeColor="@color/design_default_color_error"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="16dp"/>
+        app:rippleColor="@color/design_default_color_error"
+        app:strokeColor="@color/design_default_color_error" />
 
     <LinearLayout
         android:id="@+id/myLinearLayout"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corner"
         android:elevation="10dp"
@@ -70,16 +71,17 @@
 
             <EditText
                 android:id="@+id/etUsername"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Username"
-                android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnEditUsername"
+                android:contentDescription="Editar Username"
                 android:layout_width="52dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/holo_green_light"
@@ -99,22 +101,22 @@
             <EditText
                 android:id="@+id/etFirst_Name"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Nombre"
-                android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/etLast_Name"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="Apellido"
-                android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:textColor="@color/black"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -125,16 +127,18 @@
 
             <EditText
                 android:id="@+id/etDireccion"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:minHeight="48dp"
                 android:padding="8dp"
                 android:text="Direccion falsa 123"
-                android:textSize="15sp"
-                android:textColor="@color/grey"/>
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btnEditDireccion"
+                android:contentDescription="Editar Domicilio"
                 android:layout_width="52dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/holo_green_light"
@@ -153,34 +157,40 @@
 
             <EditText
                 android:id="@+id/etEmail"
-                android:layout_width="0dp"
-                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="10dp"
                 android:text="admin@gmail.com"
-                android:textColor="@color/grey"
-                android:textSize="15sp" />
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/btnChangePassword"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@android:color/holo_green_dark"
+            android:fontFamily="sans-serif"
             android:text="Cambiar contraseña"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnDeleteAccount"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="@android:color/holo_red_dark"
+            android:fontFamily="sans-serif"
             android:text="Eliminar Cuenta"
             android:textColor="@color/white"
-            />
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

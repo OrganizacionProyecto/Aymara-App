@@ -8,56 +8,40 @@
     android:background="@color/white"
     tools:context="ContacFragment">
 
-    <FrameLayout
-        android:id="@+id/frame_baner"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@color/VerdeAymara"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/contacto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="35dp"
+        android:text="CONTACTO"
+        android:textAlignment="center"
+        android:textColor="@color/VerdeAymara"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:src="@drawable/ic_logocontac" />
-
-        <TextView
-            android:id="@+id/tv_contacto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="3dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/tv_contacto"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="34sp" />
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/lh_linea1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/lv_linea2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame_baner">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txt_instrucciones"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="5sp"
             android:layout_weight="1"
+            android:paddingTop="10sp"
             android:text="@string/txt_instrucciones"
             android:textAlignment="gravity"
             android:textColor="@color/VerdeAymara"
@@ -86,11 +70,14 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints=""
             android:drawableStart="@drawable/ic_nombreyapellidocontac"
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/ed_name"
             android:inputType="text"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
             android:textSize="16sp" />
 
         <EditText
@@ -105,7 +92,10 @@
             android:ems="10"
             android:hint="@string/em_mail"
             android:inputType="textEmailAddress"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/en_edad"
@@ -119,7 +109,11 @@
             android:ems="10"
             android:hint="@string/en_edad"
             android:inputType="numberSigned"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            android:autofillHints=""
+            tools:ignore="VisualLintTextFieldSize" />
 
         <LinearLayout
             android:id="@+id/ln_sexo"
@@ -134,7 +128,8 @@
                 android:id="@+id/iv_sexo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_sexocontac" />
+                android:src="@drawable/ic_sexocontac"
+                android:contentDescription="TODO" />
 
             <RadioGroup
                 android:id="@+id/rbg_sexo"
@@ -149,6 +144,8 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="5dp"
                     android:text="@string/rb_masculino"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
                     android:textSize="14sp" />
 
                 <RadioButton
@@ -156,13 +153,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingEnd="5dp"
-                    android:text="@string/rb_femenino" />
+                    android:text="@string/rb_femenino"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
 
                 <RadioButton
                     android:id="@+id/rb_otro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rb_otro" />
+                    android:text="@string/rb_otro"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    tools:ignore="VisualLintButtonSize" />
             </RadioGroup>
 
         </LinearLayout>
@@ -179,7 +181,11 @@
             android:ems="10"
             android:hint="@string/en_altura"
             android:inputType="numberDecimal"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            android:autofillHints=""
+            tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/end_peso"
@@ -193,7 +199,10 @@
             android:ems="10"
             android:hint="@string/en_peso"
             android:inputType="numberDecimal"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/ed_objetivo"
@@ -207,7 +216,10 @@
             android:ems="10"
             android:hint="@string/ed_objetivo"
             android:inputType="text"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            android:importantForAutofill="no" />
 
         <TextView
             android:id="@+id/tv_nutricion"
@@ -219,6 +231,7 @@
             android:drawableStart="@drawable/ic_nutricioncontac"
             android:drawablePadding="20dp"
             android:text="@string/ed_nutricion"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <RadioGroup
@@ -235,6 +248,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cb_si"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -243,6 +257,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cb_no"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RadioGroup>
 
@@ -264,22 +279,27 @@
 
         <Button
             android:id="@+id/btn_enviar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="0"
             android:backgroundTint="@color/botonEnviar"
             android:onClick="enviarDatos"
-            android:text="@string/btn_enviar" />
+            android:text="@string/btn_enviar"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btn_borrar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/botonBorrar"
             android:onClick="borrar"
-            android:text="@string/btn_borrar" />
+            android:text="@string/btn_borrar"
+            android:textColor="@color/white"
+            tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

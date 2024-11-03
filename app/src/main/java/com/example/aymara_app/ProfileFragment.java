@@ -1,3 +1,4 @@
+
 package com.example.aymara_app;
 
 import com.example.aymara_app.network.ApiService;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import java.util.HashMap;
 import java.util.Map;
 import android.text.InputType;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,7 @@ public class ProfileFragment extends Fragment {
     private Button btnChangePassword, btnDeleteAccount, btnLogout;
     private Button btnEditUsername, btnEditDireccion;
     private ApiService apiService;
+    private SharedPreferences prefs;
 
     @SuppressLint("MissingInflatedId")
     @Nullable
@@ -58,9 +61,11 @@ public class ProfileFragment extends Fragment {
         btnEditDireccion = view.findViewById(R.id.btnEditDireccion);
 
         apiService = ApiClient.getClient().create(ApiService.class);
+        prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
 
         loadUserData();
 
+        // Configuración de listeners
         btnChangePassword.setOnClickListener(v -> showChangePasswordDialog());
         btnDeleteAccount.setOnClickListener(v -> showDeleteAccountDialog());
         btnLogout.setOnClickListener(v -> logoutUser());
@@ -72,11 +77,27 @@ public class ProfileFragment extends Fragment {
         etEmail.setEnabled(false);
         etDireccion.setEnabled(false);
 
+
+        InputFilter[] usernameFilters = new InputFilter[2];
+        usernameFilters[0] = new InputFilter.LengthFilter(15);
+        usernameFilters[1] = (source, start, end, dest, dstart, dend) -> {
+            if (dest.length() < 3 && (dest.length() + (end - start) > 15)) {
+                Toast.makeText(getActivity(), "El nombre de usuario debe tener al menos 3 caracteres y no exceder 15 caracteres", Toast.LENGTH_SHORT).show();
+                return "";
+            }
+            return null;
+        };
+        etUsername.setFilters(usernameFilters);
+
+
+        InputFilter[] addressFilters = new InputFilter[1];
+        addressFilters[0] = new InputFilter.LengthFilter(50);
+        etDireccion.setFilters(addressFilters);
+
         return view;
     }
 
     private void loadUserData() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
 
         apiService.getUserDetails("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
@@ -101,24 +122,93 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "Error al procesar la respuesta", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    if (response.code() == 401) {
-                        Toast.makeText(getActivity(), "Sesión expirada. Por favor inicie sesión de nuevo.", Toast.LENGTH_SHORT).show();
-                        logoutUser();
-                    } else {
-                        Toast.makeText(getActivity(), "Error al cargar los datos del usuario", Toast.LENGTH_SHORT).show();
-                    }
+                    handleErrorResponse(response);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    private void handleErrorResponse(Response<ResponseBody> response) {
+        switch (response.code()) {
+            case 401:
+                Toast.makeText(getActivity(), "Sesión expirada. Por favor, inicie sesión nuevamente.", Toast.LENGTH_SHORT).show();
+                refreshToken();
+                break;
+            case 404:
+                Toast.makeText(getActivity(), "Usuario no encontrado.", Toast.LENGTH_SHORT).show();
+                break;
+            case 403:
+                Toast.makeText(getActivity(), "Acceso denegado. No tienes permiso para ver estos datos.", Toast.LENGTH_SHORT).show();
+                break;
+            case 500:
+                Toast.makeText(getActivity(), "Error interno del servidor. Por favor, inténtelo más tarde.", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(getActivity(), "Error al cargar los datos del usuario. Código: " + response.code(), Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 
+    private void refreshToken() {
+        String refreshToken = prefs.getString("refresh_token", "");
+        if (!refreshToken.isEmpty()) {
+            apiService.refreshToken(refreshToken).enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        try {
+                            String responseString = response.body().string();
+                            JSONObject jsonObject = new JSONObject(responseString);
+                            String newAccessToken = jsonObject.getString("access_token");
+                            String newRefreshToken = jsonObject.getString("refresh_token");
 
+                            prefs.edit()
+                                    .putString("access_token", newAccessToken)
+                                    .putString("refresh_token", newRefreshToken)
+                                    .apply();
+
+                            loadUserData(); // Recargar datos con el nuevo token
+                        } catch (JSONException | IOException e) {
+                            e.printStackTrace();
+                            handleRefreshTokenError();
+                        }
+                    } else {
+                        handleRefreshTokenError();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                    handleRefreshTokenError();
+                }
+            });
+        } else {
+            handleRefreshTokenError();
+        }
+    }
+
+    private void handleRefreshTokenError() {
+        // Limpiar las preferencias
+        prefs.edit().clear().apply();
+
+        // Mostrar mensaje al usuario
+        Toast.makeText(getActivity(), "Su sesión ha expirado. Por favor, inicie sesión nuevamente.", Toast.LENGTH_LONG).show();
+
+        // Navegar al login
+        if (getActivity() != null && isAdded()) {
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.loginFragment);
+        }
+    }
+
+    private boolean isValidPassword(String password) {
+        return password.length() >= 8 && password.matches(".*[A-Za-z].*") && password.matches(".*[0-9].*");
+    }
     private void updatePassword(@NonNull String oldPassword, @NonNull String newPassword) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
@@ -130,6 +220,7 @@ public class ProfileFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), json.toString());
 
@@ -154,7 +245,6 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-
     private void showChangePasswordDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Cambiar Contraseña");
@@ -173,20 +263,31 @@ public class ProfileFragment extends Fragment {
         etNewPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         layout.addView(etNewPassword);
 
-        builder.setView(layout)
-                .setPositiveButton("Confirmar", (dialog, which) -> {
+        EditText etConfirmPassword = new EditText(getActivity());
+        etConfirmPassword.setHint("Confirmar Contraseña");
+        etConfirmPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        layout.addView(etConfirmPassword);
+
+        builder.setView(layout).setPositiveButton("Confirmar", (dialog, which) -> {
                     String oldPassword = etOldPassword.getText().toString();
                     String newPassword = etNewPassword.getText().toString();
-                    if (!newPassword.isEmpty() && !oldPassword.isEmpty()) {
-                        updatePassword(oldPassword, newPassword);
-                    } else {
+                    String confirmPassword = etConfirmPassword.getText().toString();
+
+                    if (newPassword.isEmpty() || oldPassword.isEmpty() || confirmPassword.isEmpty()) {
                         Toast.makeText(getActivity(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+                    } else if (!newPassword.equals(confirmPassword)) {
+                        Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                    } else if (!isValidPassword(newPassword)){
+                        Toast.makeText(getActivity(), "La contraseña debe tener al menos 8 caracteres e incluir al menos una letra y un número", Toast.LENGTH_SHORT).show();
+                    } else {
+                        updatePassword(oldPassword, newPassword);
                     }
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }
+
 
     private void showChangeAddressDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -201,12 +302,19 @@ public class ProfileFragment extends Fragment {
         layout.addView(etNewAddress);
 
 
-
         builder.setView(layout)
                 .setPositiveButton("Confirmar", (dialog, which) -> {
-                    String newAddress = etNewAddress.getText().toString();
-                    updateAddress(newAddress);
+                    String newAddress = etNewAddress.getText().toString().trim();
+
+                    if (newAddress.isEmpty()) {
+                        Toast.makeText(getActivity(), "El domicilio no puede estar vacío", Toast.LENGTH_SHORT).show();
+                    } else if (newAddress.length() < 3) {
+                        Toast.makeText(getActivity(), "El domicilio debe tener al menos 3 caracteres", Toast.LENGTH_SHORT).show();
+                    } else {
+                        updateAddress(newAddress);
+                    }
                 })
+
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
@@ -226,42 +334,24 @@ public class ProfileFragment extends Fragment {
 
         builder.setView(layout)
                 .setPositiveButton("Confirmar", (dialog, which) -> {
-                    String newUsername = etNewUsername.getText().toString();
-                    updateUsername(newUsername);
+                    String newUsername = etNewUsername.getText().toString().trim();
+
+                    if (newUsername.isEmpty()) {
+                        Toast.makeText(getActivity(), "El nombre de usuario no puede estar vacío", Toast.LENGTH_SHORT).show();
+                    } else if (newUsername.length() < 3) {
+                        Toast.makeText(getActivity(), "El nombre de usuario debe tener al menos 3 caracteres", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        updateUsername(newUsername);
+                    }
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
     }
 
-    private boolean isValidEmail(@NonNull String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
 
-    private void updateEmail(@NonNull String newEmail) {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", "");
 
-        Map<String, String> body = new HashMap<>();
-        body.put("email", newEmail);
-
-        apiService.changeEmail("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Correo electrónico actualizado con éxito", Toast.LENGTH_SHORT).show();
-                    loadUserData();
-                } else {
-                    Toast.makeText(getActivity(), "Error al actualizar el correo electrónico", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     private void updateAddress(@NonNull String newAddress) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
@@ -277,13 +367,12 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "Dirección actualizada con éxito", Toast.LENGTH_SHORT).show();
                     loadUserData();
                 } else {
-                    Toast.makeText(getActivity(), "Error al actualizar la dirección", Toast.LENGTH_SHORT).show();
+                    handleErrorResponse(response);
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -291,7 +380,6 @@ public class ProfileFragment extends Fragment {
     private void updateUsername(@NonNull String newUsername) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
-
         Map<String, String> body = new HashMap<>();
         body.put("username", newUsername);
 
@@ -302,13 +390,12 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(), "Nombre de usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
                     loadUserData();
                 } else {
-                    Toast.makeText(getActivity(), "Error al actualizar el nombre de usuario", Toast.LENGTH_SHORT).show();
+                    handleErrorResponse(response);
                 }
             }
-
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -326,7 +413,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void deleteAccount() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
 
         apiService.deleteAccount("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
@@ -334,9 +420,11 @@ public class ProfileFragment extends Fragment {
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Cuenta eliminada con éxito", Toast.LENGTH_SHORT).show();
-                    logoutUser();
+                    prefs.edit().clear().apply();
+                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                    navController.navigate(R.id.action_profileFragment_to_loginFragment);
                 } else {
-                    Toast.makeText(getActivity(), "Error al eliminar la cuenta", Toast.LENGTH_SHORT).show();
+                    handleErrorResponse(response);
                 }
             }
 
@@ -348,29 +436,11 @@ public class ProfileFragment extends Fragment {
     }
 
     private void logoutUser() {
-        SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
-        String accessToken = prefs.getString("access_token", "");
-
-        apiService.logout("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    prefs.edit().clear().apply();
-                    Toast.makeText(getActivity(), "Sesión cerrada con éxito", Toast.LENGTH_SHORT).show();
-
-                    NavController navController = Navigation.findNavController(getView());
-                    navController.navigate(R.id.action_profileFragment_to_loginFragment);
-
-                } else {
-                    Toast.makeText(getActivity(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
-            }
-        });
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.clear();
+        editor.apply();
+        Toast.makeText(getActivity(), "Sesión cerrada.", Toast.LENGTH_SHORT).show();
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+        navController.navigate(R.id.loginFragment);
     }
-
 }
