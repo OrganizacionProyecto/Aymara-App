@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/ContacLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="ContacFragment">
 
+
     <TextView
         android:id="@+id/contacto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="35dp"
         android:text="CONTACTO"
         android:textAlignment="center"
         android:textColor="@color/VerdeAymara"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/lh_linea1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="5dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/lv_linea2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/contacto">
 
         <TextView
             android:id="@+id/txt_instrucciones"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5sp"
             android:layout_weight="1"
@@ -52,16 +53,11 @@
 
     <LinearLayout
         android:id="@+id/lv_linea2"
-        android:layout_width="0dp"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="14dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/lh_linea4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lh_linea1">
+        app:layout_constraintTop_toBottomOf="@+id/lh_linea1"
+        tools:layout_editor_absoluteX="5dp">
 
         <EditText
             android:id="@+id/ed_name"
@@ -131,8 +127,8 @@
                 android:id="@+id/iv_sexo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_sexocontac"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@drawable/ic_sexocontac" />
 
             <RadioGroup
                 android:id="@+id/rbg_sexo"
@@ -267,18 +263,42 @@
                 android:textSize="14sp" />
         </RadioGroup>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Texto de Comentario -->
+            <TextView
+                android:id="@+id/comentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comentario:"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Rectángulo para ingresar información -->
+            <EditText
+                android:id="@+id/ed_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rectangle_border"
+                android:hint="Escribe tu comentario aquí"
+                android:padding="10dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/lh_linea4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="88dp"
         android:orientation="horizontal"
         android:padding="5dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lv_linea2">
@@ -308,4 +328,6 @@
             tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

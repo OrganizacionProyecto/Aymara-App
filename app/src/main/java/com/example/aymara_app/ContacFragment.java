@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class ContacFragment extends Fragment {
 
     private RadioGroup sexo, nutricion;
-    private TextView name, mail, edad, altura, peso, objetivos;
+    private TextView name, mail, edad, altura, peso, objetivos, comentario;
     private View fragmentView;
     private Button enviar, borrar;
 
@@ -45,6 +45,10 @@ public class ContacFragment extends Fragment {
         enviar = fragmentView.findViewById(R.id.btn_enviar);
         borrar = fragmentView.findViewById(R.id.btn_borrar);
 
+        comentario = fragmentView.findViewById(R.id.ed_comentario);
+
+
+
         enviar.setOnClickListener(v -> enviarDatos());
         borrar.setOnClickListener(v -> borrar());
 
@@ -62,7 +66,8 @@ public class ContacFragment extends Fragment {
                     "\nPeso: " + peso.getText().toString() +
                     "\nObjetivo: " + objetivos.getText().toString() +
                     "\nSexo: " + opcionRadiobuton(sexo) +
-                    "\nNutricion: " + opcionRadiobuton(nutricion), Toast.LENGTH_SHORT).show();
+                    "\nNutricion: " + opcionRadiobuton(nutricion) +
+                    "\nComentario: " + comentario.getText().toString(), Toast.LENGTH_SHORT).show();
             borrar();
         }
         else
@@ -81,6 +86,7 @@ public class ContacFragment extends Fragment {
         // Deseleccionar los RadioButton
         sexo.clearCheck();
         nutricion.clearCheck();
+        comentario.setText("");
 
         // Mostrar un mensaje de confirmación
         Toast.makeText(getContext(), "Campos borrados", Toast.LENGTH_SHORT).show();
@@ -99,7 +105,55 @@ public class ContacFragment extends Fragment {
 
 
 
-    public boolean verificarCampos(){
+    public boolean verificarCampos() {
+
+        String nameText = name.getText().toString().trim();
+        if (nameText.length() < 3 || nameText.length() > 35 ||
+                !nameText.contains(" ") ||
+                !nameText.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+
+            name.setError("Formato Incorrecto. Debe incluir nombre y apellido, y solo letras.");
+            return false;
+        }
+
+        // Validar correo con un '@'
+        String mailText = mail.getText().toString().trim();
+        if (!mailText.matches("^[\\w\\.-]+@[\\w\\.-]+\\.com$")) {
+            mail.setError("Especificar ej:aymara@gmail.com");
+            return false;
+        }
+
+        // Validar edad con máximo 3 dígitos
+        String edadText = edad.getText().toString().trim();
+        if (!edadText.matches("\\d{1,3}")) {
+            edad.setError("Formato Incorrecto de edad.");
+            return false;
+        }
+
+        // Validar altura con máximo 3 dígitos
+        String alturaText = altura.getText().toString().trim();
+        if (!alturaText.matches("\\d{2,3}")) {
+            altura.setError("Formato Incorrecto de Altura.");
+            return false;
+        }
+
+        // Validar peso con máximo 3 dígitos
+        String pesoText = peso.getText().toString().trim();
+        if (!pesoText.matches("\\d{2,3}")) {
+            peso.setError("Formato Incorrecto de Peso.");
+            return false;
+        }
+
+        // Validar comentario
+        String comentarioText = comentario.getText().toString().trim();
+        if (comentarioText.length() < 10 || comentarioText.length() > 150) {
+            comentario.setError("Comentario Invalido.");
+            return false;
+        }
+
+
+
+
         return !name.getText().toString().trim().isEmpty() &&
                 !mail.getText().toString().trim().isEmpty() &&
                 !edad.getText().toString().trim().isEmpty() &&
@@ -107,7 +161,9 @@ public class ContacFragment extends Fragment {
                 !peso.getText().toString().trim().isEmpty() &&
                 !objetivos.getText().toString().trim().isEmpty() &&
                 (sexo.getCheckedRadioButtonId() != -1) &&
-                (nutricion.getCheckedRadioButtonId() != -1);
+                (nutricion.getCheckedRadioButtonId() != -1) &&
+                !comentario.getText().toString().trim().isEmpty();
+
     }
 
 }
