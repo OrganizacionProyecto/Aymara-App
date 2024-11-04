@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.aymara_app.network.ApiClient;
 import com.example.aymara_app.network.ApiService;
@@ -71,14 +70,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         if (isLoggedIn) {
             holder.favoriteButton.setVisibility(View.VISIBLE);
-            holder.favoriteButton.setColorFilter(product.isFavorite() ?
-                    holder.itemView.getContext().getResources().getColor(R.color.red) :
-                    holder.itemView.getContext().getResources().getColor(R.color.grey));
+            holder.favoriteButton.setImageResource(
+                    product.isFavorite() ? R.drawable.favorito_color : R.drawable.favorito
+            );
 
             holder.favoriteButton.setOnClickListener(v -> {
                 product.setFavorite(!product.isFavorite());
                 saveFavoriteState(product.getIdProducto(), product.isFavorite(), holder.itemView.getContext());
-                notifyItemChanged(position);
+                holder.favoriteButton.setImageResource(
+                        product.isFavorite() ? R.drawable.favorito_color : R.drawable.favorito
+                );
+
                 if (product.isFavorite()) {
                     addToFavorites(product, holder.itemView.getContext());
                 } else {
