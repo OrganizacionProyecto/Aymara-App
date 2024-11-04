@@ -207,8 +207,29 @@ public class ProfileFragment extends Fragment {
     }
 
     private boolean isValidPassword(String password) {
-        return password.length() >= 8 && password.matches(".*[A-Za-z].*") && password.matches(".*[0-9].*");
+        if (password.length() < 8) {
+            Toast.makeText(getContext(), "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!password.matches(".*[A-Z].*")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos una letra mayúscula", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!password.matches(".*[0-9].*")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos un número", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!password.matches(".*[a-zA-Z].*")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos una letra (mayúscula o minúscula)", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
+
     private void updatePassword(@NonNull String oldPassword, @NonNull String newPassword) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
