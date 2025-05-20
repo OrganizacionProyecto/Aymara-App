@@ -3,28 +3,41 @@ package com.example.aymara_app;
 import com.google.gson.annotations.SerializedName;
 
 public class Product {
+
     @SerializedName("id_producto")
     private int idProducto;
+
     private String nombre;
     private String descripcion;
     private double precio;
-    private int disponibilidad;
+
+    // Aquí lo llamamos stock para igualar a Angular
+    private int stock;
+
     private String imagen;
+
     @SerializedName("id_categoria")
     private int idCategoria;
-    private boolean isFavorite;
 
-    public Product(int idProducto, String nombre, String descripcion, double precio, int disponibilidad, String imagen, int idCategoria) {
+    // Solo para UI (no viene del backend)
+    private int cantidad;
+
+    public Product() {
+        this.cantidad = 0;  // Inicializa cantidad a 0 para UI
+    }
+
+    public Product(int idProducto, String nombre, String descripcion, double precio, int stock, String imagen, int idCategoria) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.disponibilidad = disponibilidad;
+        this.stock = stock;
         this.imagen = imagen;
         this.idCategoria = idCategoria;
-        this.isFavorite = false;
+        this.cantidad = 0;
     }
 
+    // Getters y setters
 
     public int getIdProducto() {
         return idProducto;
@@ -58,12 +71,12 @@ public class Product {
         this.precio = precio;
     }
 
-    public int getDisponibilidad() {
-        return disponibilidad;
+    public int getStock() {
+        return stock;
     }
 
-    public void setDisponibilidad(int disponibilidad) {
-        this.disponibilidad = disponibilidad;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public String getImagen() {
@@ -82,25 +95,26 @@ public class Product {
         this.idCategoria = idCategoria;
     }
 
-    public boolean isFavorite() {
-        return isFavorite;
+    // Solo para UI (cantidad seleccionada)
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Producto{" +
                 "idProducto=" + idProducto +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", precio=" + precio +
-                ", disponibilidad=" + disponibilidad +
+                ", stock=" + stock +
                 ", imagen='" + imagen + '\'' +
                 ", idCategoria=" + idCategoria +
-                ", isFavorite=" + isFavorite +
+                ", cantidad=" + cantidad +
                 '}';
     }
 }

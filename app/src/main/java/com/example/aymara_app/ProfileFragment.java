@@ -157,7 +157,7 @@ public class ProfileFragment extends Fragment {
     private void refreshToken() {
         String refreshToken = prefs.getString("refresh_token", "");
         if (!refreshToken.isEmpty()) {
-            apiService.refreshToken(refreshToken).enqueue(new Callback<ResponseBody>() {
+            apiService.refreshToken().enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                     if (response.isSuccessful() && response.body() != null) {

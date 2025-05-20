@@ -1,57 +1,87 @@
 package com.example.aymara_app.network;
 
 import com.example.aymara_app.RegisterRequest;
-import com.example.aymara_app.Product;
 import com.example.aymara_app.RegisterResponse;
-import okhttp3.RequestBody;
+import com.example.aymara_app.Product;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PATCH;
-import retrofit2.http.DELETE;
-import retrofit2.http.Path;
-import retrofit2.http.Header;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.*;
+
 public interface ApiService {
-    @GET("api/tablas/productos/")
-    Call<List<Product>> getProducts();
 
-    @POST("api/add_to_favorites/")
-    Call<ResponseBody> addToFavorites(@Body RequestBody body, @Header("Authorization") String token);
+        // ---------- PRODUCTS ----------
+        @GET("api/products/productos/")
+        Call<List<Product>> getProducts();
 
-    @POST("api/remove_from_favorites/")
-    Call<ResponseBody> removeFromFavorites(@Body Map<String, Integer> productId, @Header("Authorization") String token);
+        @GET("api/products/productos/{id}/")
+        Call<Product> getProductDetail(@Path("id") int productId);
 
-    @GET("api/list_favorites/")
-    Call<List<Product>> getFavorites(@Header("Authorization") String token);
+        // ---------- FAVORITOS ----------
+        @GET("api/products/favoritos/")
+        Call<List<Product>> getFavorites(@Header("Authorization") String token);
 
-    @GET("api/auth/user/")
-    Call<ResponseBody> getUserDetails(@Header("Authorization") String token);
+        @POST("api/products/favoritos/")
+        Call<ResponseBody> addToFavorites(@Body Map<String, Integer> body, @Header("Authorization") String token);
 
-    @PATCH("api/change_email/")
-    Call<ResponseBody> changeEmail(@Header("Authorization") String token, @Body Map<String, String> body);
+        @DELETE("api/products/favoritos/{id}/")
+        Call<ResponseBody> removeFromFavorites(@Path("id") int favoritoId, @Header("Authorization") String token);
 
-    @PATCH("api/change-direccion/")
-    Call<ResponseBody> changeAddress(@Header("Authorization") String token, @Body Map<String, String> body);
+        // ---------- CARRITO ----------
+        @GET("api/cart/carrito/")
+        Call<ResponseBody> getCart(@Header("Authorization") String token);
 
-    @PATCH("api/change-username/")
-    Call<ResponseBody> changeUsername(@Header("Authorization") String token, @Body Map<String, String> body);
+        @POST("api/cart/agregar/")
+        Call<ResponseBody> agregarAlCarrito(
+                @Body RequestBody body,
+                @Header("Authorization") String authHeader
+        );
 
-    @POST("api/change-password/")
-    Call<ResponseBody> changePassword(@Header("Authorization") String authorization, @Body RequestBody body);
-    @DELETE("api/auth/delete_account/")
-    Call<ResponseBody> deleteAccount(@Header("Authorization") String token);
+        @PUT("api/cart/carrito/modificar/{producto_id}/")
+        Call<ResponseBody> updateCartItem(@Path("producto_id") int productoId, @Body Map<String, Integer> body, @Header("Authorization") String token);
 
-    @POST("api/auth/logout/")
-    Call<ResponseBody> logout(@Header("Authorization") String token);
+        @DELETE("api/cart/carrito/eliminar/{producto_id}/")
+        Call<ResponseBody> deleteCartItem(@Path("producto_id") int productoId, @Header("Authorization") String token);
 
-    @POST("api/auth/signup/")
-    Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
+        // ---------- PEDIDOS ----------
+        @POST("api/cart/pedido/crear/")
+        Call<ResponseBody> createPedido(@Header("Authorization") String token);
 
-    @POST("/api/token/refresh/")
-    Call<ResponseBody> refreshToken(@Body String refreshToken);
+        @GET("api/cart/pedido/historial/")
+        Call<ResponseBody> getHistorialPedidos(@Header("Authorization") String token);
+
+        @GET("api/cart/pedido/{pedido_id}/factura/")
+        Call<ResponseBody> getFactura(@Path("pedido_id") int pedidoId, @Header("Authorization") String token);
+
+        // ---------- AUTENTICACIÓN / USUARIOS ----------
+        @POST("api/users/auth/signup/")
+        Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
+
+        @POST("api/users/auth/logout/")
+        Call<ResponseBody> logout(@Header("Authorization") String token);
+
+        @GET("api/users/me/")
+        Call<ResponseBody> getUserDetails(@Header("Authorization") String token);
+
+        @PATCH("api/users/change_email/")
+        Call<ResponseBody> changeEmail(@Header("Authorization") String token, @Body Map<String, String> body);
+
+        @PATCH("api/users/change-direccion/")
+        Call<ResponseBody> changeAddress(@Header("Authorization") String token, @Body Map<String, String> body);
+
+        @PATCH("api/users/change-username/")
+        Call<ResponseBody> changeUsername(@Header("Authorization") String token, @Body Map<String, String> body);
+
+        @POST("api/users/change-password/")
+        Call<ResponseBody> changePassword(@Header("Authorization") String token, @Body RequestBody body);
+
+        @DELETE("api/users/auth/delete_account/")
+        Call<ResponseBody> deleteAccount(@Header("Authorization") String token);
+
+        @POST("api/auth/token/refresh/")
+        Call<ResponseBody> refreshToken();
 }

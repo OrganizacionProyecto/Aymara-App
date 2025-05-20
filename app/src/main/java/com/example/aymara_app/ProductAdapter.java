@@ -1,5 +1,6 @@
 package com.example.aymara_app;
 
+import android.widget.Button;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -43,9 +44,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public void setProductList(List<Product> products, Context context) {
         this.productList = products;
-        for (Product product : productList) {
-            product.setFavorite(isProductFavorite(product.getIdProducto(), context));
-        }
         notifyDataSetChanged();
     }
 
@@ -68,28 +66,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 .load(product.getImagen())
                 .into(holder.productImagen);
 
-        if (isLoggedIn) {
-            holder.favoriteButton.setVisibility(View.VISIBLE);
-            holder.favoriteButton.setImageResource(
-                    product.isFavorite() ? R.drawable.favorito_color : R.drawable.favorito
-            );
-
-            holder.favoriteButton.setOnClickListener(v -> {
-                product.setFavorite(!product.isFavorite());
-                saveFavoriteState(product.getIdProducto(), product.isFavorite(), holder.itemView.getContext());
-                holder.favoriteButton.setImageResource(
-                        product.isFavorite() ? R.drawable.favorito_color : R.drawable.favorito
-                );
-
-                if (product.isFavorite()) {
-                    addToFavorites(product, holder.itemView.getContext());
-                } else {
-                    removeFromFavorites(product, holder.itemView.getContext());
-                }
-            });
-        } else {
-            holder.favoriteButton.setVisibility(View.GONE);
-        }
+        // Aquí podrías agregar el listener para el botón de agregar al carrito
+        holder.btnAgregarCarrito.setOnClickListener(v -> {
+            // Lógica para agregar al carrito, por ejemplo:
+            Toast.makeText(holder.itemView.getContext(), "Agregado al carrito: " + product.getNombre(), Toast.LENGTH_SHORT).show();
+            // Aquí puedes implementar llamada a API o actualizar UI según corresponda
+        });
     }
 
     @Override
@@ -101,6 +83,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         ImageView productImagen;
         TextView productNombre, productDescripcion, productPrecio;
         ImageButton favoriteButton;
+        Button btnAgregarCarrito;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -109,6 +92,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productDescripcion = itemView.findViewById(R.id.product_descripcion);
             productPrecio = itemView.findViewById(R.id.product_precio);
             favoriteButton = itemView.findViewById(R.id.favorite_button);
+            btnAgregarCarrito = itemView.findViewById(R.id.btnAgregarCarrito);
         }
     }
 
@@ -137,7 +121,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             String json = gson.toJson(productId);
             RequestBody requestBody = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
 
-            apiService.addToFavorites(requestBody, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
+            apiService.addToFavorites((Map<String, Integer>) requestBody, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
@@ -166,7 +150,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             Map<String, Integer> productId = new HashMap<>();
             productId.put("producto_id", product.getIdProducto());
 
-            apiService.removeFromFavorites(productId, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
+            apiService.removeFromFavorites(productId.size(), "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
