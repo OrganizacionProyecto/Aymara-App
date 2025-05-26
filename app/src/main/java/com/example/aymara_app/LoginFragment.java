@@ -52,7 +52,7 @@ public class LoginFragment extends Fragment {
     private boolean isPasswordVisible = false;
 
     private OkHttpClient client;
-    private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/login/";
+    private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/token/";
     private static final int MAX_FAILED_ATTEMPTS = 5;
     private static final long LOCK_TIME_MINUTES = 5;
 
@@ -184,7 +184,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void fetchUserProfile(String accessToken) {
-        String userProfileUrl = "https://aymara.pythonanywhere.com/api/auth/user/";
+        String userProfileUrl = "https://aymara.pythonanywhere.com/api/users/me/";
         Request request = new Request.Builder()
                 .url(userProfileUrl)
                 .addHeader("Authorization", "Bearer " + accessToken)
