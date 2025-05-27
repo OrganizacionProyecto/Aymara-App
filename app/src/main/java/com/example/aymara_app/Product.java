@@ -11,7 +11,6 @@ public class Product {
     private String descripcion;
     private double precio;
 
-    // Aquí lo llamamos stock para igualar a Angular
     private int stock;
 
     private String imagen;
@@ -19,7 +18,6 @@ public class Product {
     @SerializedName("id_categoria")
     private int idCategoria;
 
-    // Solo para UI (no viene del backend)
     private int cantidad;
 
     public Product() {

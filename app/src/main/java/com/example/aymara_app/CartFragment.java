@@ -1,28 +1,28 @@
 package com.example.aymara_app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.aymara_app.R;
-import com.example.aymara_app.CartAdapter;
-import com.example.aymara_app.CartItem;
+
 import com.example.aymara_app.network.ApiClient;
 import com.example.aymara_app.network.ApiService;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.io.IOException;
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,18 +30,19 @@ import retrofit2.Response;
 
 public class CartFragment extends Fragment {
 
+    private SharedPreferences prefs;
     private RecyclerView recyclerView;
     private TextView totalCarrito;
     private Button btnRealizarPedido;
     private CartAdapter adapter;
     private List<CartItem> carrito = new ArrayList<>();
     private ApiService apiService;
-    private String token = "Bearer TU_TOKEN_JWT";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
+        prefs = requireContext().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
 
         recyclerView = v.findViewById(R.id.recyclerCart);
         totalCarrito = v.findViewById(R.id.totalCarrito);
@@ -53,46 +54,85 @@ public class CartFragment extends Fragment {
 
         adapter = new CartAdapter(carrito, new CartAdapter.CartActionListener() {
             @Override
-            public void onCantidadModificada(CartItem item, int nuevaCantidad) {
-                HashMap<String, Integer> body = new HashMap<>();
+            public void onModificarCantidad(CartItem item, String accion, int nuevaCantidad) {
+                String accessToken = prefs.getString("access_token", "");
+                if (accessToken.isEmpty()) {
+                    showToast("Sesión expirada. Por favor, inicia sesión nuevamente.");
+                    return;
+                }
+
+                HashMap<String, Object> body = new HashMap<>();
+                body.put("accion", accion);
                 body.put("cantidad", nuevaCantidad);
 
-                apiService.updateCartItem(item.getId_producto(), body, token).enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        obtenerCarrito();
-                    }
+                apiService.updateCartItem(item.getId_producto(), body, "Bearer " + accessToken)
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()) {
+                                    obtenerCarrito();
+                                } else {
+                                    showToast("Error al actualizar cantidad");
+                                }
+                            }
 
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {}
-                });
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                showToast("Error de red al actualizar carrito.");
+                            }
+                        });
             }
 
             @Override
             public void onEliminarProducto(CartItem item) {
-                apiService.deleteCartItem(item.getId_producto(), token).enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        obtenerCarrito();
-                    }
+                String accessToken = prefs.getString("access_token", "");
+                if (accessToken.isEmpty()) {
+                    showToast("Sesión expirada. Por favor, inicia sesión nuevamente.");
+                    return;
+                }
 
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {}
-                });
+                apiService.deleteCartItem(item.getId_producto(), "Bearer " + accessToken)
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()) {
+                                    obtenerCarrito();
+                                } else {
+                                    showToast("Error al eliminar producto");
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                showToast("Error de red al eliminar producto.");
+                            }
+                        });
             }
         });
 
         recyclerView.setAdapter(adapter);
 
         btnRealizarPedido.setOnClickListener(v1 -> {
-            apiService.createPedido(token).enqueue(new Callback<ResponseBody>() {
+            String accessToken = prefs.getString("access_token", "");
+            if (accessToken.isEmpty()) {
+                showToast("Sesión expirada. Por favor, inicia sesión nuevamente.");
+                return;
+            }
+            apiService.createPedido("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    obtenerCarrito(); // Reiniciar carrito
+                    if (response.isSuccessful()) {
+                        obtenerCarrito();
+                        showToast("Pedido realizado correctamente.");
+                    } else {
+                        showToast("Error al realizar el pedido.");
+                    }
                 }
 
                 @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {}
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    showToast("Error de red al realizar el pedido.");
+                }
             });
         });
 
@@ -102,31 +142,38 @@ public class CartFragment extends Fragment {
     }
 
     private void obtenerCarrito() {
-        apiService.getCart(token).enqueue(new Callback<ResponseBody>() {
+        String accessToken = prefs.getString("access_token", "");
+        if (accessToken.isEmpty()) {
+            showToast("Sesión expirada. Por favor, inicia sesión nuevamente.");
+            return;
+        }
+
+        apiService.getCart("Bearer " + accessToken).enqueue(new Callback<CartResponse>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                try {
-                    String json = response.body().string();
-                    Type listType = new TypeToken<List<CartItem>>() {}.getType();
+            public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    CartResponse cartResponse = response.body();
+
                     carrito.clear();
-                    carrito.addAll(new Gson().fromJson(json, listType));
+                    carrito.addAll(cartResponse.getDetalles_producto());
                     adapter.notifyDataSetChanged();
-                    recalcularTotal();
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                    totalCarrito.setText(String.format("Total: $%.2f", cartResponse.getTotal_carrito()));
+                } else {
+                    showToast("Error al obtener carrito.");
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {}
+            public void onFailure(Call<CartResponse> call, Throwable t) {
+                showToast("Error de red: " + t.getMessage());
+            }
         });
     }
 
-    private void recalcularTotal() {
-        double total = 0;
-        for (CartItem item : carrito) {
-            total += item.getPrecio_unitario() * item.getCantidad();
+    private void showToast(final String message) {
+        if (getActivity() != null) {
+            getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show());
         }
-        totalCarrito.setText(String.format("Total: $%.2f", total));
     }
 }

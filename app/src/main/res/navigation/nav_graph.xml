@@ -59,4 +59,9 @@
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
 
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.aymara_app.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>

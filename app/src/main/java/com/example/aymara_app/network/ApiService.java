@@ -1,9 +1,11 @@
 package com.example.aymara_app.network;
 
+import com.example.aymara_app.CartResponse;
 import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,20 +35,25 @@ public interface ApiService {
 
         // ---------- CARRITO ----------
         @GET("api/cart/carrito/")
-        Call<ResponseBody> getCart(@Header("Authorization") String token);
+        Call<CartResponse> getCart(@Header("Authorization") String token);
 
-        @POST("api/cart/agregar/")
+        @POST("api/cart/carrito/agregar/")
         Call<ResponseBody> agregarAlCarrito(
-                @Body RequestBody body,
+                @Body Map<String, Object> body,
                 @Header("Authorization") String authHeader
         );
 
         @PUT("api/cart/carrito/modificar/{producto_id}/")
-        Call<ResponseBody> updateCartItem(@Path("producto_id") int productoId, @Body Map<String, Integer> body, @Header("Authorization") String token);
-
+        Call<ResponseBody> updateCartItem(
+                @Path("producto_id") int productoId,
+                @Body Map<String, Object> body,
+                @Header("Authorization") String token
+        );
         @DELETE("api/cart/carrito/eliminar/{producto_id}/")
-        Call<ResponseBody> deleteCartItem(@Path("producto_id") int productoId, @Header("Authorization") String token);
-
+        Call<ResponseBody> deleteCartItem(
+                @Path("producto_id") int productoId,
+                @Header("Authorization") String token
+        );
         // ---------- PEDIDOS ----------
         @POST("api/cart/pedido/crear/")
         Call<ResponseBody> createPedido(@Header("Authorization") String token);

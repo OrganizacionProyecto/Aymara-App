@@ -1,21 +1,20 @@
 package com.example.aymara_app;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.aymara_app.R;
-import com.example.aymara_app.CartItem;
+
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
     public interface CartActionListener {
-        void onCantidadModificada(CartItem item, int nuevaCantidad);
+        void onModificarCantidad(CartItem item, String accion, int nuevaCantidad);
         void onEliminarProducto(CartItem item);
     }
 
@@ -43,15 +42,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.total.setText(String.format("Total: $%.2f", item.getTotal_producto()));
 
         holder.btnAumentar.setOnClickListener(v ->
-                listener.onCantidadModificada(item, item.getCantidad() + 1));
+                listener.onModificarCantidad(item, "aumentar", item.getCantidad() + 1));
 
         holder.btnDisminuir.setOnClickListener(v -> {
             if (item.getCantidad() > 1) {
-                listener.onCantidadModificada(item, item.getCantidad() - 1);
+                listener.onModificarCantidad(item, "disminuir", item.getCantidad() - 1);
             }
         });
 
-        holder.btnEliminar.setOnClickListener(v -> listener.onEliminarProducto(item));
+        holder.btnEliminar.setOnClickListener(v ->
+                listener.onEliminarProducto(item));
     }
 
     @Override

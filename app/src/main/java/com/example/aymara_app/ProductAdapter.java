@@ -66,12 +66,46 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 .load(product.getImagen())
                 .into(holder.productImagen);
 
-        // Aquí podrías agregar el listener para el botón de agregar al carrito
         holder.btnAgregarCarrito.setOnClickListener(v -> {
-            // Lógica para agregar al carrito, por ejemplo:
-            Toast.makeText(holder.itemView.getContext(), "Agregado al carrito: " + product.getNombre(), Toast.LENGTH_SHORT).show();
-            // Aquí puedes implementar llamada a API o actualizar UI según corresponda
+            Context context = holder.itemView.getContext();
+            String token = getAccessToken(context);
+
+            if (token.isEmpty()) {
+                Toast.makeText(context, "Debes iniciar sesión", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Map<String, Object> payload = new HashMap<>();
+            payload.put("producto_id", product.getIdProducto());
+            payload.put("cantidad", 1); // O dejá elegir la cantidad
+
+            // <<< AGREGÁ ESTE LOG AQUÍ >>>
+            Log.d("Carrito", "Payload: " + payload.toString());
+
+            apiService.agregarAlCarrito(payload, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(context, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
+                    } else {
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Log.e("Carrito", "Error al agregar al carrito: " + response.code() + " - " + errorBody);
+                        } catch (Exception e) {
+                            Log.e("Carrito", "Error parsing errorBody", e);
+                        }
+                        Toast.makeText(context, "Error al agregar al carrito", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    Toast.makeText(context, "Error de red", Toast.LENGTH_SHORT).show();
+                    Log.e("Carrito", "Fallo: " + t.getMessage());
+                }
+            });
         });
+
     }
 
     @Override

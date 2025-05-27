@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_products:
                 navController.navigate(R.id.ProductFragment);
                 return true;
+            case R.id.nav_cart:
+                navController.navigate(R.id.cartFragment);
+                return true;
             case R.id.nav_contac:
                 navController.navigate(R.id.ContacFragment);
                 return true;
