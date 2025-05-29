@@ -11,6 +11,11 @@ public class RegisterRequest {
     private boolean is_staff = false;
     private boolean is_superuser = false;
 
+    // Campos nuevos según la API
+    private String direccion;
+    private String password2;
+    private String current_password;
+
     public RegisterRequest(String email, String password, String username, String first_name, String last_name) {
         this.email = email;
         this.password = password;
@@ -19,35 +24,76 @@ public class RegisterRequest {
         this.last_name = last_name;
     }
 
-    public String getEmail() {
-        return email;
+    // Getters
+    public String getEmail() {return email;}
+
+    public String getPassword() {return password;}
+
+    public String getUsername() {return username;}
+
+    public String getFirstName() {return first_name;}
+
+    public String getLastName() {return last_name;}
+
+    public String getDireccion() {return direccion;}
+
+    public String getPassword2() {return password2;}
+
+    public String getCurrentPassword() {return current_password;}
+
+
+    public boolean isActive() {return is_active;}
+
+    public boolean isStaff() {return is_staff;}
+
+    public boolean isSuperuser() {return is_superuser;}
+
+    // Setters
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstName() {
-        return first_name;
+    public void setFirstName(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return last_name;
+    public void setLastName(String last_name) {
+        this.last_name = last_name;
     }
 
-    public boolean isActive() {
-        return is_active;
+    public void setIsActive(boolean is_active) {
+        this.is_active = is_active;
     }
 
-    public boolean isStaff() {
-        return is_staff;
+    public void setStaff(boolean is_staff) {
+        this.is_staff = is_staff;
     }
 
-    public boolean isSuperuser() {
-        return is_superuser;
+    public void setSuperuser(boolean is_superuser) {
+        this.is_superuser = is_superuser;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
+
+    public void setCurrentPassword(String current_password) {
+        this.current_password = current_password;
     }
 }
+
+
+
+

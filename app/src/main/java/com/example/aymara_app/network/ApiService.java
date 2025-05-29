@@ -65,7 +65,7 @@ public interface ApiService {
         Call<ResponseBody> getFactura(@Path("pedido_id") int pedidoId, @Header("Authorization") String token);
 
         // ---------- AUTENTICACIÓN / USUARIOS ----------
-        @POST("api/users/auth/signup/")
+        @POST("api/users/")
         Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
 
         @POST("api/users/auth/logout/")
