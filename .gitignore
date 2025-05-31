@@ -1,32 +1,29 @@
-# Archivos generados por Android Studio
 *.iml
-.gradle/
 .idea/
+.gradle/
 local.properties
 build/
 captures/
-.externalNativeBuild/
-.cxx/
-.navigation/
-output.json
-
-# Archivos generados por la construcción
 *.apk
 *.ap_
-*.aa
+*.aab
 *.dex
 *.class
-
-# Archivos generados por el sistema
+.externalNativeBuild/
+.cxx/
+obj/
+caches/
+native/
+*.log
+hs_err_pid*
+replay_pid*
 bin/
 gen/
-
-# Archivos temporales del sistema operativo
+out/
+output.json
 .DS_Store
 Thumbs.db
-
-# Archivos NDK
-obj/
-
-# Archivos de caché de Gradle
-.gradle/caches/
+*.jar
+*.zip
+*.tar.gz
+*.rar

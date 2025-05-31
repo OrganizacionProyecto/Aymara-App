@@ -1,0 +1,69 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.github.bumptech.glide",
+    "module": "compiler",
+    "version": "4.15.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.4"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "compiler-4.15.1.jar",
+          "url": "compiler-4.15.1.jar",
+          "size": 317754,
+          "sha512": "02252a44855a1fbbc804bf5d9263a432637c87f310f95fae372d81e4453d02f123d048be683141d5edd0b77bd1f82b8c414e7ee4b5c2ee427004f1aca64bfa34",
+          "sha256": "aeaceb4276dd6bf512f98588a887778fcd8e13fc7d3796610108c3b4e12212f4",
+          "sha1": "5818cba915529583d01d27a84e4f232f41aaf1c7",
+          "md5": "99640d93886b0da8efc0476f81c3f48c"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.github.bumptech.glide",
+          "module": "annotations",
+          "version": {
+            "requires": "4.15.1"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "compiler-4.15.1.jar",
+          "url": "compiler-4.15.1.jar",
+          "size": 317754,
+          "sha512": "02252a44855a1fbbc804bf5d9263a432637c87f310f95fae372d81e4453d02f123d048be683141d5edd0b77bd1f82b8c414e7ee4b5c2ee427004f1aca64bfa34",
+          "sha256": "aeaceb4276dd6bf512f98588a887778fcd8e13fc7d3796610108c3b4e12212f4",
+          "sha1": "5818cba915529583d01d27a84e4f232f41aaf1c7",
+          "md5": "99640d93886b0da8efc0476f81c3f48c"
+        }
+      ]
+    }
+  ]
+}
