@@ -1,6 +1,7 @@
 package com.example.aymara_app.network;
 
 import com.example.aymara_app.CartResponse;
+import com.example.aymara_app.PedidoResponse;
 import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
@@ -56,7 +57,7 @@ public interface ApiService {
         );
         // ---------- PEDIDOS ----------
         @POST("api/cart/pedido/crear/")
-        Call<ResponseBody> createPedido(@Header("Authorization") String token);
+        Call<PedidoResponse> createPedido(@Body Map<String, Object> body, @Header("Authorization") String token);
 
         @GET("api/cart/pedido/historial/")
         Call<ResponseBody> getHistorialPedidos(@Header("Authorization") String token);

@@ -28,10 +28,12 @@
         android:id="@+id/profileFragment"
         android:name="com.example.aymara_app.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment" >
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/ProductFragment"
         android:name="com.example.aymara_app.ProductFragment"
@@ -63,5 +65,15 @@
         android:id="@+id/cartFragment"
         android:name="com.example.aymara_app.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_pedidoFragment"
+            app:destination="@id/pedidoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pedidoFragment"
+        android:name="com.example.aymara_app.PedidoFragment"
+        android:label="Realizar Pedido" />
+
 </navigation>
