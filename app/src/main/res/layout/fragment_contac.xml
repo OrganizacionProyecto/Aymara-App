@@ -1,62 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/ContacLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="ContacFragment">
 
-    <FrameLayout
-        android:id="@+id/frame_baner"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@color/VerdeAymara"
+
+    <TextView
+        android:id="@+id/contacto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONTACTO"
+        android:textAlignment="center"
+        android:textColor="@color/VerdeAymara"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
-            android:src="@drawable/ic_logocontac" />
-
-        <TextView
-            android:id="@+id/tv_contacto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="3dp"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/tv_contacto"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="34sp" />
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/lh_linea1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="5dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/lv_linea2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame_baner">
+        app:layout_constraintTop_toBottomOf="@+id/contacto">
 
         <TextView
             android:id="@+id/txt_instrucciones"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="5sp"
             android:layout_weight="1"
+            android:paddingTop="10sp"
             android:text="@string/txt_instrucciones"
             android:textAlignment="gravity"
             android:textColor="@color/VerdeAymara"
@@ -67,16 +53,11 @@
 
     <LinearLayout
         android:id="@+id/lv_linea2"
-        android:layout_width="0dp"
+        android:layout_width="402dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="14dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/lh_linea4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lh_linea1">
+        app:layout_constraintTop_toBottomOf="@+id/lh_linea1"
+        tools:layout_editor_absoluteX="5dp">
 
         <EditText
             android:id="@+id/ed_name"
@@ -85,11 +66,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints=""
             android:drawableStart="@drawable/ic_nombreyapellidocontac"
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/ed_name"
             android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="#757575"
             android:textSize="16sp" />
 
         <EditText
@@ -99,11 +84,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints=""
             android:drawableStart="@drawable/ic_mailcontac"
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/em_mail"
             android:inputType="textEmailAddress"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:textSize="16sp" />
 
         <EditText
@@ -113,12 +102,17 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints=""
             android:drawableStart="@drawable/ic_edadcontac"
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/en_edad"
             android:inputType="numberSigned"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <LinearLayout
             android:id="@+id/ln_sexo"
@@ -133,6 +127,7 @@
                 android:id="@+id/iv_sexo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="TODO"
                 android:src="@drawable/ic_sexocontac" />
 
             <RadioGroup
@@ -148,6 +143,8 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="5dp"
                     android:text="@string/rb_masculino"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
                     android:textSize="14sp" />
 
                 <RadioButton
@@ -155,13 +152,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:paddingEnd="5dp"
-                    android:text="@string/rb_femenino" />
+                    android:text="@string/rb_femenino"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
 
                 <RadioButton
                     android:id="@+id/rb_otro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rb_otro" />
+                    android:text="@string/rb_otro"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    tools:ignore="VisualLintButtonSize" />
             </RadioGroup>
 
         </LinearLayout>
@@ -173,12 +175,17 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints=""
             android:drawableStart="@drawable/ic_alturacontac"
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/en_altura"
             android:inputType="numberDecimal"
-            android:textSize="16sp" />
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textSize="16sp"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
             android:id="@+id/end_peso"
@@ -187,11 +194,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
+            android:autofillHints=""
             android:drawableStart="@drawable/ic_kgcontac"
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/en_peso"
             android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:textSize="16sp" />
 
         <EditText
@@ -205,7 +216,11 @@
             android:drawablePadding="20dp"
             android:ems="10"
             android:hint="@string/ed_objetivo"
+            android:importantForAutofill="no"
             android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
             android:textSize="16sp" />
 
         <TextView
@@ -218,6 +233,7 @@
             android:drawableStart="@drawable/ic_nutricioncontac"
             android:drawablePadding="20dp"
             android:text="@string/ed_nutricion"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <RadioGroup
@@ -234,6 +250,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cb_si"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -242,8 +259,36 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/cb_no"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Texto de Comentario -->
+            <TextView
+                android:id="@+id/comentario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comentario:"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Rectángulo para ingresar información -->
+            <EditText
+                android:id="@+id/ed_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rectangle_border"
+                android:hint="Escribe tu comentario aquí"
+                android:padding="10dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -251,34 +296,38 @@
         android:id="@+id/lh_linea4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="88dp"
         android:orientation="horizontal"
         android:padding="5dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lv_linea2">
 
         <Button
             android:id="@+id/btn_enviar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="0"
             android:backgroundTint="@color/botonEnviar"
             android:onClick="enviarDatos"
-            android:text="@string/btn_enviar" />
+            android:text="@string/btn_enviar"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btn_borrar"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:backgroundTint="@color/botonBorrar"
             android:onClick="borrar"
-            android:text="@string/btn_borrar" />
+            android:text="@string/btn_borrar"
+            android:textColor="@color/white"
+            tools:ignore="UsingOnClickInXml" />
     </LinearLayout>
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

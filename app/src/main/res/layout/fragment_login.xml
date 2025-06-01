@@ -5,42 +5,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEBEE"
+    android:background="@color/white"
     android:padding="16dp">
-
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="260dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Logo de la aplicación"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/myLinearLayout"
         android:layout_width="373dp"
         android:layout_height="397dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/rounded_corner"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImageView">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Sesion"
+            android:textAlignment="center"
+            android:textColor="@color/VerdeAymara"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="334dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginTop="70dp"
-            android:hint="e-mail"
+            android:hint="E-mail"
             android:inputType="textEmailAddress"
             android:selectAllOnFocus="false"
-            android:textColor="@color/grey" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey" />
 
         <RelativeLayout
             android:layout_width="334dp"
@@ -49,12 +51,13 @@
             <EditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="50dp"
                 android:drawablePadding="10dp"
-                android:hint="password"
-                android:textColor="@color/grey"
-                android:inputType="textPassword" />
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey" />
 
             <ImageView
                 android:id="@+id/passwordToggle"
@@ -64,8 +67,8 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/show_password"
                 android:onClick="togglePasswordVisibility"
-                android:paddingEnd="8dp"
-                android:src="@drawable/icon_invisiblec" />
+                android:paddingEnd="15px"
+                android:src="@drawable/icon_visiblea" />
 
         </RelativeLayout>
 
@@ -76,8 +79,9 @@
             android:layout_height="55dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/VerdeAymara"
+            android:text="Login"
             android:textColor="@color/white"
-            android:text="Login" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -88,8 +92,9 @@
         android:layout_marginTop="16dp"
         android:text="Haz click si no estas registrado"
         android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/myLinearLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/myLinearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

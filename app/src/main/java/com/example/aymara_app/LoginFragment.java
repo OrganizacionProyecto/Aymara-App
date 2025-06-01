@@ -1,7 +1,7 @@
 package com.example.aymara_app;
 
 import android.content.Context;
-import android.content.SharedPreferences; // Se agregó esta importación necesaria
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.text.InputType;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.concurrent.TimeUnit; // Importación para la función de bloqueo temporal
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -52,9 +52,9 @@ public class LoginFragment extends Fragment {
     private boolean isPasswordVisible = false;
 
     private OkHttpClient client;
-    private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/login/";
-    private static final int MAX_FAILED_ATTEMPTS = 5; // Número máximo de intentos
-    private static final long LOCK_TIME_MINUTES = 5; // Tiempo de bloqueo en minutos
+    private static final String LOGIN_URL = "https://aymara.pythonanywhere.com/api/auth/token/";
+    private static final int MAX_FAILED_ATTEMPTS = 5;
+    private static final long LOCK_TIME_MINUTES = 5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -155,10 +155,17 @@ public class LoginFragment extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
-                    resetFailedAttempts(); // Reiniciar intentos fallidos
+                    resetFailedAttempts();
                     handleLoginSuccess(response.body().string());
                 } else {
-                    handleFailedLogin(); // Manejar intento fallido
+                    if (response.code() == 401) {
+                        showToast("Usuario o contraseña incorrectos.");
+                    } else if (response.code() == 404) {
+                        showToast("Usuario no encontrado. Verifica tus credenciales.");
+                    } else {
+                        showToast("Error al iniciar sesión: " + response.message());
+                    }
+                    handleFailedLogin();
                 }
             }
         });
@@ -177,7 +184,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void fetchUserProfile(String accessToken) {
-        String userProfileUrl = "https://aymara.pythonanywhere.com/api/auth/user/";
+        String userProfileUrl = "https://aymara.pythonanywhere.com/api/users/me/";
         Request request = new Request.Builder()
                 .url(userProfileUrl)
                 .addHeader("Authorization", "Bearer " + accessToken)
@@ -205,7 +212,6 @@ public class LoginFragment extends Fragment {
             JSONObject jsonUserProfile = new JSONObject(userProfileData);
             String email = jsonUserProfile.getString("email");
 
-            // Guardar perfil en SharedPreferences
             Context context = getActivity();
             if (context != null) {
                 context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE)
@@ -214,7 +220,6 @@ public class LoginFragment extends Fragment {
                         .apply();
             }
 
-            // Navegar al fragmento de perfil
             getActivity().runOnUiThread(() -> {
                 NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
                 Bundle bundle = new Bundle();
@@ -289,7 +294,6 @@ public class LoginFragment extends Fragment {
 
     private OkHttpClient getUnsafeOkHttpClient() {
         try {
-            // Configuración para permitir SSL sin verificar certificados
             final TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override

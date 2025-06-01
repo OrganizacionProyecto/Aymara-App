@@ -8,5 +8,7 @@
     <color name="AmarilloLogo">#D6E5B3</color>
     <color name="botonEnviar">#548344</color>
     <color name="botonBorrar">#F44336</color>
+    <color name="teal_200">#03DAC5</color>
+
 </resources>
 

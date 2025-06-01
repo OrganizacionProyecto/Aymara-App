@@ -31,7 +31,6 @@ public class ProductFragment extends Fragment {
     private SharedPreferences sharedPreferences;
 
     public ProductFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -82,7 +81,7 @@ public class ProductFragment extends Fragment {
             if (products != null && !products.isEmpty()) {
                 Log.d("ProductFragment", "Productos obtenidos: " + products.size());
                 productList = products;
-                productAdapter.setProductList(products);
+                productAdapter.setProductList(products, requireContext());
             } else {
                 Log.d("ProductFragment", "No se obtuvieron productos de la API");
             }
@@ -98,7 +97,6 @@ public class ProductFragment extends Fragment {
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // No se necesita implementar
             }
 
             @Override
@@ -108,7 +106,6 @@ public class ProductFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // No se necesita implementar
             }
         });
     }
@@ -120,7 +117,7 @@ public class ProductFragment extends Fragment {
                 filteredList.add(product);
             }
         }
-        productAdapter.setProductList(filteredList);
+        productAdapter.setProductList(filteredList, requireContext());
     }
 
     public void refreshProductList() {
@@ -128,4 +125,6 @@ public class ProductFragment extends Fragment {
         productAdapter.setIsLoggedIn(isLoggedIn);
         productAdapter.notifyDataSetChanged();
     }
+
+
 }
