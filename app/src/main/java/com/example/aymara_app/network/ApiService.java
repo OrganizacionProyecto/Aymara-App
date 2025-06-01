@@ -64,7 +64,31 @@ public interface ApiService {
         @GET("api/cart/pedido/{pedido_id}/factura/")
         Call<ResponseBody> getFactura(@Path("pedido_id") int pedidoId, @Header("Authorization") String token);
 
-    @POST("/api/token/refresh/")
-    Call<ResponseBody> refreshToken(@Body String refreshToken);
+        // ---------- AUTENTICACIÓN / USUARIOS ----------
+        @POST("api/users/auth/signup/")
+        Call<RegisterResponse> registerUser(@Body RegisterRequest registerRequest);
 
+        @POST("api/users/auth/logout/")
+        Call<ResponseBody> logout(@Header("Authorization") String token);
+
+        @GET("api/users/me/")
+        Call<ResponseBody> getUserDetails(@Header("Authorization") String token);
+
+        @PATCH("api/users/change_email/")
+        Call<ResponseBody> changeEmail(@Header("Authorization") String token, @Body Map<String, String> body);
+
+        @PATCH("api/users/change-direccion/")
+        Call<ResponseBody> changeAddress(@Header("Authorization") String token, @Body Map<String, String> body);
+
+        @PATCH("api/users/change-username/")
+        Call<ResponseBody> changeUsername(@Header("Authorization") String token, @Body Map<String, String> body);
+
+        @POST("api/users/change-password/")
+        Call<ResponseBody> changePassword(@Header("Authorization") String token, @Body RequestBody body);
+
+        @DELETE("api/users/auth/delete_account/")
+        Call<ResponseBody> deleteAccount(@Header("Authorization") String token);
+
+        @POST("api/auth/token/refresh/")
+        Call<ResponseBody> refreshToken();
 }

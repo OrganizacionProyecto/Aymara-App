@@ -66,45 +66,52 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 .load(product.getImagen())
                 .into(holder.productImagen);
 
-        holder.btnAgregarCarrito.setOnClickListener(v -> {
-            Context context = holder.itemView.getContext();
-            String token = getAccessToken(context);
 
-            if (token.isEmpty()) {
-                Toast.makeText(context, "Debes iniciar sesión", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (isLoggedIn) {
+            holder.btnAgregarCarrito.setVisibility(View.VISIBLE);
 
-            Map<String, Object> payload = new HashMap<>();
-            payload.put("producto_id", product.getIdProducto());
-            payload.put("cantidad", 1); // O dejá elegir la cantidad
+            holder.btnAgregarCarrito.setOnClickListener(v -> {
+                Context context = holder.itemView.getContext();
+                String token = getAccessToken(context);
 
-            // <<< AGREGÁ ESTE LOG AQUÍ >>>
-            Log.d("Carrito", "Payload: " + payload.toString());
+                if (token.isEmpty()) {
+                    Toast.makeText(context, "Debes iniciar sesión", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-            apiService.agregarAlCarrito(payload, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if (response.isSuccessful()) {
-                        Toast.makeText(context, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
-                    } else {
-                        try {
-                            String errorBody = response.errorBody().string();
-                            Log.e("Carrito", "Error al agregar al carrito: " + response.code() + " - " + errorBody);
-                        } catch (Exception e) {
-                            Log.e("Carrito", "Error parsing errorBody", e);
+                Map<String, Object> payload = new HashMap<>();
+                payload.put("producto_id", product.getIdProducto());
+                payload.put("cantidad", 1); // O dejá elegir la cantidad
+
+                Log.d("Carrito", "Payload: " + payload.toString());
+
+                apiService.agregarAlCarrito(payload, "Bearer " + token).enqueue(new retrofit2.Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(context, "Producto agregado al carrito", Toast.LENGTH_SHORT).show();
+                        } else {
+                            try {
+                                String errorBody = response.errorBody().string();
+                                Log.e("Carrito", "Error al agregar al carrito: " + response.code() + " - " + errorBody);
+                            } catch (Exception e) {
+                                Log.e("Carrito", "Error parsing errorBody", e);
+                            }
+                            Toast.makeText(context, "Error al agregar al carrito", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(context, "Error al agregar al carrito", Toast.LENGTH_SHORT).show();
                     }
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    Toast.makeText(context, "Error de red", Toast.LENGTH_SHORT).show();
-                    Log.e("Carrito", "Fallo: " + t.getMessage());
-                }
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(context, "Error de red", Toast.LENGTH_SHORT).show();
+                        Log.e("Carrito", "Fallo: " + t.getMessage());
+                    }
+                });
             });
-        });
+        } else {
+            holder.btnAgregarCarrito.setVisibility(View.GONE);
+        }
+
 
     }
 

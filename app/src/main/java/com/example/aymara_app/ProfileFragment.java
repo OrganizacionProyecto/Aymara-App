@@ -157,7 +157,7 @@ public class ProfileFragment extends Fragment {
     private void refreshToken() {
         String refreshToken = prefs.getString("refresh_token", "");
         if (!refreshToken.isEmpty()) {
-            apiService.refreshToken(refreshToken).enqueue(new Callback<ResponseBody>() {
+            apiService.refreshToken().enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                     if (response.isSuccessful() && response.body() != null) {
@@ -207,8 +207,29 @@ public class ProfileFragment extends Fragment {
     }
 
     private boolean isValidPassword(String password) {
-        return password.length() >= 8 && password.matches(".*[A-Za-z].*") && password.matches(".*[0-9].*");
+        if (password.length() < 8) {
+            Toast.makeText(getContext(), "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!password.matches(".*[A-Z].*")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos una letra mayúscula", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!password.matches(".*[0-9].*")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos un número", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!password.matches(".*[a-zA-Z].*")) {
+            Toast.makeText(getContext(), "La contraseña debe contener al menos una letra (mayúscula o minúscula)", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
+
     private void updatePassword(@NonNull String oldPassword, @NonNull String newPassword) {
         SharedPreferences prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         String accessToken = prefs.getString("access_token", "");
@@ -269,20 +290,20 @@ public class ProfileFragment extends Fragment {
         layout.addView(etConfirmPassword);
 
         builder.setView(layout).setPositiveButton("Confirmar", (dialog, which) -> {
-            String oldPassword = etOldPassword.getText().toString();
-            String newPassword = etNewPassword.getText().toString();
-            String confirmPassword = etConfirmPassword.getText().toString();
+                    String oldPassword = etOldPassword.getText().toString();
+                    String newPassword = etNewPassword.getText().toString();
+                    String confirmPassword = etConfirmPassword.getText().toString();
 
-            if (newPassword.isEmpty() || oldPassword.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(getActivity(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
-            } else if (!newPassword.equals(confirmPassword)) {
-                Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-            } else if (!isValidPassword(newPassword)){
-                Toast.makeText(getActivity(), "La contraseña debe tener al menos 8 caracteres e incluir al menos una letra y un número", Toast.LENGTH_SHORT).show();
-            } else {
-                updatePassword(oldPassword, newPassword);
-            }
-        })
+                    if (newPassword.isEmpty() || oldPassword.isEmpty() || confirmPassword.isEmpty()) {
+                        Toast.makeText(getActivity(), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+                    } else if (!newPassword.equals(confirmPassword)) {
+                        Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                    } else if (!isValidPassword(newPassword)){
+                        Toast.makeText(getActivity(), "La contraseña debe tener al menos 8 caracteres e incluir al menos una letra y un número", Toast.LENGTH_SHORT).show();
+                    } else {
+                        updatePassword(oldPassword, newPassword);
+                    }
+                })
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
                 .create()
                 .show();
@@ -409,7 +430,7 @@ public class ProfileFragment extends Fragment {
                 })
                 .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
                 .create()
-                                .show();
+                .show();
     }
 
     private void deleteAccount() {
@@ -420,9 +441,9 @@ public class ProfileFragment extends Fragment {
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getActivity(), "Cuenta eliminada con éxito", Toast.LENGTH_SHORT).show();
-                     prefs.edit().clear().apply();
-                      NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                      navController.navigate(R.id.action_profileFragment_to_loginFragment);
+                    prefs.edit().clear().apply();
+                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                    navController.navigate(R.id.action_profileFragment_to_loginFragment);
                 } else {
                     handleErrorResponse(response);
                 }
@@ -444,4 +465,3 @@ public class ProfileFragment extends Fragment {
         navController.navigate(R.id.loginFragment);
     }
 }
-
