@@ -4,6 +4,7 @@ import com.example.aymara_app.CartResponse;
 import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
+import com.example.aymara_app.Categoria;
 
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +55,11 @@ public interface ApiService {
                 @Path("producto_id") int productoId,
                 @Header("Authorization") String token
         );
+        //---------- CATEGORIAS --------
+
+        @GET("api/products/categorias/")
+        Call<List<Categoria>> getNombre();
+
         // ---------- PEDIDOS ----------
         @POST("api/cart/pedido/crear/")
         Call<ResponseBody> createPedido(@Header("Authorization") String token);

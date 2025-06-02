@@ -220,6 +220,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         editor.apply();
     }
 
+
     private boolean isProductFavorite(int productId, Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
         return prefs.getBoolean("favorito_" + productId, false);

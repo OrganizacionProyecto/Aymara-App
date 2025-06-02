@@ -45,6 +45,17 @@
         app:layout_constraintWidth_percent="0.9" />
 
     <!-- Botón de favorito (icono de corazón) -->
+
+    <Spinner
+        android:id="@+id/category_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:backgroundTint="@color/black"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="147dp"
+        tools:outlineSpotShadowColor="@color/black" />
+
     <ImageButton
         android:id="@+id/button"
         style="@android:style/Widget.ImageButton"
@@ -64,8 +75,9 @@
     <!-- RecyclerView para la lista de productos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_products"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="397dp"
+        android:layout_height="508dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
