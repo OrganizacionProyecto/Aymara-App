@@ -16,15 +16,13 @@
 
     <string name="sin_productos">No hay productos disponibles</string>
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <string name="contentDescripcion">Favorito</string>
 
     <!--Profile-->
+    <string name="ver_historial_pedidos">Ver Historial de Pedidos</string>
     <string name="cambiar_contraseña">Cambiar contraseña</string>
-
     <string name="tv_contacto">Contacto</string>
     <string name="txt_instrucciones"> Por favor, completa el formulario
         a continuación para ponerte en contacto con nosotros. Respondemos a la brevedad.</string>
