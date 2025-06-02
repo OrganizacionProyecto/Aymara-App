@@ -79,15 +79,14 @@
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:passwordToggleEnabled="true"
-                app:helperText="* La contraseña debe tener al menos 8 caracteres, una mayúscula y un número."
-                app:helperTextTextColor="@color/red">
-
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:helperText="* La contraseña debe tener al menos 8 caracteres, una mayúscula y un número."
+                    app:helperTextTextColor="@color/red"
+                    app:passwordToggleEnabled="true">
 
                     <EditText
                         android:id="@+id/password"
@@ -105,7 +104,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout"
+                    android:id="@+id/textInputLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
@@ -139,20 +138,30 @@
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
+                <EditText
+                    android:id="@+id/direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/custom_editex1"
+                    android:drawableLeft="@drawable/baseline_location_on_24"
+                    android:hint="Dirección"
+                    android:inputType="text"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
                 <Button
                     android:id="@+id/registerButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/VerdeAymara"
-                    android:onClick="crear"
                     android:text="Crear Cuenta"
                     android:textSize="18sp"
                     app:cornerRadius="20dp" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </ScrollView>
-
 </LinearLayout>

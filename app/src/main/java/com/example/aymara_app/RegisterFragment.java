@@ -20,6 +20,7 @@ import retrofit2.Retrofit;
 
 public class RegisterFragment extends Fragment {
     private EditText editTextEmail, editTextPassword, editTextConfirPass, editTextUsername, editTextFirstName, editTextLastName;
+    private EditText editTextDireccion;
     private TextView loginText;
     private Button buttonRegister;
     private Retrofit retrofit;
@@ -43,6 +44,8 @@ public class RegisterFragment extends Fragment {
         editTextEmail = view.findViewById (R.id.email);
         editTextFirstName = view.findViewById (R.id.firstname);
         editTextLastName = view.findViewById (R.id.lastname);
+        editTextDireccion = view.findViewById(R.id.direccion);
+
         buttonRegister = view.findViewById (R.id.registerButton);
 
         /* Configurar Retrofit utilizando ApiClient */
@@ -67,8 +70,12 @@ public class RegisterFragment extends Fragment {
         String username = editTextUsername.getText ().toString ();
         String firstname = editTextFirstName.getText ().toString ();
         String lastname = editTextLastName.getText ().toString ();
-/*Validaciones*/
-        if (email.isEmpty () || password.isEmpty () || confirPass.isEmpty () || username.isEmpty () || firstname.isEmpty () || lastname.isEmpty ()) {
+        String direccion = editTextDireccion.getText().toString(); // Nuevo campo para dirección
+
+
+        /*Validaciones*/
+        if (email.isEmpty() || password.isEmpty() || confirPass.isEmpty() || username.isEmpty() ||
+                firstname.isEmpty() || lastname.isEmpty() || direccion.isEmpty()) {
             Toast.makeText (getContext (), "Por favor completa todos los campos", Toast.LENGTH_SHORT).show ();
             return;
         }
@@ -102,6 +109,9 @@ public class RegisterFragment extends Fragment {
 
         /* Llamada al servicio de autenticación */
         RegisterRequest registerRequest = new RegisterRequest (email, password, username, firstname, lastname);
+        registerRequest.setDireccion(direccion);
+        registerRequest.setPassword2(confirPass);
+
         Call<RegisterResponse> call = apiService.registerUser (registerRequest);
 
         call.enqueue (new Callback<RegisterResponse> () {

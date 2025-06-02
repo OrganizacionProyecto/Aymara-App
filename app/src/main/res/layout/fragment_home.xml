@@ -48,7 +48,7 @@
         android:focusable="true"
         android:onClick="openMaps"
         android:padding="13dp"
-        android:text="Av. San Martin 50, Colonia Caroya, Argentina"
+        android:text="Av. Miguel juarez 500, Jesus María, Argentina"
         android:textAlignment="viewStart"
         android:textColor="@color/white"
         android:textSize="16sp"
