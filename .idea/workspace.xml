@@ -26,25 +26,32 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad81da25-0b2c-485c-9bde-f61e8cba124e" name="Changes" comment="Mejoras de recursos de accesibilidad de Pofile en strings.xml">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
+    <list default="true" id="ad81da25-0b2c-485c-9bde-f61e8cba124e" name="Changes" comment="cambios en java PorfileFragment para la implementacion del boton historial de compras/pedidos">
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/083f3d024ded2cd8a5ee37279d312625/cp_init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/083f3d024ded2cd8a5ee37279d312625/cp_init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/083f3d024ded2cd8a5ee37279d312625/cp_init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/429eef9aefc5d6003fc85fd0194383d2/init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/429eef9aefc5d6003fc85fd0194383d2/init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/429eef9aefc5d6003fc85fd0194383d2/init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/77e3fa0a7af3d368997bf6669fffd81e/init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/77e3fa0a7af3d368997bf6669fffd81e/init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/77e3fa0a7af3d368997bf6669fffd81e/init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/ee6fb1a36230110f5761dc00696f0ea9/cp_init.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/ee6fb1a36230110f5761dc00696f0ea9/cp_init.jar.lock.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/caches/jars-9/ee6fb1a36230110f5761dc00696f0ea9/cp_init.jar.receipt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daemon/8.0/daemon-12044.out.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daemon/8.0/daemon-4684.out.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daemon/8.0/daemon-5924.out.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daemon/8.0/registry.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wrapper/dists/gradle-8.0-bin/ca5e32bp14vu59qr306oxotwh/gradle-8.0-bin.zip.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wrapper/dists/gradle-8.0-bin/ca5e32bp14vu59qr306oxotwh/gradle-8.0-bin.zip.ok" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wrapper/dists/gradle-8.0-bin/ca5e32bp14vu59qr306oxotwh/gradle-8.0/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wrapper/dists/gradle-8.0-bin/ca5e32bp14vu59qr306oxotwh/gradle-8.0/NOTICE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wrapper/dists/gradle-8.0-bin/ca5e32bp14vu59qr306oxotwh/gradle-8.0/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wrapper/dists/gradle-8.0-bin/ca5e32bp14vu59qr306oxotwh/gradle-8.0/init.d/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/RegisterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/RegisterFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/network/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aymara_app/network/ApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +64,7 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Usuario\.android\avd\Pixel_2_XL_API_22.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Usuario\.android\avd\Pixel_2_API_22.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -154,6 +161,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;android-custom-viewC:/Gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED&quot;: &quot;RecyclerView&quot;,
+    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
@@ -437,7 +445,21 @@
       <option name="project" value="LOCAL" />
       <updated>1730693924612</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="cambios en java PorfileFragment para la implementacion del boton historial de compras/pedidos">
+      <created>1748909356856</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748909356856</updated>
+    </task>
+    <task id="LOCAL-00029" summary="cambios en java PorfileFragment para la implementacion del boton historial de compras/pedidos">
+      <created>1748911817587</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748911817587</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -466,7 +488,8 @@
     <MESSAGE value="Se implemento CRUD de ProfileFragment.java" />
     <MESSAGE value="Se cambia de ProfileFragment.java al LoginFragment.java al hacer el logout" />
     <MESSAGE value="Correcciones de Accesibilidad en profile_fragment.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcciones de Accesibilidad en profile_fragment.xml" />
+    <MESSAGE value="cambios en java PorfileFragment para la implementacion del boton historial de compras/pedidos" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambios en java PorfileFragment para la implementacion del boton historial de compras/pedidos" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">

@@ -1,0 +1,710 @@
+2025-06-02T22:10:33.632-0300 [DEBUG] [org.gradle.launcher.daemon.bootstrap.DaemonMain] Assuming the daemon was started with following jvm opts: [--add-opens=java.base/java.util=ALL-UNNAMED, --add-opens=java.base/java.lang=ALL-UNNAMED, --add-opens=java.base/java.lang.invoke=ALL-UNNAMED, --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED, --add-opens=java.base/java.nio.charset=ALL-UNNAMED, --add-opens=java.base/java.net=ALL-UNNAMED, --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country=AR, -Duser.language=es, -Duser.variant]
+2025-06-02T22:10:34.038-0300 [DEBUG] [org.gradle.internal.nativeintegration.services.NativeServices] Native-platform posix files integration is not available. Continuing with fallback.
+2025-06-02T22:10:34.065-0300 [INFO] [org.gradle.launcher.daemon.server.Daemon] start() called on daemon - DefaultDaemonContext[uid=952cbb86-48d2-48c7-9483-1f15b473a6de,javaHome=C:\Program Files\Android\Android Studio\jbr,daemonRegistryDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App\daemon,pid=5924,idleTimeout=10800000,priority=NORMAL,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=AR,-Duser.language=es,-Duser.variant]
+2025-06-02T22:10:34.226-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Software Loopback Interface 1
+2025-06-02T22:10:34.229-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? true
+2025-06-02T22:10:34.230-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /127.0.0.1
+2025-06-02T22:10:34.230-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding loopback address /0:0:0:0:0:0:0:1
+2025-06-02T22:10:34.232-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft 6to4 Adapter
+2025-06-02T22:10:34.235-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.236-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter-WFP Native MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.239-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.240-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft IP-HTTPS Platform Adapter
+2025-06-02T22:10:34.245-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.245-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (SSTP)
+2025-06-02T22:10:34.248-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.249-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (Network Monitor)
+2025-06-02T22:10:34.252-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.253-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter #2
+2025-06-02T22:10:34.257-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.258-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:c9fb:9c54:ad9e:a046%wlan1
+2025-06-02T22:10:34.258-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (IP)
+2025-06-02T22:10:34.261-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.262-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (PPPOE)
+2025-06-02T22:10:34.265-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.265-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (IPv6)
+2025-06-02T22:10:34.269-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.269-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter
+2025-06-02T22:10:34.273-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.273-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:21e9:5645:e2d:73fe%wlan2
+2025-06-02T22:10:34.274-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter
+2025-06-02T22:10:34.278-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.278-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /192.168.0.157
+2025-06-02T22:10:34.296-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:a603:f40f:5784:580a%wlan3
+2025-06-02T22:10:34.297-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (L2TP)
+2025-06-02T22:10:34.300-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.300-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Bluetooth Device (Personal Area Network)
+2025-06-02T22:10:34.303-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.304-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:5fd1:2564:1844:e893%eth3
+2025-06-02T22:10:34.304-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Teredo Tunneling Adapter
+2025-06-02T22:10:34.307-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.308-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (PPTP)
+2025-06-02T22:10:34.311-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.312-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Kernel Debug Network Adapter
+2025-06-02T22:10:34.315-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.315-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Realtek PCIe GbE Family Controller
+2025-06-02T22:10:34.318-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.319-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding remote address /fe80:0:0:0:132b:cdcc:5904:bfa8%eth5
+2025-06-02T22:10:34.319-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface WAN Miniport (IKEv2)
+2025-06-02T22:10:34.323-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.323-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Realtek PCIe GbE Family Controller-WFP Native MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.327-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.327-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Realtek PCIe GbE Family Controller-Npcap Packet Driver (NPCAP)-0000
+2025-06-02T22:10:34.330-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.331-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Realtek PCIe GbE Family Controller-QoS Packet Scheduler-0000
+2025-06-02T22:10:34.334-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.334-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Realtek PCIe GbE Family Controller-WFP 802.3 MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.337-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.338-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Bluetooth Device (Personal Area Network)-Npcap Packet Driver (NPCAP)-0000
+2025-06-02T22:10:34.340-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.340-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter-Virtual WiFi Filter Driver-0000
+2025-06-02T22:10:34.343-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.343-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter-Native WiFi Filter Driver-0000
+2025-06-02T22:10:34.346-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.347-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter-Npcap Packet Driver (NPCAP)-0000
+2025-06-02T22:10:34.350-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.351-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter-QoS Packet Scheduler-0000
+2025-06-02T22:10:34.354-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.355-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Qualcomm Atheros AR1111 WB-EG Wireless Network Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.358-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.358-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter-WFP Native MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.362-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.362-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter-Native WiFi Filter Driver-0000
+2025-06-02T22:10:34.365-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.365-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter-Npcap Packet Driver (NPCAP)-0000
+2025-06-02T22:10:34.369-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.369-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter-QoS Packet Scheduler-0000
+2025-06-02T22:10:34.372-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.373-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter-WFP 802.3 MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.376-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.376-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter #2-WFP Native MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.380-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.380-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter #2-Native WiFi Filter Driver-0000
+2025-06-02T22:10:34.384-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.384-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter #2-Npcap Packet Driver (NPCAP)-0000
+2025-06-02T22:10:34.387-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.387-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter #2-QoS Packet Scheduler-0000
+2025-06-02T22:10:34.390-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.391-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Microsoft Wi-Fi Direct Virtual Adapter #2-WFP 802.3 MAC Layer LightWeight Filter-0000
+2025-06-02T22:10:34.394-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.394-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Adding IP addresses for network interface Remote NDIS based Internet Sharing Device
+2025-06-02T22:10:34.397-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.InetAddresses] Is this a loopback interface? false
+2025-06-02T22:10:34.406-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Listening on [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]].
+2025-06-02T22:10:34.423-0300 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] Daemon starting at: Mon Jun 02 22:10:34 ART 2025, with address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:10:34.424-0300 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Advertising the daemon address to the clients: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:10:34.424-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Advertised daemon context: DefaultDaemonContext[uid=952cbb86-48d2-48c7-9483-1f15b473a6de,javaHome=C:\Program Files\Android\Android Studio\jbr,daemonRegistryDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App\daemon,pid=5924,idleTimeout=10800000,priority=NORMAL,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=AR,-Duser.language=es,-Duser.variant]
+2025-06-02T22:10:34.426-0300 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Storing daemon address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]], context: DefaultDaemonContext[uid=952cbb86-48d2-48c7-9483-1f15b473a6de,javaHome=C:\Program Files\Android\Android Studio\jbr,daemonRegistryDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App\daemon,pid=5924,idleTimeout=10800000,priority=NORMAL,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=AR,-Duser.language=es,-Duser.variant]
+2025-06-02T22:10:34.444-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2025-06-02T22:10:34.451-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:10:34.460-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:10:34.461-0300 [LIFECYCLE] [org.gradle.launcher.daemon.server.Daemon] Daemon server started.
+2025-06-02T22:10:34.474-0300 [DEBUG] [org.gradle.launcher.daemon.bootstrap.DaemonStartupCommunication] Completed writing the daemon greeting. Closing streams...
+2025-06-02T22:10:34.481-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Accepted connection from /127.0.0.1:64756 to /127.0.0.1:64755.
+2025-06-02T22:10:34.509-0300 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] stopOnExpiration() called on daemon
+2025-06-02T22:10:34.520-0300 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] awaitExpiration() called on daemon
+2025-06-02T22:10:34.521-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2025-06-02T22:10:34.664-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 20: received class org.gradle.launcher.daemon.protocol.Build
+2025-06-02T22:10:34.665-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 20: Received non-IO message from client: Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}
+2025-06-02T22:10:34.665-0300 [INFO] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received command: Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}.
+2025-06-02T22:10:34.665-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Starting executing command: Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App} with connection: socket connection from /127.0.0.1:64755 to /127.0.0.1:64756.
+2025-06-02T22:10:34.670-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: started DaemonCommandExecution[command = Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}, connection = DefaultDaemonConnection: socket connection from /127.0.0.1:64755 to /127.0.0.1:64756] after 0.0 minutes of idle
+2025-06-02T22:10:34.671-0300 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Marking the daemon as busy, address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:10:34.671-0300 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Marking busy by address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:10:34.675-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2025-06-02T22:10:34.676-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:10:34.680-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:10:34.681-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
+2025-06-02T22:10:34.681-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2025-06-02T22:10:34.682-0300 [INFO] [org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy] Daemon is about to start building Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}. Dispatching build started information...
+2025-06-02T22:10:34.683-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 22: dispatching org.gradle.launcher.daemon.protocol.BuildStarted@3cdc84df
+2025-06-02T22:10:34.691-0300 [DEBUG] [org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment] Configuring env variables: [USERDOMAIN_ROAMINGPROFILE, LOCALAPPDATA, PROCESSOR_LEVEL, USERDOMAIN, LOGONSERVER, FPS_BROWSER_APP_PROFILE_STRING, SESSIONNAME, ALLUSERSPROFILE, PROCESSOR_ARCHITECTURE, PSModulePath, SystemDrive, OneDrive, APPDATA, WEBOTS_HOME, USERNAME, ProgramFiles(x86), CommonProgramFiles, Path, FPS_BROWSER_USER_PROFILE_STRING, PATHEXT, DriverData, OS, OneDriveConsumer, COMPUTERNAME, GOPATH, PROCESSOR_REVISION, CommonProgramW6432, ComSpec, ProgramData, ProgramW6432, TEMP, HOMEPATH, SystemRoot, PROCESSOR_IDENTIFIER, HOMEDRIVE, USERPROFILE, TMP, CommonProgramFiles(x86), ProgramFiles, PUBLIC, windir, NUMBER_OF_PROCESSORS, =::, IDEA_INITIAL_DIRECTORY]
+2025-06-02T22:10:34.723-0300 [DEBUG] [org.gradle.launcher.daemon.server.exec.LogToClient] About to start relaying all logs to the client via the connection.
+2025-06-02T22:10:34.723-0300 [INFO] [org.gradle.launcher.daemon.server.exec.LogToClient] The client will now receive all logging from the daemon (pid: 5924). The daemon log file: C:\Users\Usuario\AndroidStudioProjects\Aymara-App\daemon\8.0\daemon-5924.out.log
+2025-06-02T22:10:34.727-0300 [INFO] [org.gradle.launcher.daemon.server.exec.LogAndCheckHealth] Starting build in new daemon [memory: 2 GiB]
+2025-06-02T22:10:34.741-0300 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has started executing the build.
+2025-06-02T22:10:34.741-0300 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] Executing build with daemon context: DefaultDaemonContext[uid=952cbb86-48d2-48c7-9483-1f15b473a6de,javaHome=C:\Program Files\Android\Android Studio\jbr,daemonRegistryDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App\daemon,pid=5924,idleTimeout=10800000,priority=NORMAL,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country=AR,-Duser.language=es,-Duser.variant]
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':app'.
+> java.nio.file.NoSuchFileException: C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\jars-9\d40e98ed87c31924000bb0ba422162f7\baseLibrary-8.1.4.jar
+
+* Try:
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+
+* Exception is:
+org.gradle.api.ProjectConfigurationException: A problem occurred configuring project ':app'.
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.wrapException(LifecycleProjectEvaluator.java:84)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.addConfigurationFailure(LifecycleProjectEvaluator.java:77)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.access$400(LifecycleProjectEvaluator.java:55)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator$EvaluateProject.lambda$run$0(LifecycleProjectEvaluator.java:111)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.lambda$applyToMutableState$0(DefaultProjectStateRegistry.java:388)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.lambda$fromMutableState$1(DefaultProjectStateRegistry.java:411)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withReplacedLocks(DefaultWorkerLeaseService.java:345)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.fromMutableState(DefaultProjectStateRegistry.java:411)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.applyToMutableState(DefaultProjectStateRegistry.java:387)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator$EvaluateProject.run(LifecycleProjectEvaluator.java:100)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:72)
+	at org.gradle.api.internal.project.DefaultProject.evaluate(DefaultProject.java:792)
+	at org.gradle.api.internal.project.DefaultProject.evaluate(DefaultProject.java:156)
+	at org.gradle.api.internal.project.ProjectLifecycleController.lambda$ensureSelfConfigured$2(ProjectLifecycleController.java:84)
+	at org.gradle.internal.model.StateTransitionController.lambda$doTransition$13(StateTransitionController.java:247)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:258)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:246)
+	at org.gradle.internal.model.StateTransitionController.lambda$maybeTransitionIfNotCurrentlyTransitioning$10(StateTransitionController.java:207)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:34)
+	at org.gradle.internal.model.StateTransitionController.maybeTransitionIfNotCurrentlyTransitioning(StateTransitionController.java:203)
+	at org.gradle.api.internal.project.ProjectLifecycleController.ensureSelfConfigured(ProjectLifecycleController.java:84)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.ensureConfigured(DefaultProjectStateRegistry.java:362)
+	at org.gradle.execution.TaskPathProjectEvaluator.configure(TaskPathProjectEvaluator.java:33)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:49)
+	at org.gradle.configuration.DefaultProjectsPreparer.prepareProjects(DefaultProjectsPreparer.java:42)
+	at org.gradle.configuration.BuildTreePreparingProjectsPreparer.prepareProjects(BuildTreePreparingProjectsPreparer.java:64)
+	at org.gradle.configuration.BuildOperationFiringProjectsPreparer$ConfigureBuild.run(BuildOperationFiringProjectsPreparer.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.configuration.BuildOperationFiringProjectsPreparer.prepareProjects(BuildOperationFiringProjectsPreparer.java:40)
+	at org.gradle.initialization.VintageBuildModelController.lambda$prepareProjects$2(VintageBuildModelController.java:84)
+	at org.gradle.internal.model.StateTransitionController.lambda$doTransition$13(StateTransitionController.java:247)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:258)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:246)
+	at org.gradle.internal.model.StateTransitionController.lambda$transitionIfNotPreviously$11(StateTransitionController.java:221)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:34)
+	at org.gradle.internal.model.StateTransitionController.transitionIfNotPreviously(StateTransitionController.java:217)
+	at org.gradle.initialization.VintageBuildModelController.prepareProjects(VintageBuildModelController.java:84)
+	at org.gradle.initialization.VintageBuildModelController.getConfiguredModel(VintageBuildModelController.java:64)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$withProjectsConfigured$1(DefaultBuildLifecycleController.java:116)
+	at org.gradle.internal.model.StateTransitionController.lambda$notInState$4(StateTransitionController.java:154)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.notInState(StateTransitionController.java:150)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.withProjectsConfigured(DefaultBuildLifecycleController.java:116)
+	at org.gradle.internal.build.DefaultBuildToolingModelController.locateBuilderForTarget(DefaultBuildToolingModelController.java:57)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator$DefaultBuildTreeModelController.lambda$locateBuilderForTarget$0(DefaultBuildTreeModelCreator.java:73)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.withToolingModels(DefaultBuildLifecycleController.java:185)
+	at org.gradle.internal.build.AbstractBuildState.withToolingModels(AbstractBuildState.java:134)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator$DefaultBuildTreeModelController.locateBuilderForTarget(DefaultBuildTreeModelCreator.java:73)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator$DefaultBuildTreeModelController.locateBuilderForDefaultTarget(DefaultBuildTreeModelCreator.java:68)
+	at org.gradle.tooling.internal.provider.runner.DefaultBuildController.getTarget(DefaultBuildController.java:157)
+	at org.gradle.tooling.internal.provider.runner.DefaultBuildController.getModel(DefaultBuildController.java:101)
+	at org.gradle.tooling.internal.consumer.connection.ParameterAwareBuildControllerAdapter.getModel(ParameterAwareBuildControllerAdapter.java:39)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.getModel(UnparameterizedBuildController.java:113)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.getModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.findModel(UnparameterizedBuildController.java:97)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.findModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.findModel(UnparameterizedBuildController.java:81)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.findModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.findModel(UnparameterizedBuildController.java:66)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.findModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.jetbrains.plugins.gradle.model.ProjectImportAction.execute(ProjectImportAction.java:125)
+	at org.jetbrains.plugins.gradle.model.ProjectImportAction.execute(ProjectImportAction.java:42)
+	at org.gradle.tooling.internal.consumer.connection.InternalBuildActionAdapter.execute(InternalBuildActionAdapter.java:64)
+	at org.gradle.tooling.internal.provider.runner.AbstractClientProvidedBuildActionRunner$ActionAdapter.runAction(AbstractClientProvidedBuildActionRunner.java:131)
+	at org.gradle.tooling.internal.provider.runner.AbstractClientProvidedBuildActionRunner$ActionAdapter.beforeTasks(AbstractClientProvidedBuildActionRunner.java:99)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator.beforeTasks(DefaultBuildTreeModelCreator.java:52)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.lambda$fromBuildModel$2(DefaultBuildTreeLifecycleController.java:74)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.lambda$runBuild$4(DefaultBuildTreeLifecycleController.java:98)
+	at org.gradle.internal.model.StateTransitionController.lambda$transition$6(StateTransitionController.java:177)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:258)
+	at org.gradle.internal.model.StateTransitionController.lambda$transition$7(StateTransitionController.java:177)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.transition(StateTransitionController.java:177)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.runBuild(DefaultBuildTreeLifecycleController.java:95)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.fromBuildModel(DefaultBuildTreeLifecycleController.java:73)
+	at org.gradle.tooling.internal.provider.runner.AbstractClientProvidedBuildActionRunner.runClientAction(AbstractClientProvidedBuildActionRunner.java:43)
+	at org.gradle.tooling.internal.provider.runner.ClientProvidedPhasedActionRunner.run(ClientProvidedPhasedActionRunner.java:53)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.internal.buildtree.ProblemReportingBuildActionRunner.run(ProblemReportingBuildActionRunner.java:49)
+	at org.gradle.launcher.exec.BuildOutcomeReportingBuildActionRunner.run(BuildOutcomeReportingBuildActionRunner.java:65)
+	at org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner.run(FileSystemWatchingBuildActionRunner.java:140)
+	at org.gradle.launcher.exec.BuildCompletionNotifyingBuildActionRunner.run(BuildCompletionNotifyingBuildActionRunner.java:41)
+	at org.gradle.launcher.exec.RootBuildLifecycleBuildActionExecutor.lambda$execute$0(RootBuildLifecycleBuildActionExecutor.java:40)
+	at org.gradle.composite.internal.DefaultRootBuildState.run(DefaultRootBuildState.java:122)
+	at org.gradle.launcher.exec.RootBuildLifecycleBuildActionExecutor.execute(RootBuildLifecycleBuildActionExecutor.java:40)
+	at org.gradle.internal.buildtree.DefaultBuildTreeContext.execute(DefaultBuildTreeContext.java:40)
+	at org.gradle.launcher.exec.BuildTreeLifecycleBuildActionExecutor.lambda$execute$0(BuildTreeLifecycleBuildActionExecutor.java:65)
+	at org.gradle.internal.buildtree.BuildTreeState.run(BuildTreeState.java:53)
+	at org.gradle.launcher.exec.BuildTreeLifecycleBuildActionExecutor.execute(BuildTreeLifecycleBuildActionExecutor.java:65)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor$3.call(RunAsBuildOperationBuildActionExecutor.java:61)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor$3.call(RunAsBuildOperationBuildActionExecutor.java:57)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor.execute(RunAsBuildOperationBuildActionExecutor.java:57)
+	at org.gradle.launcher.exec.RunAsWorkerThreadBuildActionExecutor.lambda$execute$0(RunAsWorkerThreadBuildActionExecutor.java:36)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:249)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:109)
+	at org.gradle.launcher.exec.RunAsWorkerThreadBuildActionExecutor.execute(RunAsWorkerThreadBuildActionExecutor.java:36)
+	at org.gradle.tooling.internal.provider.continuous.ContinuousBuildActionExecutor.execute(ContinuousBuildActionExecutor.java:110)
+	at org.gradle.tooling.internal.provider.SubscribableBuildActionExecutor.execute(SubscribableBuildActionExecutor.java:64)
+	at org.gradle.internal.session.DefaultBuildSessionContext.execute(DefaultBuildSessionContext.java:46)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter$ActionImpl.apply(BuildSessionLifecycleBuildActionExecuter.java:100)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter$ActionImpl.apply(BuildSessionLifecycleBuildActionExecuter.java:88)
+	at org.gradle.internal.session.BuildSessionState.run(BuildSessionState.java:69)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter.execute(BuildSessionLifecycleBuildActionExecuter.java:62)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter.execute(BuildSessionLifecycleBuildActionExecuter.java:41)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:63)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:31)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:50)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:38)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:47)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:31)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:65)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:78)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:75)
+	at org.gradle.util.internal.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:75)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:64)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:297)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:49)
+Caused by: java.io.UncheckedIOException: java.nio.file.NoSuchFileException: C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\jars-9\d40e98ed87c31924000bb0ba422162f7\baseLibrary-8.1.4.jar
+	at org.gradle.internal.Try$Failure.get(Try.java:238)
+	at org.gradle.kotlin.dsl.accessors.ProjectAccessorsClassPathGenerator.buildAccessorsClassPathFor(AccessorsClassPath.kt:92)
+	at org.gradle.kotlin.dsl.accessors.ProjectAccessorsClassPathGenerator.access$buildAccessorsClassPathFor(AccessorsClassPath.kt:65)
+	at org.gradle.kotlin.dsl.accessors.ProjectAccessorsClassPathGenerator.projectAccessorsClassPath(AccessorsClassPath.kt:75)
+	at org.gradle.kotlin.dsl.execution.Interpreter$ProgramHost.accessorsClassPathFor(Interpreter.kt:469)
+	at Program.execute(Unknown Source)
+	at org.gradle.kotlin.dsl.execution.Interpreter$ProgramHost.eval(Interpreter.kt:540)
+	at org.gradle.kotlin.dsl.execution.Interpreter.eval(Interpreter.kt:210)
+	at org.gradle.kotlin.dsl.provider.StandardKotlinScriptEvaluator.evaluate(KotlinScriptEvaluator.kt:118)
+	at org.gradle.kotlin.dsl.provider.KotlinScriptPluginFactory$create$1.invoke(KotlinScriptPluginFactory.kt:51)
+	at org.gradle.kotlin.dsl.provider.KotlinScriptPluginFactory$create$1.invoke(KotlinScriptPluginFactory.kt:48)
+	at org.gradle.kotlin.dsl.provider.KotlinScriptPlugin.apply(KotlinScriptPlugin.kt:34)
+	at org.gradle.configuration.BuildOperationScriptPlugin$1.run(BuildOperationScriptPlugin.java:65)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.configuration.BuildOperationScriptPlugin.lambda$apply$0(BuildOperationScriptPlugin.java:62)
+	at org.gradle.configuration.internal.DefaultUserCodeApplicationContext.apply(DefaultUserCodeApplicationContext.java:44)
+	at org.gradle.configuration.BuildOperationScriptPlugin.apply(BuildOperationScriptPlugin.java:62)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.lambda$applyToMutableState$0(DefaultProjectStateRegistry.java:388)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.fromMutableState(DefaultProjectStateRegistry.java:406)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.applyToMutableState(DefaultProjectStateRegistry.java:387)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:42)
+	at org.gradle.configuration.project.BuildScriptProcessor.execute(BuildScriptProcessor.java:26)
+	at org.gradle.configuration.project.ConfigureActionsProjectEvaluator.evaluate(ConfigureActionsProjectEvaluator.java:35)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator$EvaluateProject.lambda$run$0(LifecycleProjectEvaluator.java:109)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.lambda$applyToMutableState$0(DefaultProjectStateRegistry.java:388)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.lambda$fromMutableState$1(DefaultProjectStateRegistry.java:411)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withReplacedLocks(DefaultWorkerLeaseService.java:345)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.fromMutableState(DefaultProjectStateRegistry.java:411)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.applyToMutableState(DefaultProjectStateRegistry.java:387)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator$EvaluateProject.run(LifecycleProjectEvaluator.java:100)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.configuration.project.LifecycleProjectEvaluator.evaluate(LifecycleProjectEvaluator.java:72)
+	at org.gradle.api.internal.project.DefaultProject.evaluate(DefaultProject.java:792)
+	at org.gradle.api.internal.project.DefaultProject.evaluate(DefaultProject.java:156)
+	at org.gradle.api.internal.project.ProjectLifecycleController.lambda$ensureSelfConfigured$2(ProjectLifecycleController.java:84)
+	at org.gradle.internal.model.StateTransitionController.lambda$doTransition$13(StateTransitionController.java:247)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:258)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:246)
+	at org.gradle.internal.model.StateTransitionController.lambda$maybeTransitionIfNotCurrentlyTransitioning$10(StateTransitionController.java:207)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:34)
+	at org.gradle.internal.model.StateTransitionController.maybeTransitionIfNotCurrentlyTransitioning(StateTransitionController.java:203)
+	at org.gradle.api.internal.project.ProjectLifecycleController.ensureSelfConfigured(ProjectLifecycleController.java:84)
+	at org.gradle.api.internal.project.DefaultProjectStateRegistry$ProjectStateImpl.ensureConfigured(DefaultProjectStateRegistry.java:362)
+	at org.gradle.execution.TaskPathProjectEvaluator.configure(TaskPathProjectEvaluator.java:33)
+	at org.gradle.execution.TaskPathProjectEvaluator.configureHierarchy(TaskPathProjectEvaluator.java:49)
+	at org.gradle.configuration.DefaultProjectsPreparer.prepareProjects(DefaultProjectsPreparer.java:42)
+	at org.gradle.configuration.BuildTreePreparingProjectsPreparer.prepareProjects(BuildTreePreparingProjectsPreparer.java:64)
+	at org.gradle.configuration.BuildOperationFiringProjectsPreparer$ConfigureBuild.run(BuildOperationFiringProjectsPreparer.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:68)
+	at org.gradle.configuration.BuildOperationFiringProjectsPreparer.prepareProjects(BuildOperationFiringProjectsPreparer.java:40)
+	at org.gradle.initialization.VintageBuildModelController.lambda$prepareProjects$2(VintageBuildModelController.java:84)
+	at org.gradle.internal.model.StateTransitionController.lambda$doTransition$13(StateTransitionController.java:247)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:258)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:246)
+	at org.gradle.internal.model.StateTransitionController.lambda$transitionIfNotPreviously$11(StateTransitionController.java:221)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:34)
+	at org.gradle.internal.model.StateTransitionController.transitionIfNotPreviously(StateTransitionController.java:217)
+	at org.gradle.initialization.VintageBuildModelController.prepareProjects(VintageBuildModelController.java:84)
+	at org.gradle.initialization.VintageBuildModelController.getConfiguredModel(VintageBuildModelController.java:64)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$withProjectsConfigured$1(DefaultBuildLifecycleController.java:116)
+	at org.gradle.internal.model.StateTransitionController.lambda$notInState$4(StateTransitionController.java:154)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.notInState(StateTransitionController.java:150)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.withProjectsConfigured(DefaultBuildLifecycleController.java:116)
+	at org.gradle.internal.build.DefaultBuildToolingModelController.locateBuilderForTarget(DefaultBuildToolingModelController.java:57)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator$DefaultBuildTreeModelController.lambda$locateBuilderForTarget$0(DefaultBuildTreeModelCreator.java:73)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.withToolingModels(DefaultBuildLifecycleController.java:185)
+	at org.gradle.internal.build.AbstractBuildState.withToolingModels(AbstractBuildState.java:134)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator$DefaultBuildTreeModelController.locateBuilderForTarget(DefaultBuildTreeModelCreator.java:73)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator$DefaultBuildTreeModelController.locateBuilderForDefaultTarget(DefaultBuildTreeModelCreator.java:68)
+	at org.gradle.tooling.internal.provider.runner.DefaultBuildController.getTarget(DefaultBuildController.java:157)
+	at org.gradle.tooling.internal.provider.runner.DefaultBuildController.getModel(DefaultBuildController.java:101)
+	at org.gradle.tooling.internal.consumer.connection.ParameterAwareBuildControllerAdapter.getModel(ParameterAwareBuildControllerAdapter.java:39)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.getModel(UnparameterizedBuildController.java:113)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.getModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.findModel(UnparameterizedBuildController.java:97)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.findModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.findModel(UnparameterizedBuildController.java:81)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.findModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.gradle.tooling.internal.consumer.connection.UnparameterizedBuildController.findModel(UnparameterizedBuildController.java:66)
+	at org.gradle.tooling.internal.consumer.connection.NestedActionAwareBuildControllerAdapter.findModel(NestedActionAwareBuildControllerAdapter.java:31)
+	at org.jetbrains.plugins.gradle.model.ProjectImportAction.execute(ProjectImportAction.java:125)
+	at org.jetbrains.plugins.gradle.model.ProjectImportAction.execute(ProjectImportAction.java:42)
+	at org.gradle.tooling.internal.consumer.connection.InternalBuildActionAdapter.execute(InternalBuildActionAdapter.java:64)
+	at org.gradle.tooling.internal.provider.runner.AbstractClientProvidedBuildActionRunner$ActionAdapter.runAction(AbstractClientProvidedBuildActionRunner.java:131)
+	at org.gradle.tooling.internal.provider.runner.AbstractClientProvidedBuildActionRunner$ActionAdapter.beforeTasks(AbstractClientProvidedBuildActionRunner.java:99)
+	at org.gradle.internal.buildtree.DefaultBuildTreeModelCreator.beforeTasks(DefaultBuildTreeModelCreator.java:52)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.lambda$fromBuildModel$2(DefaultBuildTreeLifecycleController.java:74)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.lambda$runBuild$4(DefaultBuildTreeLifecycleController.java:98)
+	at org.gradle.internal.model.StateTransitionController.lambda$transition$6(StateTransitionController.java:177)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:258)
+	at org.gradle.internal.model.StateTransitionController.lambda$transition$7(StateTransitionController.java:177)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.transition(StateTransitionController.java:177)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.runBuild(DefaultBuildTreeLifecycleController.java:95)
+	at org.gradle.internal.buildtree.DefaultBuildTreeLifecycleController.fromBuildModel(DefaultBuildTreeLifecycleController.java:73)
+	at org.gradle.tooling.internal.provider.runner.AbstractClientProvidedBuildActionRunner.runClientAction(AbstractClientProvidedBuildActionRunner.java:43)
+	at org.gradle.tooling.internal.provider.runner.ClientProvidedPhasedActionRunner.run(ClientProvidedPhasedActionRunner.java:53)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.internal.buildtree.ProblemReportingBuildActionRunner.run(ProblemReportingBuildActionRunner.java:49)
+	at org.gradle.launcher.exec.BuildOutcomeReportingBuildActionRunner.run(BuildOutcomeReportingBuildActionRunner.java:65)
+	at org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner.run(FileSystemWatchingBuildActionRunner.java:140)
+	at org.gradle.launcher.exec.BuildCompletionNotifyingBuildActionRunner.run(BuildCompletionNotifyingBuildActionRunner.java:41)
+	at org.gradle.launcher.exec.RootBuildLifecycleBuildActionExecutor.lambda$execute$0(RootBuildLifecycleBuildActionExecutor.java:40)
+	at org.gradle.composite.internal.DefaultRootBuildState.run(DefaultRootBuildState.java:122)
+	at org.gradle.launcher.exec.RootBuildLifecycleBuildActionExecutor.execute(RootBuildLifecycleBuildActionExecutor.java:40)
+	at org.gradle.internal.buildtree.DefaultBuildTreeContext.execute(DefaultBuildTreeContext.java:40)
+	at org.gradle.launcher.exec.BuildTreeLifecycleBuildActionExecutor.lambda$execute$0(BuildTreeLifecycleBuildActionExecutor.java:65)
+	at org.gradle.internal.buildtree.BuildTreeState.run(BuildTreeState.java:53)
+	at org.gradle.launcher.exec.BuildTreeLifecycleBuildActionExecutor.execute(BuildTreeLifecycleBuildActionExecutor.java:65)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor$3.call(RunAsBuildOperationBuildActionExecutor.java:61)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor$3.call(RunAsBuildOperationBuildActionExecutor.java:57)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionExecutor.execute(RunAsBuildOperationBuildActionExecutor.java:57)
+	at org.gradle.launcher.exec.RunAsWorkerThreadBuildActionExecutor.lambda$execute$0(RunAsWorkerThreadBuildActionExecutor.java:36)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:249)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:109)
+	at org.gradle.launcher.exec.RunAsWorkerThreadBuildActionExecutor.execute(RunAsWorkerThreadBuildActionExecutor.java:36)
+	at org.gradle.tooling.internal.provider.continuous.ContinuousBuildActionExecutor.execute(ContinuousBuildActionExecutor.java:110)
+	at org.gradle.tooling.internal.provider.SubscribableBuildActionExecutor.execute(SubscribableBuildActionExecutor.java:64)
+	at org.gradle.internal.session.DefaultBuildSessionContext.execute(DefaultBuildSessionContext.java:46)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter$ActionImpl.apply(BuildSessionLifecycleBuildActionExecuter.java:100)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter$ActionImpl.apply(BuildSessionLifecycleBuildActionExecuter.java:88)
+	at org.gradle.internal.session.BuildSessionState.run(BuildSessionState.java:69)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter.execute(BuildSessionLifecycleBuildActionExecuter.java:62)
+	at org.gradle.tooling.internal.provider.BuildSessionLifecycleBuildActionExecuter.execute(BuildSessionLifecycleBuildActionExecuter.java:41)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:63)
+	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:31)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:50)
+	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:38)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:47)
+	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:31)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:65)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:78)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:75)
+	at org.gradle.util.internal.Swapper.swap(Swapper.java:38)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:75)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:64)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:297)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:49)
+Caused by: java.nio.file.NoSuchFileException: C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\jars-9\d40e98ed87c31924000bb0ba422162f7\baseLibrary-8.1.4.jar
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$openJarFile$1.apply(ClassBytesRepository.kt:133)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$openJarFile$1.apply(ClassBytesRepository.kt:133)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository.openJarFile(ClassBytesRepository.kt:133)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository.access$openJarFile(ClassBytesRepository.kt:49)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$jarClassBytesIndexFor$1.invoke(ClassBytesRepository.kt:119)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$jarClassBytesIndexFor$1.invoke(ClassBytesRepository.kt:118)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$classBytesSupplierForFilePath$1.invoke(ClassBytesRepository.kt:85)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$classBytesSupplierForFilePath$1.invoke(ClassBytesRepository.kt:85)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:168)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository.classBytesSupplierForFilePath(ClassBytesRepository.kt:85)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository.access$classBytesSupplierForFilePath(ClassBytesRepository.kt:49)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$classBytesSupplierForSourceName$1.invoke(ClassBytesRepository.kt:80)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository$classBytesSupplierForSourceName$1.invoke(ClassBytesRepository.kt:80)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:168)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository.classBytesSupplierForSourceName(ClassBytesRepository.kt:81)
+	at org.gradle.kotlin.dsl.support.ClassBytesRepository.classBytesFor(ClassBytesRepository.kt:65)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider.loadAccessibilityInfoFor(AccessorsClassPath.kt:336)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider.access$loadAccessibilityInfoFor(AccessorsClassPath.kt:297)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider$accessibilityInfoFor$1.apply(AccessorsClassPath.kt:331)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider$accessibilityInfoFor$1.apply(AccessorsClassPath.kt:330)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider.accessibilityInfoFor(AccessorsClassPath.kt:330)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider.inaccessibilityReasonsFor(AccessorsClassPath.kt:322)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider.inaccessibilityReasonsFor(AccessorsClassPath.kt:315)
+	at org.gradle.kotlin.dsl.accessors.TypeAccessibilityProvider.accessibilityForType(AccessorsClassPath.kt:308)
+	at org.gradle.kotlin.dsl.accessors.AccessorsClassPathKt$availableProjectSchemaFor$1$1.invoke(AccessorsClassPath.kt:263)
+	at org.gradle.kotlin.dsl.accessors.AccessorsClassPathKt$availableProjectSchemaFor$1$1.invoke(AccessorsClassPath.kt:263)
+	at org.gradle.kotlin.dsl.accessors.ProjectSchemaEntry.map(ProjectSchemaProvider.kt:80)
+	at org.gradle.kotlin.dsl.accessors.ProjectSchema.map(ProjectSchemaProvider.kt:59)
+	at org.gradle.kotlin.dsl.accessors.AccessorsClassPathKt.availableProjectSchemaFor(AccessorsClassPath.kt:263)
+	at org.gradle.kotlin.dsl.accessors.AccessorsClassPathKt.buildAccessorsFor(AccessorsClassPath.kt:209)
+	at org.gradle.kotlin.dsl.accessors.AccessorsClassPathKt.buildAccessorsFor$default(AccessorsClassPath.kt:201)
+	at org.gradle.kotlin.dsl.accessors.GenerateProjectAccessors$execute$1.invoke(AccessorsClassPath.kt:126)
+	at org.gradle.kotlin.dsl.accessors.GenerateProjectAccessors$execute$1.invoke(AccessorsClassPath.kt:125)
+	at org.gradle.kotlin.dsl.concurrent.IOKt.withAsynchronousIO(IO.kt:94)
+	at org.gradle.kotlin.dsl.accessors.GenerateProjectAccessors.execute(AccessorsClassPath.kt:125)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:93)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:57)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:54)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:54)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:41)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:74)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:50)
+	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:28)
+	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.executeDelegateBroadcastingChanges(CaptureStateAfterExecutionStep.java:100)
+	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:72)
+	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:50)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:166)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:70)
+	at org.gradle.internal.Either$Right.fold(Either.java:175)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:59)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:68)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:25)
+	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:36)
+	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:22)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:91)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:55)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:55)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:37)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:76)
+	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:37)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:94)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:49)
+	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:71)
+	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:45)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.executeWithNonEmptySources(SkipEmptyWorkStep.java:177)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:81)
+	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:53)
+	at org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:32)
+	at org.gradle.internal.execution.steps.RemoveUntrackedExecutionStateStep.execute(RemoveUntrackedExecutionStateStep.java:21)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.CleanupStaleOutputsStep.execute(CleanupStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.CleanupStaleOutputsStep.execute(CleanupStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:32)
+	at org.gradle.internal.execution.workspace.impl.DefaultImmutableWorkspaceProvider.lambda$withWorkspace$3(DefaultImmutableWorkspaceProvider.java:148)
+	at org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess.withFileLock(LockOnDemandCrossProcessCacheAccess.java:90)
+	at org.gradle.cache.internal.DefaultCacheAccess.withFileLock(DefaultCacheAccess.java:218)
+	at org.gradle.cache.internal.DefaultPersistentDirectoryStore.withFileLock(DefaultPersistentDirectoryStore.java:188)
+	at org.gradle.cache.internal.DefaultCacheFactory$ReferenceTrackingCache.withFileLock(DefaultCacheFactory.java:214)
+	at org.gradle.internal.execution.workspace.impl.DefaultImmutableWorkspaceProvider.withWorkspace(DefaultImmutableWorkspaceProvider.java:145)
+	at org.gradle.kotlin.dsl.cache.KotlinDslWorkspaceProvider$subWorkspace$1.withWorkspace(KotlinDslWorkspaceProvider.kt:65)
+	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)
+	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:21)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:42)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:31)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:64)
+	at org.gradle.kotlin.dsl.accessors.ProjectAccessorsClassPathGenerator.buildAccessorsClassPathFor(AccessorsClassPath.kt:91)
+	... 184 more
+
+
+* Get more help at https://help.gradle.org
+
+CONFIGURE FAILED in 55s
+2025-06-02T22:11:14.817-0300 [DEBUG] [org.gradle.launcher.daemon.server.exec.ExecuteBuild] The daemon has finished executing the build.
+2025-06-02T22:11:14.840-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2025-06-02T22:11:14.840-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: finished waiting for DaemonCommandExecution[command = Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}, connection = DefaultDaemonConnection: socket connection from /127.0.0.1:64755 to /127.0.0.1:64756]. Result org.gradle.launcher.daemon.server.DaemonStateCoordinator@332c0274 with state Busy
+2025-06-02T22:11:14.842-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Command execution: completed DaemonCommandExecution[command = Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}, connection = DefaultDaemonConnection: socket connection from /127.0.0.1:64755 to /127.0.0.1:64756]
+2025-06-02T22:11:14.842-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] resetting idle timer
+2025-06-02T22:11:14.842-0300 [INFO] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Marking the daemon as idle, address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:11:14.842-0300 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Marking busy by address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:11:14.844-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2025-06-02T22:11:14.846-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:14.848-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:14.848-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon is running. Sleeping until state changes.
+2025-06-02T22:11:14.849-0300 [DEBUG] [org.gradle.launcher.daemon.server.exec.ReturnResult] Daemon is dispatching the build result: Success[value=org.gradle.launcher.exec.BuildActionResult@65631ad8]
+2025-06-02T22:11:14.849-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 19: dispatching Success[value=org.gradle.launcher.exec.BuildActionResult@65631ad8]
+2025-06-02T22:11:14.857-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Finishing executing command: Build{id=27fb44cf-b34d-4e58-8ae9-6f84c81d57d4, currentDir=C:\Users\Usuario\AndroidStudioProjects\Aymara-App}
+2025-06-02T22:11:15.121-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 20: received class org.gradle.launcher.daemon.protocol.Finished
+2025-06-02T22:11:15.121-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 20: Received non-IO message from client: org.gradle.launcher.daemon.protocol.Finished@1e80eace
+2025-06-02T22:11:15.122-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.SocketConnection] Discarding EOFException: java.io.EOFException
+2025-06-02T22:11:15.123-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 20: received null
+2025-06-02T22:11:15.124-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 20: Received end-of-input from client.
+2025-06-02T22:11:15.125-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received finished message: null
+2025-06-02T22:11:15.126-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 19: stopping connection
+2025-06-02T22:11:15.128-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 19: stopping connection
+2025-06-02T22:11:24.520-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+2025-06-02T22:11:24.520-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:24.521-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:24.523-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+2025-06-02T22:11:24.523-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:24.524-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:34.527-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+2025-06-02T22:11:34.527-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:34.528-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:34.530-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+2025-06-02T22:11:34.531-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:34.531-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:34.533-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire shared lock on daemon addresses registry.
+2025-06-02T22:11:34.533-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:34.534-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:41.873-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.TcpIncomingConnector] Accepted connection from /127.0.0.1:64759 to /127.0.0.1:64755.
+2025-06-02T22:11:41.948-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 63: received class org.gradle.launcher.daemon.protocol.StopWhenIdle
+2025-06-02T22:11:41.948-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 63: Received non-IO message from client: StopWhenIdle[id=2d28a261-a6ea-49ee-a645-44bb0daaca50]
+2025-06-02T22:11:41.949-0300 [INFO] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received command: StopWhenIdle[id=2d28a261-a6ea-49ee-a645-44bb0daaca50].
+2025-06-02T22:11:41.949-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Starting executing command: StopWhenIdle[id=2d28a261-a6ea-49ee-a645-44bb0daaca50] with connection: socket connection from /127.0.0.1:64755 to /127.0.0.1:64759.
+2025-06-02T22:11:41.949-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Storing daemon stop event: stop command received
+2025-06-02T22:11:41.949-0300 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Storing daemon stop event with timestamp 1748913101953
+2025-06-02T22:11:41.951-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2025-06-02T22:11:41.958-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:42.010-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:42.025-0300 [LIFECYCLE] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Daemon will be stopped at the end of the build stop command received
+2025-06-02T22:11:42.025-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] Marking daemon stopped due to stop command received. The daemon is running a build: false
+2025-06-02T22:11:42.025-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 19: dispatching Success[value=null]
+2025-06-02T22:11:42.025-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonStateCoordinator] daemon has stopped.
+2025-06-02T22:11:42.026-0300 [DEBUG] [org.gradle.launcher.daemon.server.Daemon] stop() called on daemon
+2025-06-02T22:11:42.026-0300 [INFO] [org.gradle.launcher.daemon.server.Daemon] Stop requested. Daemon is removing its presence from the registry...
+2025-06-02T22:11:42.027-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Removing our presence to clients, eg. removing this address from the registry: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:11:42.027-0300 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Removing daemon address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:11:42.029-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 63: received class org.gradle.launcher.daemon.protocol.Finished
+2025-06-02T22:11:42.029-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 63: Received non-IO message from client: org.gradle.launcher.daemon.protocol.Finished@7f82ab2c
+2025-06-02T22:11:42.030-0300 [DEBUG] [org.gradle.internal.remote.internal.inet.SocketConnection] Discarding EOFException: java.io.EOFException
+2025-06-02T22:11:42.030-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 63: received null
+2025-06-02T22:11:42.030-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultDaemonConnection] thread 63: Received end-of-input from client.
+2025-06-02T22:11:42.030-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2025-06-02T22:11:42.030-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Finishing executing command: StopWhenIdle[id=2d28a261-a6ea-49ee-a645-44bb0daaca50]
+2025-06-02T22:11:42.031-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+2025-06-02T22:11:42.031-0300 [DEBUG] [org.gradle.launcher.daemon.server.DefaultIncomingConnectionHandler] Received finished message: null
+2025-06-02T22:11:42.032-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 19: stopping connection
+2025-06-02T22:11:42.033-0300 [DEBUG] [org.gradle.launcher.daemon.server.SynchronizedDispatchConnection] thread 19: stopping connection
+2025-06-02T22:11:42.064-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
+2025-06-02T22:11:42.233-0300 [DEBUG] [org.gradle.launcher.daemon.server.DaemonRegistryUpdater] Address removed from registry.
+2025-06-02T22:11:42.235-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for jars (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\jars-9)
+2025-06-02T22:11:42.236-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on jars (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\jars-9).
+2025-06-02T22:11:42.448-0300 [DEBUG] [org.gradle.cache.internal.DefaultPersistentDirectoryStore] jars (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\jars-9) has last been fully cleaned up 3 hours ago
+2025-06-02T22:11:42.449-0300 [DEBUG] [org.gradle.cache.internal.DefaultPersistentDirectoryStore] Artifact transforms cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\transforms-3) has last been fully cleaned up 0 hours ago
+2025-06-02T22:11:42.449-0300 [DEBUG] [org.gradle.cache.internal.DefaultCacheAccess] Cache Artifact transforms cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\transforms-3) was closed 0 times.
+2025-06-02T22:11:42.573-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for kotlin-dsl (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\kotlin-dsl)
+2025-06-02T22:11:42.575-0300 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache executionHistory.bin (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\kotlin-dsl\executionHistory.bin)
+2025-06-02T22:11:42.575-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on kotlin-dsl (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\kotlin-dsl).
+2025-06-02T22:11:42.614-0300 [DEBUG] [org.gradle.cache.internal.DefaultPersistentDirectoryStore] kotlin-dsl (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\kotlin-dsl) has last been fully cleaned up 3 hours ago
+2025-06-02T22:11:42.631-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for file content cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\fileContent)
+2025-06-02T22:11:42.631-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on file content cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\fileContent).
+2025-06-02T22:11:42.635-0300 [DEBUG] [org.gradle.internal.watch.vfs.impl.WatchingVirtualFileSystem] Closing VFS, dropping state
+2025-06-02T22:11:42.641-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for Generated Gradle JARs cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\generated-gradle-jars)
+2025-06-02T22:11:42.641-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on Generated Gradle JARs cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\generated-gradle-jars).
+2025-06-02T22:11:42.641-0300 [DEBUG] [org.gradle.internal.watch.registry.impl.DefaultFileWatcherRegistry] Finished listening to file system change events
+2025-06-02T22:11:42.643-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for artifact cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\modules-2)
+2025-06-02T22:11:42.644-0300 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache module-metadata.bin (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\modules-2\metadata-2.100\module-metadata.bin)
+2025-06-02T22:11:42.644-0300 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache module-artifact.bin (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\modules-2\metadata-2.100\module-artifact.bin)
+2025-06-02T22:11:42.644-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on artifact cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\modules-2).
+2025-06-02T22:11:42.645-0300 [DEBUG] [org.gradle.cache.internal.DefaultPersistentDirectoryStore] artifact cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\modules-2) has last been fully cleaned up 3 hours ago
+2025-06-02T22:11:42.646-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for journal cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\journal-1)
+2025-06-02T22:11:42.646-0300 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache file-access.bin (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\journal-1\file-access.bin)
+2025-06-02T22:11:42.647-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on journal cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\journal-1).
+2025-06-02T22:11:42.649-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for file hash cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\fileHashes)
+2025-06-02T22:11:42.650-0300 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache fileHashes.bin (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\fileHashes\fileHashes.bin)
+2025-06-02T22:11:42.651-0300 [DEBUG] [org.gradle.cache.internal.btree.BTreePersistentIndexedCache] Closing cache resourceHashesCache.bin (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\fileHashes\resourceHashesCache.bin)
+2025-06-02T22:11:42.651-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on file hash cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\fileHashes).
+2025-06-02T22:11:42.652-0300 [DEBUG] [org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess] Releasing file lock for execution history cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\executionHistory)
+2025-06-02T22:11:42.653-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on execution history cache (C:\Users\Usuario\AndroidStudioProjects\Aymara-App\caches\8.0\executionHistory).
+2025-06-02T22:11:42.659-0300 [DEBUG] [org.gradle.launcher.daemon.registry.PersistentDaemonRegistry] Removing daemon address: [4488c762-bc9a-450f-b37c-98fc2a4b5953 port:64755, addresses:[localhost/127.0.0.1]]
+2025-06-02T22:11:42.661-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Waiting to acquire exclusive lock on daemon addresses registry.
+2025-06-02T22:11:42.661-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Lock acquired on daemon addresses registry.
+Daemon vm is shutting down... The daemon has exited normally or was terminated in response to a user interrupt.
+2025-06-02T22:11:42.665-0300 [DEBUG] [org.gradle.cache.internal.DefaultFileLockManager] Releasing lock on daemon addresses registry.
