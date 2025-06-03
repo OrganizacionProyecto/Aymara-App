@@ -1,21 +1,11 @@
-
 package com.example.aymara_app;
 
-import com.example.aymara_app.network.ApiService;
-import com.example.aymara_app.network.ApiClient;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import java.util.HashMap;
-import java.util.Map;
-import android.text.InputType;
-import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -24,22 +14,27 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.appcompat.app.AlertDialog;
-import java.io.IOException;
+import com.example.aymara_app.network.ApiService;
+import com.example.aymara_app.network.ApiClient;
 import org.json.JSONException;
 import org.json.JSONObject;
-import okhttp3.ResponseBody;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.text.InputType;
+import android.text.InputFilter;
 
 public class ProfileFragment extends Fragment {
 
     private EditText etUsername, etFirst_Name, etLast_Name, etEmail, etDireccion;
-    private Button btnChangePassword, btnDeleteAccount, btnLogout;
-    private Button btnEditUsername, btnEditDireccion;
+    private Button btnChangePassword, btnDeleteAccount, btnLogout, btnEditUsername, btnEditDireccion;
+    private Button btnOrderHistory;
     private ApiService apiService;
     private SharedPreferences prefs;
 
@@ -49,6 +44,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
 
+        // Inicialización de vistas
         etUsername = view.findViewById(R.id.etUsername);
         etFirst_Name = view.findViewById(R.id.etFirst_Name);
         etLast_Name = view.findViewById(R.id.etLast_Name);
@@ -59,6 +55,7 @@ public class ProfileFragment extends Fragment {
         btnLogout = view.findViewById(R.id.btnOut);
         btnEditUsername = view.findViewById(R.id.btnEditUsername);
         btnEditDireccion = view.findViewById(R.id.btnEditDireccion);
+        btnOrderHistory = view.findViewById(R.id.btnOrderHistory);
 
         apiService = ApiClient.getClient().create(ApiService.class);
         prefs = getActivity().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
@@ -71,12 +68,17 @@ public class ProfileFragment extends Fragment {
         btnLogout.setOnClickListener(v -> logoutUser());
         btnEditUsername.setOnClickListener(v -> showChangeUsernameDialog());
         btnEditDireccion.setOnClickListener(v -> showChangeAddressDialog());
+        // Cambio 3: Listener para el botón de historial
+        btnOrderHistory.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_profileFragment_to_orderHistoryFragment);
+        });
+
         etUsername.setEnabled(false);
         etFirst_Name.setEnabled(false);
         etLast_Name.setEnabled(false);
         etEmail.setEnabled(false);
         etDireccion.setEnabled(false);
-
 
         InputFilter[] usernameFilters = new InputFilter[2];
         usernameFilters[0] = new InputFilter.LengthFilter(15);
@@ -89,13 +91,15 @@ public class ProfileFragment extends Fragment {
         };
         etUsername.setFilters(usernameFilters);
 
-
         InputFilter[] addressFilters = new InputFilter[1];
         addressFilters[0] = new InputFilter.LengthFilter(50);
         etDireccion.setFilters(addressFilters);
 
         return view;
     }
+
+    // El resto del código (loadUserData, handleErrorResponse, refreshToken, etc.) permanece sin cambios
+}
 
     private void loadUserData() {
         String accessToken = prefs.getString("access_token", "");
