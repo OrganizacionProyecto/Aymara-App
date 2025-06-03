@@ -6,7 +6,6 @@ import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
 import com.example.aymara_app.Categoria;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +31,7 @@ public interface ApiService {
         Call<ResponseBody> addToFavorites(@Body Map<String, Integer> body, @Header("Authorization") String token);
 
         @DELETE("api/products/favoritos/{id}/")
-        Call<ResponseBody> removeFromFavorites(@Path("id") int favoritoId, @Header("Authorization") String token);
+        Call<ResponseBody> removeFromFavorites(@Path("id") RequestBody favoritoId, @Header("Authorization") String token);
 
         // ---------- CARRITO ----------
         @GET("api/cart/carrito/")

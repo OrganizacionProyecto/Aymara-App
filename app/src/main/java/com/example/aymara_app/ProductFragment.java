@@ -90,6 +90,8 @@ public class ProductFragment extends Fragment {
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     categorySpinner.setAdapter(adapter);
 
+                    filter(searchBar.getText().toString());
+
                     categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -100,6 +102,7 @@ public class ProductFragment extends Fragment {
                         @Override
                         public void onNothingSelected(AdapterView<?> parent) {
                             selectedCategory = "Todas";
+                            filter(searchBar.getText().toString());
                         }
                     });
                 } else {
@@ -142,7 +145,7 @@ public class ProductFragment extends Fragment {
             if (products != null && !products.isEmpty()) {
                 Log.d("ProductFragment", "Productos obtenidos: " + products.size());
                 productList = products;
-                productAdapter.setProductList(products, requireContext());
+                filter(searchBar.getText().toString());
             } else {
                 Log.d("ProductFragment", "No se obtuvieron productos de la API");
             }
@@ -173,15 +176,27 @@ public class ProductFragment extends Fragment {
 
     private void filter(String text) {
         List<Product> filteredList = new ArrayList<>();
+
         for (Product product : productList) {
-            if (product.getNombre().toLowerCase().contains(text.toLowerCase())) {
+
+            boolean nombreCoincide = product.getNombre().toLowerCase().contains(text.toLowerCase());
+            boolean categoriaCoincide = selectedCategory.equals("Todas")
+                    || getNombreCategoriaPorId(product.getIdCategoria()).equals(selectedCategory);
+            if (nombreCoincide && categoriaCoincide) {
                 filteredList.add(product);
             }
         }
         productAdapter.setProductList(filteredList, requireContext());
     }
 
-
+    private String getNombreCategoriaPorId(int idCategoria) {
+        for (Categoria categoria : categoriaList) {
+            if (categoria.getId() == idCategoria) {
+                return categoria.getNombre();
+            }
+        }
+        return ""; // si no encuentra coincidencia
+    }
     
     public void refreshProductList() {
         boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);
