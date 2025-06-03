@@ -59,10 +59,13 @@ public class OrderHistoryFragment extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             int id = jsonObject.getInt("id");
-                            String date = jsonObject.getString("fecha");
+                            int usuario = jsonObject.getInt("usuario");
+                            String direccionEntrega = jsonObject.getString("direccion_entrega");
+                            String telefono = jsonObject.getString("telefono");
+                            String metodoPago = jsonObject.getString("metodo_pago");
                             double total = jsonObject.getDouble("total");
-                            String status = jsonObject.getString("estado");
-                            orders.add(new Order(id, date, total, status));
+                            String fechaCreacion = jsonObject.getString("fecha_creacion");
+                            orders.add(new Order(id, usuario, direccionEntrega, telefono, metodoPago, total, fechaCreacion));
                         }
 
                         adapter.setOrders(orders);

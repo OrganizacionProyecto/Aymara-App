@@ -2,19 +2,28 @@ package com.example.aymara_app;
 
 public class Order {
     private int id;
-    private String fecha;
+    private int usuario;
+    private String direccionEntrega;
+    private String telefono;
+    private String metodoPago;
     private double total;
-    private String estado;
+    private String fechaCreacion;
 
-    public Order(int id, String fecha, double total, String estado) {
+    public Order(int id, int usuario, String direccionEntrega, String telefono, String metodoPago, double total, String fechaCreacion) {
         this.id = id;
-        this.fecha = fecha;
+        this.usuario = usuario;
+        this.direccionEntrega = direccionEntrega;
+        this.telefono = telefono;
+        this.metodoPago = metodoPago;
         this.total = total;
-        this.estado = estado;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public int getId() { return id; }
-    public String getFecha() { return fecha; }
+    public int getUsuario() { return usuario; }
+    public String getDireccionEntrega() { return direccionEntrega; }
+    public String getTelefono() { return telefono; }
+    public String getMetodoPago() { return metodoPago; }
     public double getTotal() { return total; }
-    public String getEstado() { return estado; }
+    public String getFechaCreacion() { return fechaCreacion; }
 }
