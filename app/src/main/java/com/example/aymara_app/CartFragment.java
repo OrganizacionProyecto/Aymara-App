@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -112,29 +113,10 @@ public class CartFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-        btnRealizarPedido.setOnClickListener(v1 -> {
-            String accessToken = prefs.getString("access_token", "");
-            if (accessToken.isEmpty()) {
-                showToast("Sesión expirada. Por favor, inicia sesión nuevamente.");
-                return;
-            }
-            apiService.createPedido("Bearer " + accessToken).enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if (response.isSuccessful()) {
-                        obtenerCarrito();
-                        showToast("Pedido realizado correctamente.");
-                    } else {
-                        showToast("Error al realizar el pedido.");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    showToast("Error de red al realizar el pedido.");
-                }
-            });
+        btnRealizarPedido.setOnClickListener(view -> {
+            NavHostFragment.findNavController(this).navigate(R.id.action_cartFragment_to_pedidoFragment);
         });
+
 
         obtenerCarrito();
 

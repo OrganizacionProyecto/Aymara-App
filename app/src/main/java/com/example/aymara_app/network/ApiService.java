@@ -1,6 +1,7 @@
 package com.example.aymara_app.network;
 
 import com.example.aymara_app.CartResponse;
+import com.example.aymara_app.PedidoResponse;
 import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
@@ -56,7 +57,7 @@ public interface ApiService {
         );
         // ---------- PEDIDOS ----------
         @POST("api/cart/pedido/crear/")
-        Call<ResponseBody> createPedido(@Header("Authorization") String token);
+        Call<PedidoResponse> createPedido(@Body Map<String, Object> body, @Header("Authorization") String token);
 
         @GET("api/cart/pedido/historial/")
         Call<ResponseBody> getHistorialPedidos(@Header("Authorization") String token);
@@ -80,13 +81,13 @@ public interface ApiService {
         @PATCH("api/users/change-direccion/")
         Call<ResponseBody> changeAddress(@Header("Authorization") String token, @Body Map<String, String> body);
 
-        @PATCH("api/users/change-username/")
+        @PATCH("/api/users/{id}/")
         Call<ResponseBody> changeUsername(@Header("Authorization") String token, @Body Map<String, String> body);
 
         @POST("api/users/change-password/")
         Call<ResponseBody> changePassword(@Header("Authorization") String token, @Body RequestBody body);
 
-        @DELETE("api/users/auth/delete_account/")
+        @DELETE("/api/users/{id}/")
         Call<ResponseBody> deleteAccount(@Header("Authorization") String token);
 
         @POST("api/auth/token/refresh/")

@@ -40,11 +40,10 @@ public class FavoritesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.favorites_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         apiService = ApiClient.getClient().create(ApiService.class);
-
-        productAdapter = new ProductAdapter(true, getContext());
+        productAdapter = new ProductAdapter(true, requireContext());
         recyclerView.setAdapter(productAdapter);
 
         fetchFavorites();
@@ -52,33 +51,36 @@ public class FavoritesFragment extends Fragment {
 
     private void fetchFavorites() {
         String token = getAccessToken(requireContext());
-        if (!token.isEmpty()) {
-            apiService.getFavorites("Bearer " + token).enqueue(new Callback<List<Product>>() {
-                @Override
-                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-                    if (response.isSuccessful()) {
-                        List<Product> favoriteProducts = response.body();
-                        if (favoriteProducts != null && !favoriteProducts.isEmpty()) {
-                            productAdapter.setProductList(favoriteProducts, requireContext());
-                        } else {
-                            Toast.makeText(getContext(), "No tienes productos en favoritos", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getContext(), "Error al obtener favoritos: " + response.message(), Toast.LENGTH_SHORT).show();
-                    }
-                }
 
-                @Override
-                public void onFailure(Call<List<Product>> call, Throwable t) {
-                    Log.e("FavoritesFragment", "Error de conexión: " + t.getMessage());
-                    Toast.makeText(getContext(), "Error de conexión", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Toast.makeText(getContext(), "No se encontró token", Toast.LENGTH_SHORT).show();
+        if (token.isEmpty()) {
+            Toast.makeText(getContext(), "Debes iniciar sesión para ver tus favoritos", Toast.LENGTH_SHORT).show();
+            return;
         }
-    }
 
+        apiService.getFavorites("Bearer " + token).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Product>> call, @NonNull Response<List<Product>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Product> favoriteProducts = response.body();
+                    if (!favoriteProducts.isEmpty()) {
+                        productAdapter.setProductList(favoriteProducts, requireContext());
+                    } else {
+                        Toast.makeText(getContext(), "No tienes productos en favoritos", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    String error = "Error al obtener favoritos: " + response.code() + " - " + response.message();
+                    Log.e("FavoritesFragment", error);
+                    Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Product>> call, @NonNull Throwable t) {
+                Log.e("FavoritesFragment", "Fallo de conexión: " + t.getMessage(), t);
+                Toast.makeText(getContext(), "Error de conexión al obtener favoritos", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private String getAccessToken(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);

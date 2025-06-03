@@ -79,6 +79,19 @@
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
+                <EditText
+                    android:id="@+id/direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/custom_editex1"
+                    android:drawableLeft="@drawable/baseline_location_on_24"
+                    android:hint="Dirección"
+                    android:inputType="text"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout"
                     android:layout_width="match_parent"
@@ -138,18 +151,7 @@
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background" />
 
-                <EditText
-                    android:id="@+id/direccion"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@drawable/custom_editex1"
-                    android:drawableLeft="@drawable/baseline_location_on_24"
-                    android:hint="Dirección"
-                    android:inputType="text"
-                    android:padding="3dp"
-                    android:textColor="@color/black"
-                    android:textColorHighlight="@color/cardview_dark_background" />
+
 
                 <Button
                     android:id="@+id/registerButton"
