@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
@@ -19,9 +20,11 @@
         android:textSize="18sp"
         android:padding="8dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRealizarPedido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Realizar Pedido" />
+        android:text="Realizar Pedido"
+        app:backgroundTint="@color/VerdeAymara"
+        android:textColor="@android:color/white" />
 </LinearLayout>

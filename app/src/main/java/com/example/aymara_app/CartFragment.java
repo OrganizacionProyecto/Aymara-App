@@ -109,14 +109,13 @@ public class CartFragment extends Fragment {
                             }
                         });
             }
-        });
+        }, true);  // <-- Aquí agregué el tercer parámetro
 
         recyclerView.setAdapter(adapter);
 
         btnRealizarPedido.setOnClickListener(view -> {
             NavHostFragment.findNavController(this).navigate(R.id.action_cartFragment_to_pedidoFragment);
         });
-
 
         obtenerCarrito();
 
