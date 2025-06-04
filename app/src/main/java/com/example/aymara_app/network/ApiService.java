@@ -6,6 +6,7 @@ import com.example.aymara_app.RegisterRequest;
 import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
 import com.example.aymara_app.Categoria;
+import com.google.gson.JsonObject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -91,13 +92,14 @@ public interface ApiService {
         @PATCH("api/users/change-direccion/")
         Call<ResponseBody> changeAddress(@Header("Authorization") String token, @Body Map<String, String> body);
 
-        @PATCH("/api/users/{id}/")
-        Call<ResponseBody> changeUsername(@Header("Authorization") String token, @Body Map<String, String> body);
+        @PATCH("api/users/me/")
+        Call<ResponseBody> updateUser(@Header("Authorization") String token, @Body RequestBody body);
 
-        @POST("api/users/change-password/")
+
+        @POST("api/users/change_password/")
         Call<ResponseBody> changePassword(@Header("Authorization") String token, @Body RequestBody body);
 
-        @DELETE("/api/users/{id}/")
+        @DELETE("api/users/deactivate_account/")
         Call<ResponseBody> deleteAccount(@Header("Authorization") String token);
 
         @POST("api/auth/token/refresh/")
