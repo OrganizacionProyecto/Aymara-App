@@ -34,4 +34,7 @@ public interface ApiService {
         @Body Map<String, Object> datosPedido,
         @Header("Authorization") String authHeader
     );
+
+    @GET("api/factura/{pedidoId}/")
+    Call<ResponseBody> getFactura(@Path("pedidoId") int pedidoId);
 }
