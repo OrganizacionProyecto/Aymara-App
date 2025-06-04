@@ -1,16 +1,10 @@
 package com.example.aymara_app;
 
-import com.google.gson.annotations.SerializedName;
-
 public class PedidoResponse {
-
-    @SerializedName("id")
-    private Integer id;
-
-    @SerializedName("mercadopago_url")
+    private int id;
     private String mercadopagoUrl;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

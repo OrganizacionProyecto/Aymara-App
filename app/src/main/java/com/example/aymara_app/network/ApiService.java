@@ -7,12 +7,18 @@ import com.example.aymara_app.RegisterResponse;
 import com.example.aymara_app.Product;
 import com.example.aymara_app.Categoria;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
+
 import java.util.List;
 import java.util.Map;
 
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface ApiService {
@@ -32,7 +38,7 @@ public interface ApiService {
         Call<ResponseBody> addToFavorites(@Body Map<String, Integer> body, @Header("Authorization") String token);
 
         @DELETE("api/products/favoritos/{id}/")
-        Call<ResponseBody> removeFromFavorites(@Path("id") RequestBody favoritoId, @Header("Authorization") String token);
+        Call<ResponseBody> removeFromFavorites(@Path("id") int favoritoId, @Header("Authorization") String token);
 
         // ---------- CARRITO ----------
         @GET("api/cart/carrito/")
@@ -61,14 +67,13 @@ public interface ApiService {
         Call<List<Categoria>> getNombre();
 
         // ---------- PEDIDOS ----------
-        @POST("api/cart/pedido/crear/")
-        Call<PedidoResponse> createPedido(@Body Map<String, Object> body, @Header("Authorization") String token);
+
 
         @GET("api/cart/pedido/historial/")
         Call<ResponseBody> getHistorialPedidos(@Header("Authorization") String token);
 
-        @GET("api/cart/pedido/{pedido_id}/factura/")
-        Call<ResponseBody> getFactura(@Path("pedido_id") int pedidoId, @Header("Authorization") String token);
+        @GET("api/factura/{pedidoId}/")
+        Call<ResponseBody> getFactura(@Path("pedidoId") int pedidoId);
 
         // ---------- AUTENTICACIÓN / USUARIOS ----------
         @POST("api/users/")
@@ -97,4 +102,12 @@ public interface ApiService {
 
         @POST("api/auth/token/refresh/")
         Call<ResponseBody> refreshToken();
+
+        @POST("api/cart/pedido/crear/")
+        Call<PedidoResponse> createPedido(
+                @Body Map<String, Object> datosPedido,
+                @Header("Authorization") String authHeader
+        );
 }
+
+
