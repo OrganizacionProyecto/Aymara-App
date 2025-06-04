@@ -1,5 +1,7 @@
 package com.example.aymara_app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
@@ -9,13 +11,26 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.aymara_app.network.ApiClient;
+import com.example.aymara_app.network.ApiService;
 import com.example.aymara_app.repository.ProductRepository;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class ProductFragment extends Fragment {
 
@@ -24,63 +39,128 @@ public class ProductFragment extends Fragment {
     private ProductRepository productRepository;
     private List<Product> productList = new ArrayList<>();
     private EditText searchBar;
-
+    private SharedPreferences sharedPreferences;
+    private Spinner categorySpinner;
+    private String selectedCategory = "";
+    private List<Categoria> categoriaList = new ArrayList<>();
     public ProductFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_product, container, false);
 
-        // Inicializar el RecyclerView
+        sharedPreferences = getContext().getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+
+        boolean isLoggedIn = checkIfUserIsLoggedIn();
+
+        initializeRecyclerView(view, isLoggedIn);
+
+        searchBar = view.findViewById(R.id.search_bar);
+        setupSearchBar();
+
+        initializeProductRepository(isLoggedIn, view);
+
+        setupFavoriteButton(view, isLoggedIn);
+
+        categorySpinner = view.findViewById(R.id.category_spinner);
+        loadCategorias();
+
+
+        return view;
+    }
+
+    private void loadCategorias() {
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        apiService.getNombre().enqueue(new Callback<List<Categoria>>() {
+            @Override
+            public void onResponse(Call<List<Categoria>> call, Response<List<Categoria>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    categoriaList.clear();
+
+                    // Agrega una categoría "Todas"
+                    Categoria todas = new Categoria();
+                    todas.setId(0); // o 0
+                    todas.setNombre("Todas");
+                    categoriaList.add(todas);
+
+                    categoriaList.addAll(response.body());
+
+                    ArrayAdapter<Categoria> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, categoriaList);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    categorySpinner.setAdapter(adapter);
+
+                    filter(searchBar.getText().toString());
+
+                    categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            selectedCategory = categoriaList.get(position).getNombre();
+                            filter(searchBar.getText().toString()); // Refiltra con la categoría
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            selectedCategory = "Todas";
+                            filter(searchBar.getText().toString());
+                        }
+                    });
+                } else {
+                    Log.e("Categorias", "Respuesta inválida");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Categoria>> call, Throwable t) {
+                Log.e("Categorias", "Error: " + t.getMessage());
+            }
+        });
+    }
+
+    private void initializeRecyclerView(View view, boolean isLoggedIn) {
         recyclerView = view.findViewById(R.id.recycler_view_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        // Inicializar el adaptador y establecerlo en el RecyclerView
-        productAdapter = new ProductAdapter();
+        productAdapter = new ProductAdapter(isLoggedIn, requireContext());
         recyclerView.setAdapter(productAdapter);
+    }
 
-        // Inicializar la barra de búsqueda
-        searchBar = view.findViewById(R.id.search_bar);
-        setupSearchBar();
+    private void setupFavoriteButton(View view, boolean isLoggedIn) {
+        ImageButton favoriteButton = view.findViewById(R.id.button);
+        if (isLoggedIn) {
+            favoriteButton.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.favoritesFragment);
+            });
+        } else {
+            favoriteButton.setVisibility(View.GONE);
+        }
+    }
 
-        // Inicializar el repositorio y obtener productos desde la API
+
+    private void initializeProductRepository(boolean isLoggedIn, View view) {
         productRepository = new ProductRepository();
         productRepository.getProducts().observe(getViewLifecycleOwner(), products -> {
             if (products != null && !products.isEmpty()) {
                 Log.d("ProductFragment", "Productos obtenidos: " + products.size());
-                productList = products;  // Guardar la lista de productos
-                productAdapter.setProductList(products);
+                productList = products;
+                filter(searchBar.getText().toString());
             } else {
                 Log.d("ProductFragment", "No se obtuvieron productos de la API");
             }
         });
+    }
 
-        // Botón para mostrar solo favoritos
-        ImageButton favoriteButton = view.findViewById(R.id.button);
-        favoriteButton.setOnClickListener(v -> {
-            productRepository.getFavorites().observe(getViewLifecycleOwner(), favorites -> {
-                if (favorites != null && !favorites.isEmpty()) {
-                    productList = favorites;  // Guardar la lista de favoritos
-                    productAdapter.setProductList(favorites);
-                    Log.d("ProductFragment", "Mostrando productos favoritos: " + favorites.size());
-                } else {
-                    Log.d("ProductFragment", "No hay productos favoritos");
-                }
-            });
-        });
-
-        return view;
+    private boolean checkIfUserIsLoggedIn() {
+        String token = sharedPreferences.getString("access_token", null);
+        return token != null;
     }
 
     private void setupSearchBar() {
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // No se necesita implementar
             }
 
             @Override
@@ -90,18 +170,39 @@ public class ProductFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                // No se necesita implementar
             }
         });
     }
 
     private void filter(String text) {
         List<Product> filteredList = new ArrayList<>();
+
         for (Product product : productList) {
-            if (product.getNombre().toLowerCase().contains(text.toLowerCase())) {
+
+            boolean nombreCoincide = product.getNombre().toLowerCase().contains(text.toLowerCase());
+            boolean categoriaCoincide = selectedCategory.equals("Todas")
+                    || getNombreCategoriaPorId(product.getIdCategoria()).equals(selectedCategory);
+            if (nombreCoincide && categoriaCoincide) {
                 filteredList.add(product);
             }
         }
-        productAdapter.setProductList(filteredList);
+        productAdapter.setProductList(filteredList, requireContext());
     }
+
+    private String getNombreCategoriaPorId(int idCategoria) {
+        for (Categoria categoria : categoriaList) {
+            if (categoria.getId() == idCategoria) {
+                return categoria.getNombre();
+            }
+        }
+        return ""; // si no encuentra coincidencia
+    }
+    
+    public void refreshProductList() {
+        boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);
+        productAdapter.setIsLoggedIn(isLoggedIn);
+        productAdapter.notifyDataSetChanged();
+    }
+
+
 }

@@ -1,6 +1,7 @@
 <resources>
     <!-- Credenciales Home - APP -->
     <string name="app_name">Aymara-App</string>
+    <string name="show_password">Mostrar contraseña</string>
     <string name="version">1.0.0</string>
 
     <!-- Productos -->
@@ -15,11 +16,43 @@
 
     <string name="sin_productos">No hay productos disponibles</string>
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <string name="contentDescripcion">Favorito</string>
 
-
+    <!--Profile-->
+    <string name="ver_historial_pedidos">Ver Historial de Pedidos</string>
+    <string name="cambiar_contraseña">Cambiar contraseña</string>
+    <string name="tv_contacto">Contacto</string>
+    <string name="txt_instrucciones"> Por favor, completa el formulario
+        a continuación para ponerte en contacto con nosotros. Respondemos a la brevedad.</string>
+    <string name="ed_name"> Apellido y Nombre</string>
+    <string name="em_mail">Mail</string>
+    <string name="en_edad">Edad</string>
+    <string name="tv_sexo">Sexo</string>
+    <string name="en_altura">Altura (cm)</string>
+    <string name="en_peso">Peso (kg)</string>
+    <string name="ed_objetivo">Objetivos</string>
+    <string name="ed_nutricion">Desea recibir informacion nutricional?</string>
+    <string name="cb_si">Si</string>
+    <string name="cb_no">No</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="btn_borrar">Borrar</string>
+    <string name="rb_masculino">Masculino</string>
+    <string name="rb_femenino">Femenino</string>
+    <string name="rb_otro">Otro</string>
+    <string name="apellido">Apellido</string>
+    <string name="nombre">Nombre</string>
+    <string name="username">Username</string>
+    <string name="perfil">Perfil</string>
+    <string name="bienvenido">¡Bienvenido!</string>
+    <string name="salir">Salir</string>
+    <string name="editar_username">Editar username</string>
+    <string name="editar_la_direcci_n_de_correo_electr_nico">Editar la dirección de correo electrónico</string>
+    <string name="eliminar_cuenta">Eliminar Cuenta</string>
+    <string name="cambiar_contrase_a">Cambiar contraseña</string>
+    <string name="direccion_falsa_123">Direccion falsa 123</string>
+    <string name="admin_gmail_com">admin@gmail.com</string>
 </resources>
+
+

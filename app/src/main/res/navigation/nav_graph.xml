@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/HomeFragment">
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.example.aymara_app.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.aymara_app.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.aymara_app.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment">
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.example.aymara_app.OrderHistoryFragment"
+        android:label="order_history_fragment"
+        tools:layout="@layout/fragment_order_history" />
+
+    <fragment
+        android:id="@+id/ProductFragment"
+        android:name="com.example.aymara_app.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product">
+        <action
+            android:id="@+id/action_productFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.aymara_app.FavoritesFragment"
+        android:label="Favorites" />
+
+    <fragment
+        android:id="@+id/ContacFragment"
+        android:name="com.example.aymara_app.ContacFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contac" />
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.aymara_app.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.aymara_app.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_pedidoFragment"
+            app:destination="@id/pedidoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pedidoFragment"
+        android:name="com.example.aymara_app.PedidoFragment"
+        android:label="fragment_pedido"
+        tools:layout="@layout/fragment_pedido">
+        <action
+            android:id="@+id/action_pedidoFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+</navigation>
