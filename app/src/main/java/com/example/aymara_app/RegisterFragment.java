@@ -1,5 +1,4 @@
 package com.example.aymara_app;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import com.example.aymara_app.network.ApiService;
 import com.example.aymara_app.network.ApiClient;
+import com.example.aymara_app.RegisterRequest;
+import com.example.aymara_app.RegisterResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +43,7 @@ public class RegisterFragment extends Fragment {
         loginText = view.findViewById (R.id.loginText);
         editTextUsername = view.findViewById (R.id.username);
         editTextPassword = view.findViewById (R.id.password);
-        editTextConfirPass = view.findViewById (R.id.confirpass); // Mantener el campo de confirmación
+        editTextConfirPass = view.findViewById (R.id.confirpass);
         editTextEmail = view.findViewById (R.id.email);
         editTextFirstName = view.findViewById (R.id.firstname);
         editTextLastName = view.findViewById (R.id.lastname);
@@ -60,17 +63,25 @@ public class RegisterFragment extends Fragment {
             }
         });
 
+
+        if (loginText != null) {
+            loginText.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_registerFragment_to_loginFragment);
+            });
+        }
+
         return view;
     }
 
     private void registerUser() {
         String email = editTextEmail.getText ().toString ();
         String password = editTextPassword.getText ().toString ();
-        String confirPass = editTextConfirPass.getText ().toString (); // Obtener el texto del campo de confirmación
+        String confirPass = editTextConfirPass.getText ().toString ();
         String username = editTextUsername.getText ().toString ();
         String firstname = editTextFirstName.getText ().toString ();
         String lastname = editTextLastName.getText ().toString ();
-        String direccion = editTextDireccion.getText().toString(); // Nuevo campo para dirección
+        String direccion = editTextDireccion.getText().toString();
 
 
         /*Validaciones*/
@@ -118,9 +129,31 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response.isSuccessful ()) {
-                    Toast.makeText (getContext (), "Registro exitoso", Toast.LENGTH_SHORT).show ();
+                    Toast.makeText (getContext (), "Registro exitoso. Por favor, inicia sesión.", Toast.LENGTH_LONG).show ();
+
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.navigate(R.id.action_registerFragment_to_loginFragment);
+
                 } else {
-                    Toast.makeText (getContext (), "Error en el registro: " + response.message (), Toast.LENGTH_SHORT).show ();
+
+                    String errorMessage = "Error en el registro.";
+                    try {
+                        if (response.errorBody() != null) {
+                            String errorBody = response.errorBody().string();
+
+                            if (errorBody.contains("email") && errorBody.contains("actualmente en uso")) {
+                                errorMessage = "El email ya está registrado.";
+                            } else if (errorBody.contains("username") && errorBody.contains("ya existe")) {
+                                errorMessage = "El nombre de usuario ya existe.";
+                            } else {
+                                errorMessage = "Error en el registro: " + response.message();
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        errorMessage = "Error al procesar la respuesta del servidor.";
+                    }
+                    Toast.makeText (getContext (), errorMessage, Toast.LENGTH_LONG).show ();
                 }
             }
 
