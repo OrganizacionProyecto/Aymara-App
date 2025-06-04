@@ -29,6 +29,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="sans-serif"
+        android:lineSpacingExtra="10sp"
         android:text="Tu dietetica de confianza!"
         android:textColor="@color/white"
         android:textSize="30sp"
