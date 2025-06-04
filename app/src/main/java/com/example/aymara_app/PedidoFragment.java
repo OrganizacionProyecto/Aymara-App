@@ -15,15 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aymara_app.network.ApiClient;
 import com.example.aymara_app.network.ApiService;
-/* import com.example.aymara_app.PedidoResponse; */
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.ResponseBody;
@@ -35,9 +38,12 @@ public class PedidoFragment extends Fragment {
 
     private EditText editDireccion, editTelefono;
     private Button btnRealizarPedido, btnDescargarPDF;
-
+    private RecyclerView recyclerView;
+    private TextView totalCarrito;
     private Integer pedidoId = null;
 
+    private List<CartItem> carrito = new ArrayList<>();
+    private CartAdapter adapter;
     private ApiService apiService;
 
     public PedidoFragment() {}
@@ -46,12 +52,19 @@ public class PedidoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pedido, container, false);
+        View view = inflater.inflate(R.layout.fragment_pedido, container, false);
 
-        editDireccion = view.findViewById(R.id.etDireccion);
-        editTelefono = view.findViewById(R.id.etTelefono);
+        // Referencias UI
+        editDireccion = view.findViewById(R.id.editDireccion);
+        editTelefono = view.findViewById(R.id.editTelefono);
         btnRealizarPedido = view.findViewById(R.id.btnRealizarPedido);
         btnDescargarPDF = view.findViewById(R.id.btnDescargarPDF);
+        recyclerView = view.findViewById(R.id.recyclerCart);
+        totalCarrito = view.findViewById(R.id.totalCarrito);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new CartAdapter(carrito, null); // sin listener para modificar/eliminar
+        recyclerView.setAdapter(adapter);
 
         apiService = ApiClient.getClient().create(ApiService.class);
 
@@ -59,6 +72,8 @@ public class PedidoFragment extends Fragment {
         btnDescargarPDF.setOnClickListener(v -> {
             if (pedidoId != null) descargarPDF(pedidoId);
         });
+
+        obtenerCarrito(); // Mostrar productos y total
 
         return view;
     }
@@ -71,7 +86,7 @@ public class PedidoFragment extends Fragment {
     private void realizarPedido() {
         String direccion = editDireccion.getText().toString();
         String telefono = editTelefono.getText().toString();
-        String metodoPago = "mercadopago";  // fijo
+        String metodoPago = "mercadopago";
 
         if (TextUtils.isEmpty(direccion) || TextUtils.isEmpty(telefono)) {
             Toast.makeText(getContext(), "Completa dirección y teléfono", Toast.LENGTH_SHORT).show();
@@ -107,7 +122,7 @@ public class PedidoFragment extends Fragment {
                     btnDescargarPDF.setVisibility(View.VISIBLE);
 
                     new Handler().postDelayed(() -> {
-                        // Aquí puedes redirigir o limpiar el formulario si quieres
+                        // Limpiar campos o navegar si querés
                     }, 3000);
                 } else {
                     Toast.makeText(getContext(), "Error al realizar el pedido", Toast.LENGTH_SHORT).show();
@@ -157,6 +172,36 @@ public class PedidoFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(getContext(), "Error al descargar PDF", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void obtenerCarrito() {
+        String accessToken = obtenerToken();
+        if (accessToken == null || accessToken.isEmpty()) {
+            Toast.makeText(getContext(), "Sesión expirada. Por favor, inicia sesión.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        apiService.getCart("Bearer " + accessToken).enqueue(new Callback<CartResponse>() {
+            @Override
+            public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    CartResponse cartResponse = response.body();
+
+                    carrito.clear();
+                    carrito.addAll(cartResponse.getDetalles_producto());
+                    adapter.notifyDataSetChanged();
+
+                    totalCarrito.setText(String.format("Total: $%.2f", cartResponse.getTotal_carrito()));
+                } else {
+                    Toast.makeText(getContext(), "Error al obtener carrito.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CartResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -212,10 +212,7 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getContext(), "La contraseña debe contener al menos una letra mayúscula", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (!password.matches(".*[0-9].*")) {
-            Toast.makeText(getContext(), "La contraseña debe contener al menos un número", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+
         if (!password.matches(".*[a-zA-Z].*")) {
             Toast.makeText(getContext(), "La contraseña debe contener al menos una letra (mayúscula o minúscula)", Toast.LENGTH_SHORT).show();
             return false;
@@ -374,69 +371,108 @@ public class ProfileFragment extends Fragment {
     private void showChangeAddressDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Cambiar Dirección");
+
         LinearLayout layout = new LinearLayout(getActivity());
         layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setPadding(16, 16, 16, 16);
+        int padding = (int) getResources().getDisplayMetrics().density * 16;
+        layout.setPadding(padding, padding, padding, padding);
+
         EditText etNewAddress = new EditText(getActivity());
         etNewAddress.setHint("Nueva Dirección");
         layout.addView(etNewAddress);
-        builder.setView(layout)
-                .setPositiveButton("Confirmar", (dialog, which) -> {
-                    String newAddress = etNewAddress.getText().toString().trim();
-                    if (newAddress.isEmpty()) {
-                        Toast.makeText(getActivity(), "El domicilio no puede estar vacío", Toast.LENGTH_SHORT).show();
-                    } else if (newAddress.length() < 3) {
-                        Toast.makeText(getActivity(), "El domicilio debe tener al menos 3 caracteres", Toast.LENGTH_SHORT).show();
-                    } else {
-                        updateAddress(newAddress);
-                    }
-                })
-                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
-                .create()
-                .show();
+
+        builder.setView(layout);
+
+        builder.setPositiveButton("Confirmar", null); // lo sobreescribimos luego para evitar cierre automático
+        builder.setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(dlg -> {
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(v -> {
+                String newAddress = etNewAddress.getText().toString().trim();
+
+                if (newAddress.isEmpty()) {
+                    Toast.makeText(getActivity(), "El domicilio no puede estar vacío", Toast.LENGTH_SHORT).show();
+                } else if (newAddress.length() < 3) {
+                    Toast.makeText(getActivity(), "El domicilio debe tener al menos 3 caracteres", Toast.LENGTH_SHORT).show();
+                } else {
+                    updateAddress(newAddress); // Llama a tu método para actualizar la dirección
+                    dialog.dismiss();
+                }
+            });
+        });
+
+        dialog.show();
     }
+
 
     private void updateUsername(@NonNull String newUsername) {
         String accessToken = prefs.getString("access_token", "");
-        Map<String, String> body = new HashMap<>();
-        body.put("username", newUsername);
-        apiService.changeUsername("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("username", newUsername);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), json.toString());
+
+        apiService.updateUser("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Nombre de usuario actualizado con éxito", Toast.LENGTH_SHORT).show();
-                    loadUserData();
+                    Toast.makeText(getActivity(), "Nombre de usuario actualizado", Toast.LENGTH_SHORT).show();
+                    loadUserData(); // recarga datos para mostrar los cambios
                 } else {
-                    handleErrorResponse(response);
+                    try {
+                        String error = response.errorBody() != null ? response.errorBody().string() : "Error desconocido";
+                        Toast.makeText(getActivity(), "Error al actualizar: " + error, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void updateAddress(@NonNull String newAddress) {
         String accessToken = prefs.getString("access_token", "");
-        Map<String, String> body = new HashMap<>();
-        body.put("direccion", newAddress);
-        apiService.changeAddress("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("direccion", newAddress);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json"), json.toString());
+
+        apiService.updateUser("Bearer " + accessToken, body).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Dirección actualizada con éxito", Toast.LENGTH_SHORT).show();
-                    loadUserData();
+                    Toast.makeText(getActivity(), "Dirección actualizada", Toast.LENGTH_SHORT).show();
+                    loadUserData(); // recarga datos actualizados
                 } else {
-                    handleErrorResponse(response);
+                    try {
+                        String error = response.errorBody() != null ? response.errorBody().string() : "Error desconocido";
+                        Toast.makeText(getActivity(), "Error al actualizar: " + error, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error de conexión", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }
