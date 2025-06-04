@@ -36,6 +36,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public ProductAdapter(boolean isLoggedIn, Context context) {
         apiService = ApiClient.getClient().create(ApiService.class);
         this.isLoggedIn = isLoggedIn;
+
     }
 
     public void setIsLoggedIn(boolean isLoggedIn) {
@@ -70,26 +71,32 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         Context context = holder.itemView.getContext();
         String token = getAccessToken(context);
 
-        boolean isFavorite = isProductFavorite(product.getIdProducto(), context);
-        holder.favoriteButton.setImageResource(isFavorite ? R.drawable.favorito_color : R.drawable.favorito);
+        if (isLoggedIn) {
+            holder.favoriteButton.setVisibility(View.VISIBLE);
+            boolean isFavorite = isProductFavorite(product.getIdProducto(), context);
+            holder.favoriteButton.setImageResource(isFavorite ? R.drawable.favorito_color : R.drawable.favorito);
 
-        holder.favoriteButton.setOnClickListener(v -> {
-            boolean currentFavorite = isProductFavorite(product.getIdProducto(), context);
+            holder.favoriteButton.setOnClickListener(v -> {
+                boolean currentFavorite = isProductFavorite(product.getIdProducto(), context);
 
-            if (currentFavorite) {
-                removeFromFavorites(product, context);
-                holder.favoriteButton.setImageResource(R.drawable.favorito);
-                saveFavoriteState(product.getIdProducto(), false, context);
-            } else {
-                addToFavorites(product, context);
-                holder.favoriteButton.setImageResource(R.drawable.favorito_color);
-                saveFavoriteState(product.getIdProducto(), true, context);
-            }
-        });
+                if (currentFavorite) {
+                    removeFromFavorites(product, context);
+                    holder.favoriteButton.setImageResource(R.drawable.favorito);
+                    saveFavoriteState(product.getIdProducto(), false, context);
+                } else {
+                    addToFavorites(product, context);
+                    holder.favoriteButton.setImageResource(R.drawable.favorito_color);
+                    saveFavoriteState(product.getIdProducto(), true, context);
+                }
+            });
+        } else {
+            holder.favoriteButton.setVisibility(View.GONE); // Ocultar el botón si no está logueado
+        }
+
 
         holder.btnAgregarCarrito.setOnClickListener(v -> {
             if (token.isEmpty()) {
-                Toast.makeText(context, "Debes iniciar sesión", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Debes iniciar sesión para agregar productos al carrito.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -108,10 +115,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         try {
                             String errorBody = response.errorBody().string();
                             Log.e("Carrito", "Error al agregar al carrito: " + response.code() + " - " + errorBody);
+                            Toast.makeText(context, "Error al agregar al carrito: " + response.code(), Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             Log.e("Carrito", "Error parsing errorBody", e);
+                            Toast.makeText(context, "Error al agregar al carrito", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(context, "Error al agregar al carrito", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -171,13 +179,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     if (response.isSuccessful()) {
                         Toast.makeText(context, "Producto añadido a favoritos", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(context, "Error al añadir a favoritos", Toast.LENGTH_SHORT).show();
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Log.e("ProductAdapter", "Error al añadir a favoritos: " + response.code() + " - " + errorBody);
+                            Toast.makeText(context, "Error al añadir a favoritos: " + response.code(), Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Log.e("ProductAdapter", "Error parsing errorBody", e);
+                            Toast.makeText(context, "Error al añadir a favoritos", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     Log.e("ProductAdapter", "Error de conexión: " + t.getMessage());
+                    Toast.makeText(context, "Error de red al añadir a favoritos", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -197,14 +213,21 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     if (response.isSuccessful()) {
                         Toast.makeText(context, "Producto eliminado de favoritos", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(context, "Error al eliminar de favoritos", Toast.LENGTH_SHORT).show();
-                        Log.e("ProductAdapter", "Error: " + response.code() + " " + response.message());
+                        try {
+                            String errorBody = response.errorBody().string();
+                            Log.e("ProductAdapter", "Error al eliminar de favoritos: " + response.code() + " - " + errorBody);
+                            Toast.makeText(context, "Error al eliminar de favoritos: " + response.code(), Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Log.e("ProductAdapter", "Error parsing errorBody", e);
+                            Toast.makeText(context, "Error al eliminar de favoritos", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     Log.e("ProductAdapter", "Error de red al eliminar de favoritos: " + t.getMessage());
+                    Toast.makeText(context, "Error de red al eliminar de favoritos", Toast.LENGTH_SHORT).show();
                 }
             });
         }
