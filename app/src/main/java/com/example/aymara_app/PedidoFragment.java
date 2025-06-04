@@ -46,10 +46,10 @@ public class PedidoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pedido, container, false);
+        View view = inflater.inflate(R.layout.pedido, container, false);
 
-        editDireccion = view.findViewById(R.id.editDireccion);
-        editTelefono = view.findViewById(R.id.editTelefono);
+        editDireccion = view.findViewById(R.id.etDireccion);
+        editTelefono = view.findViewById(R.id.etTelefono);
         btnRealizarPedido = view.findViewById(R.id.btnRealizarPedido);
         btnDescargarPDF = view.findViewById(R.id.btnDescargarPDF);
 
