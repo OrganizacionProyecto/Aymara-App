@@ -6,15 +6,6 @@ public class CartItem {
     private double precio_unitario;
     private int cantidad;
     private double total_producto;
-    private String imagen; // Cambia de int imagenResId a String imagen
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
 
     public int getId_producto() {
         return id_producto;
