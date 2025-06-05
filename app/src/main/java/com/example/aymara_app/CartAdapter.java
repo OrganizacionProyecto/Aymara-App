@@ -4,13 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView; // <-- Importante
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide; // <-- Importante
 
 import java.util.List;
 
@@ -46,15 +43,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cantidad.setText(String.valueOf(item.getCantidad()));
         holder.total.setText(String.format("Total: $%.2f", item.getTotal_producto()));
 
-        // Mostrar imagen del producto
-        if (item.getProducto() != null && item.getProducto().getImagen() != null) {
-            Glide.with(holder.itemView.getContext())
-                .load(item.getProducto().getImagen())
-                .into(holder.productImagen);
-        } else {
-            holder.productImagen.setImageResource(R.drawable.placeholder); // Usa un placeholder si no hay imagen
-        }
-
         if (mostrarBotonesCantidad && listener != null) {
             holder.btnAumentar.setVisibility(View.VISIBLE);
             holder.btnDisminuir.setVisibility(View.VISIBLE);
@@ -89,13 +77,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     static class CartViewHolder extends RecyclerView.ViewHolder {
-        ImageView productImagen; // <-- Nuevo
         TextView nombre, precio, cantidad, total;
         Button btnAumentar, btnDisminuir, btnEliminar;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
-            productImagen = itemView.findViewById(R.id.cart_product_imagen); // <-- Nuevo
             nombre = itemView.findViewById(R.id.nombreProducto);
             precio = itemView.findViewById(R.id.precioUnitario);
             cantidad = itemView.findViewById(R.id.cantidadProducto);
