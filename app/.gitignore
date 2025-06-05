@@ -13,7 +13,6 @@ captures/
 output.json
 
 # Archivos generados por la construcción
-*.apk
 *.ap_
 *.aa
 *.dex
