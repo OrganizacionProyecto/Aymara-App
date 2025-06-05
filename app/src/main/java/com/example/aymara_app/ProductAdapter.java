@@ -181,11 +181,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     } else {
                         try {
                             String errorBody = response.errorBody().string();
-                            Log.e("ProductAdapter", "Error al añadir a favoritos: " + response.code() + " - " + errorBody);
-                            Toast.makeText(context, "Error al añadir a favoritos: " + response.code(), Toast.LENGTH_SHORT).show();
+                            Log.e("ProductAdapter", "Producto agregado a favoritos " + response.code() + " - " + errorBody);
+                            Toast.makeText(context, "Agregado a favoritos: " + response.code(), Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             Log.e("ProductAdapter", "Error parsing errorBody", e);
-                            Toast.makeText(context, "Error al añadir a favoritos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Agregado a favoritos", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
@@ -216,10 +216,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         try {
                             String errorBody = response.errorBody().string();
                             Log.e("ProductAdapter", "Error al eliminar de favoritos: " + response.code() + " - " + errorBody);
-                            Toast.makeText(context, "Error al eliminar de favoritos: " + response.code(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Eliminado de favoritos: " + response.code(), Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             Log.e("ProductAdapter", "Error parsing errorBody", e);
-                            Toast.makeText(context, "Error al eliminar de favoritos", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Eliminado de favoritos", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

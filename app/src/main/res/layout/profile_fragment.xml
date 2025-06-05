@@ -2,10 +2,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@color/white"
     tools:ignore="MissingClass">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,10 +22,10 @@
             android:textColor="@color/VerdeAymara"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.184"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.184" />
 
         <TextView
             android:id="@+id/tvWelcome"
@@ -37,9 +37,9 @@
             android:textColor="@color/grey"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProfileTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvProfileTitle" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/btnOut"
@@ -50,8 +50,8 @@
             android:text="@string/salir"
             android:textColor="@color/design_default_color_error"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:rippleColor="@color/design_default_color_error"
             app:strokeColor="@color/design_default_color_error" />
 
@@ -59,18 +59,18 @@
             android:id="@+id/myLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rounded_corner"
-            android:elevation="10dp"
-            android:gravity="center"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:padding="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            android:elevation="10dp"
+            android:background="@drawable/rounded_corner"
             app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
+            <!-- Username -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +84,6 @@
                     android:layout_weight="1"
                     android:hint="@string/username"
                     android:inputType="text"
-                    android:minHeight="48dp"
                     android:padding="10dp"
                     android:text="@string/username"
                     android:textColor="@color/black"
@@ -96,15 +95,12 @@
                     android:layout_height="48dp"
                     android:backgroundTint="@color/AmarilloLogo"
                     android:contentDescription="@string/editar_username"
-                    android:textColor="@color/VerdeAymara"
-                    android:textSize="20sp"
                     app:icon="@android:drawable/ic_menu_edit"
-                    app:iconGravity="textStart"
-                    app:iconPadding="1dp"
-                    app:iconSize="20dp"
-                    app:iconTint="@color/black" />
+                    app:iconTint="@color/black"
+                    app:iconSize="20dp" />
             </LinearLayout>
 
+            <!-- Nombre y Apellido -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +114,6 @@
                     android:layout_weight="1"
                     android:hint="@string/nombre"
                     android:inputType="text"
-                    android:minHeight="48dp"
                     android:padding="10dp"
                     android:text="@string/nombre"
                     android:textColor="@color/black"
@@ -131,13 +126,13 @@
                     android:layout_weight="1"
                     android:hint="@string/apellido"
                     android:inputType="text"
-                    android:minHeight="48dp"
                     android:padding="10dp"
                     android:text="@string/apellido"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <!-- Dirección -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,8 +146,7 @@
                     android:layout_weight="1"
                     android:hint="@string/direccion_falsa_123"
                     android:inputType="text"
-                    android:minHeight="48dp"
-                    android:padding="8dp"
+                    android:padding="10dp"
                     android:text="@string/direccion_falsa_123"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
@@ -163,15 +157,12 @@
                     android:layout_height="48dp"
                     android:backgroundTint="@color/AmarilloLogo"
                     android:contentDescription="@string/editar_la_direcci_n_de_correo_electr_nico"
-                    android:textColor="@color/VerdeAymara"
-                    android:textSize="20sp"
                     app:icon="@android:drawable/ic_menu_edit"
-                    app:iconGravity="textStart"
-                    app:iconPadding="1dp"
-                    app:iconSize="20dp"
-                    app:iconTint="@color/black" />
+                    app:iconTint="@color/black"
+                    app:iconSize="20dp" />
             </LinearLayout>
 
+            <!-- Email -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -185,13 +176,13 @@
                     android:layout_weight="1"
                     android:hint="@string/admin_gmail_com"
                     android:inputType="textEmailAddress"
-                    android:minHeight="48dp"
                     android:padding="10dp"
                     android:text="@string/admin_gmail_com"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
 
+            <!-- Botones -->
             <Button
                 android:id="@+id/btnChangePassword"
                 android:layout_width="match_parent"
@@ -221,7 +212,8 @@
                 android:text="@string/ver_historial_pedidos"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
-        </LinearLayout>
+        </LinearLayout>.
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
