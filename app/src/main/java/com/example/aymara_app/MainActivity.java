@@ -1,8 +1,12 @@
 package com.example.aymara_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -21,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
         banner = findViewById(R.id.frame_baner);
         bottomNavigationView = findViewById(R.id.bottom_navigation); // Initialize here
+
+        TextView sitioWeb = findViewById(R.id.tv_sitio_web);
+        if (sitioWeb != null) {
+            sitioWeb.setOnClickListener(v -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://aymara.netlify.app/"));
+                startActivity(intent);
+            });
+        }
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
