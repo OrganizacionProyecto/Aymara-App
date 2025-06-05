@@ -9,20 +9,20 @@ Nombre y apellido de los integrantes y los roles:
 1. Camino Alonso Joaquin Nicolas - SCRUM MASTER
 2. Martin Nicolás Emanuel - Team Developer
 3. Figueroa Damián Nicolás - Team Developer
-4. Maria Belen Colado - Team Developer
-5. María Coronel - Team Developer
-6. Camino Walter Daniel - Team Developer
-7. Cecilia Edith Cogot - Team Developer
-8. Gabriel Ignacio Bonzon - Team Developer
-9. Antonella Acosta Gómez - Team Developer
+4. Camino Walter Daniel - Team Developer
+5. Cecilia Edith Cogot - Team Developer
+6. Gabriel Ignacio Bonzon - Team Developer
 
 ## Funcionalidades
-- Home: Una sección de "Sobre nosotros" con un carrusel de imágenes y dirección física de la tienda.
-- Productos: Lista de productos disponibles con posibilidad de agregar a favoritos.
-- Favoritos: Sección que muestra los productos que el usuario ha marcado como favoritos.
-- Perfil: Gestión del perfil del usuario, incluyendo la actualización de nombre, dirección, contraseña y eliminación de cuenta.
-- Login/Registro: Autenticación de usuarios utilizando JWT para la seguridad.
-- Contacto: Información de contacto con la tienda.
+- Home: Incluye un enlace a la web y la dirección física de la tienda para una mayor conexión con el usuario.
+- Productos: Explora un catálogo detallado de productos dietéticos, con la opción de añadir artículos directamente a tu lista de favoritos.
+- Favoritos: Accede rápidamente a los productos que has marcado como preferidos.
+- Carrito de Compras: Un sistema de carrito funcional que permite a los usuarios añadir, actualizar cantidades y eliminar productos antes de finalizar su compra.
+- Pedidos y Mercado Pago: Completa tus compras de forma segura y eficiente a través de la integración con Mercado Pago.
+- Perfil: Gestión completa del perfil de usuario, incluyendo la actualización de nombre, correo electrónico, dirección, cambio de contraseña y la opción de eliminar la cuenta.
+- Historial de Compras: Mantén un registro de todos tus pedidos anteriores directamente desde tu perfil.
+- Login/Registro: Sistema de autenticación de usuarios robusto y seguro, implementado con JWT (JSON Web Tokens).
+- Contacto: Información de contacto directa con la tienda para consultas y soporte.
 
 ## Instalación
 
@@ -103,18 +103,25 @@ Nombre y apellido de los integrantes y los roles:
 
 El backend ofrece una serie de endpoints que permiten la interacción con la app. Aquí están los más relevantes:
 
-- `POST /api/auth/login/`: Inicia sesión y devuelve un token JWT.
+- `POST /api/auth/token/login/`: Inicia sesión y devuelve un token JWT.
 - `POST /api/auth/logout/`: Cierra sesión.
-- `POST /api/auth/signup/`: Registra un nuevo usuario.
-- `GET /api/tablas/productos/`: Obtiene la lista de productos.
-- `GET /api/list_favorites/`: Obtiene la lista de productos marcados como favoritos.
-- `POST /api/add_to_favorites/`: Agrega un producto a favoritos.
-- `DELETE /api/remove_from_favorites/`: Elimina un producto de favoritos.
-- `GET /api/auth/user/`: Obtiene información del usuario.
-- `PATCH /api/change-username/`: Edita el username del usuario.
-- `POST /api/change-password/`: Edita el password del usuario.
-- `PATCH /api/change-direccion/`: Edita la dirección del usuario.
-- `DELETE /api/auth/delete_account/`: Desactiva la cuenta del usuario.
+- `POST /api/users/`: Registra un nuevo usuario.
+- `GET /api/products/productos/`: Obtiene la lista de productos.
+- `GET /api/products/productos/{id}/`: Obtiene los detalles de un producto específico por su ID.
+- `GET /api/products/categorias/`: Obtiene la lista de categorías de productos.
+- `GET /api/products/favoritos/`: Obtiene la lista de productos marcados como favoritos.
+- `POST /api/products/favoritos/`: Agrega un producto a favoritos.
+- `DELETE /api/products/favoritos/{id}/`: Elimina un producto de favoritos.
+- `GET /api/users/me/`: Obtiene información del usuario.
+- `PATCH /api/users/me/`: Actualiza la información del perfil del usuario (nombre, dirección).
+- `DELETE /api/users/deactivate_account/`: Desactiva la cuenta del usuario.
+- `GET /api/cart/carrito/`: Obtiene el contenido del carrito de compras del usuario autenticado.
+- `POST /api/cart/carrito/agregar/`: Agrega un producto al carrito de compras.
+- `PUT /api/cart/carrito/modificar/{producto_id}/`: Modifica la cantidad de un producto específico en el carrito.
+- `DELETE /api/cart/carrito/eliminar/{producto_id}/`: Elimina un producto del carrito.
+- `POST /api/cart/pedido/crear/`: Crea un nuevo pedido a partir del contenido del carrito.
+- `GET /api/cart/pedido/historial/`: Obtiene el historial de todos los pedidos realizados por el usuario.
+- `GET /api/factura/{pedidoId}/`: Obtiene los detalles de la factura para un pedido específico.
 
 </details>
 
