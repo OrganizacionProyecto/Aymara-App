@@ -20,6 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -221,6 +223,9 @@ public class LoginFragment extends Fragment {
             }
 
             getActivity().runOnUiThread(() -> {
+                BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+                bottomNavigationView.getMenu().findItem(R.id.nav_cart).setVisible(true);
+
                 NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
                 Bundle bundle = new Bundle();
                 bundle.putString("email", email);
@@ -230,6 +235,7 @@ public class LoginFragment extends Fragment {
             e.printStackTrace();
         }
     }
+
 
     private void handleFailedLogin() {
         Context context = getActivity();

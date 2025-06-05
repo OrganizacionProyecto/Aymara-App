@@ -43,6 +43,7 @@ public class ProductFragment extends Fragment {
     private Spinner categorySpinner;
     private String selectedCategory = "";
     private List<Categoria> categoriaList = new ArrayList<>();
+    private boolean showingfavoritesOnly = false;
     public ProductFragment() {
     }
 
@@ -127,14 +128,28 @@ public class ProductFragment extends Fragment {
     }
 
     private void setupFavoriteButton(View view, boolean isLoggedIn) {
-        ImageButton favoriteButton = view.findViewById(R.id.button);
+        ImageButton favoriteFilterButton = view.findViewById(R.id.button);
         if (isLoggedIn) {
-            favoriteButton.setOnClickListener(v -> {
-                NavController navController = Navigation.findNavController(v);
-                navController.navigate(R.id.favoritesFragment);
+            favoriteFilterButton.setVisibility(View.VISIBLE);
+            favoriteFilterButton.setOnClickListener(v -> {
+                showingfavoritesOnly = !showingfavoritesOnly; // Alterna el estado
+
+
+                filter(searchBar.getText().toString());
+
+                if(showingfavoritesOnly){
+                    favoriteFilterButton.setImageResource(R.drawable.favorito_color);
+                } else {
+                    favoriteFilterButton.setImageResource(R.drawable.favorito);
+                }
             });
+            if (showingfavoritesOnly) {
+                favoriteFilterButton.setImageResource(R.drawable.favorito_color);
+            } else {
+                favoriteFilterButton.setImageResource(R.drawable.favorito);
+            }
         } else {
-            favoriteButton.setVisibility(View.GONE);
+            favoriteFilterButton.setVisibility(View.GONE);
         }
     }
 
@@ -182,7 +197,13 @@ public class ProductFragment extends Fragment {
             boolean nombreCoincide = product.getNombre().toLowerCase().contains(text.toLowerCase());
             boolean categoriaCoincide = selectedCategory.equals("Todas")
                     || getNombreCategoriaPorId(product.getIdCategoria()).equals(selectedCategory);
-            if (nombreCoincide && categoriaCoincide) {
+            boolean esFavorito = true;
+
+            if(showingfavoritesOnly){
+                esFavorito = isProductFavorite(product.getIdProducto(), requireContext());
+            }
+
+            if (nombreCoincide && categoriaCoincide && esFavorito) {
                 filteredList.add(product);
             }
         }
@@ -197,12 +218,24 @@ public class ProductFragment extends Fragment {
         }
         return ""; // si no encuentra coincidencia
     }
-    
-    public void refreshProductList() {
-        boolean isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false);
-        productAdapter.setIsLoggedIn(isLoggedIn);
-        productAdapter.notifyDataSetChanged();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        filter(searchBar.getText().toString());
+
+        ImageButton favoriteFilterButton = getView().findViewById(R.id.button);
+        if (favoriteFilterButton != null) {
+            if (showingfavoritesOnly) {
+                favoriteFilterButton.setImageResource(R.drawable.favorito_color);
+            } else {
+                favoriteFilterButton.setImageResource(R.drawable.favorito);
+            }
+        }
     }
 
-
+    private boolean isProductFavorite(int productId, Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("AymaraPrefs", Context.MODE_PRIVATE);
+        return prefs.getBoolean("favorito_" + productId, false);
+    }
 }

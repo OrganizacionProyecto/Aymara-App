@@ -68,7 +68,11 @@
         android:id="@+id/registerFragment"
         android:name="com.example.aymara_app.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register"/>
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/registerFragment" />
 
     <fragment
         android:id="@+id/cartFragment"

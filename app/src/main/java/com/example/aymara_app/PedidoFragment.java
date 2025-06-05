@@ -63,7 +63,7 @@ public class PedidoFragment extends Fragment {
         totalCarrito = view.findViewById(R.id.totalCarrito);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new CartAdapter(carrito, null); // sin listener para modificar/eliminar
+        adapter = new CartAdapter(carrito, null, false);
         recyclerView.setAdapter(adapter);
 
         apiService = ApiClient.getClient().create(ApiService.class);

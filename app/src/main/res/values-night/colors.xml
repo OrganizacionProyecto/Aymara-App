@@ -1,0 +1,11 @@
+<resources>
+    <color name="black">#FFFFFFFF</color> <!-- Cambiar negro por blanco -->
+    <color name="white">#FF000000</color> <!-- Cambiar blanco por negro -->
+    <color name="VerdeAymara">#76A563</color> <!-- Un verde más claro para dark -->
+    <color name="red">#FF6B6B</color>
+    <color name="grey">#B0B0B0</color>
+    <color name="AmarilloLogo">#445B2B</color> <!-- Versión oscura del amarillo -->
+    <color name="botonEnviar">#76A563</color>
+    <color name="botonBorrar">#FF6B6B</color>
+    <color name="teal_200">#03DAC5</color>
+</resources>

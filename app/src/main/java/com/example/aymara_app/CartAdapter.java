@@ -20,10 +20,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     private List<CartItem> carrito;
     private CartActionListener listener;
+    private boolean mostrarBotonesCantidad;
 
-    public CartAdapter(List<CartItem> carrito, CartActionListener listener) {
+    public CartAdapter(List<CartItem> carrito, CartActionListener listener, boolean mostrarBotonesCantidad) {
         this.carrito = carrito;
         this.listener = listener;
+        this.mostrarBotonesCantidad = mostrarBotonesCantidad;
     }
 
     @NonNull
@@ -41,17 +43,32 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.cantidad.setText(String.valueOf(item.getCantidad()));
         holder.total.setText(String.format("Total: $%.2f", item.getTotal_producto()));
 
-        holder.btnAumentar.setOnClickListener(v ->
-                listener.onModificarCantidad(item, "aumentar", item.getCantidad() + 1));
+        if (mostrarBotonesCantidad && listener != null) {
+            holder.btnAumentar.setVisibility(View.VISIBLE);
+            holder.btnDisminuir.setVisibility(View.VISIBLE);
+            holder.btnEliminar.setVisibility(View.VISIBLE);
 
-        holder.btnDisminuir.setOnClickListener(v -> {
-            if (item.getCantidad() > 1) {
-                listener.onModificarCantidad(item, "disminuir", item.getCantidad() - 1);
-            }
-        });
+            holder.btnAumentar.setOnClickListener(v ->
+                    listener.onModificarCantidad(item, "aumentar", item.getCantidad() + 1));
 
-        holder.btnEliminar.setOnClickListener(v ->
-                listener.onEliminarProducto(item));
+            holder.btnDisminuir.setOnClickListener(v -> {
+                if (item.getCantidad() > 1) {
+                    listener.onModificarCantidad(item, "disminuir", item.getCantidad() - 1);
+                }
+            });
+
+            holder.btnEliminar.setOnClickListener(v ->
+                    listener.onEliminarProducto(item));
+        } else {
+            holder.btnAumentar.setVisibility(View.GONE);
+            holder.btnDisminuir.setVisibility(View.GONE);
+            holder.btnEliminar.setVisibility(View.GONE);
+
+            // Desactivar listeners por seguridad
+            holder.btnAumentar.setOnClickListener(null);
+            holder.btnDisminuir.setOnClickListener(null);
+            holder.btnEliminar.setOnClickListener(null);
+        }
     }
 
     @Override
