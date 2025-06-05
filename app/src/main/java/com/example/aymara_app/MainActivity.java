@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         banner = findViewById(R.id.frame_baner);
-        bottomNavigationView = findViewById(R.id.bottom_navigation); // Initialize here
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         TextView sitioWeb = findViewById(R.id.tv_sitio_web);
         if (sitioWeb != null) {
@@ -40,14 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
         updateCartIconVisibility();
 
-        // Listener for item selection in the BottomNavigationView
         bottomNavigationView.setOnItemSelectedListener(item -> navigateToFragment(item.getItemId(), navController));
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.HomeFragment) {
                 banner.setVisibility(View.GONE);
+                if (sitioWeb != null) sitioWeb.setVisibility(View.VISIBLE); 
             } else {
                 banner.setVisibility(View.VISIBLE);
+                if (sitioWeb != null) sitioWeb.setVisibility(View.GONE); 
             }
 
             updateCartIconVisibility();
