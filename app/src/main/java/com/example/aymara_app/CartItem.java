@@ -6,6 +6,7 @@ public class CartItem {
     private double precio_unitario;
     private int cantidad;
     private double total_producto;
+    private Product producto;
 
     public int getId_producto() {
         return id_producto;
@@ -45,5 +46,13 @@ public class CartItem {
 
     public void setTotal_producto(double total_producto) {
         this.total_producto = total_producto;
+    }
+
+    public Product getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Product producto) {
+        this.producto = producto;
     }
 }
