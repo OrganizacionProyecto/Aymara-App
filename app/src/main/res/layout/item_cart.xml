@@ -47,11 +47,13 @@
 
             <Button
                 android:id="@+id/btnDisminuir"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:backgroundTint="#DDDDDD"
                 android:text="-"
-                android:textSize="18sp" />
+                android:textSize="28sp"
+                android:textColor="#D32F2F"/>
+
 
             <TextView
                 android:id="@+id/cantidadProducto"
@@ -60,18 +62,17 @@
                 android:text="1"
                 android:layout_marginHorizontal="16dp"
                 android:textSize="18sp"
+
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnAumentar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:backgroundTint="#DDDDDD"
                 android:text="+"
-                android:textSize="18sp"
-                card_view:icon="@android:drawable/ic_menu_add"
-                card_view:iconTint="@color/VerdeAymara"
-                card_view:rippleColor="@color/VerdeAymara" />
+                android:textSize="28sp"
+                android:textColor="@color/VerdeAymara" />
         </LinearLayout>
 
         <Button
