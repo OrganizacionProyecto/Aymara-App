@@ -6,7 +6,6 @@ public class CartItem {
     private double precio_unitario;
     private int cantidad;
     private double total_producto;
-    private String imagen; // Agrega este campo
 
     public int getId_producto() {
         return id_producto;
@@ -46,13 +45,5 @@ public class CartItem {
 
     public void setTotal_producto(double total_producto) {
         this.total_producto = total_producto;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
     }
 }
