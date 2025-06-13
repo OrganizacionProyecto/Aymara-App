@@ -64,7 +64,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             holder.btnDisminuir.setVisibility(View.GONE);
             holder.btnEliminar.setVisibility(View.GONE);
 
-            // Desactivar listeners por seguridad
             holder.btnAumentar.setOnClickListener(null);
             holder.btnDisminuir.setOnClickListener(null);
             holder.btnEliminar.setOnClickListener(null);

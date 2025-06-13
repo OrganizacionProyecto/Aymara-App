@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         banner = findViewById(R.id.frame_baner);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        TextView sitioWeb = findViewById(R.id.tv_sitio_web);
+        TextView sitioWeb = findViewById(R.id.btn_sitio_web);
         if (sitioWeb != null) {
             sitioWeb.setOnClickListener(v -> {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://aymara.netlify.app/"));

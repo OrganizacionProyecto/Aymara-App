@@ -73,7 +73,7 @@ public class PedidoFragment extends Fragment {
             if (pedidoId != null) descargarPDF(pedidoId);
         });
 
-        obtenerCarrito(); // Mostrar productos y total
+        obtenerCarrito();
 
         return view;
     }
@@ -122,7 +122,6 @@ public class PedidoFragment extends Fragment {
                     btnDescargarPDF.setVisibility(View.VISIBLE);
 
                     new Handler().postDelayed(() -> {
-                        // Limpiar campos o navegar si querés
                     }, 3000);
                 } else {
                     Toast.makeText(getContext(), "Error al realizar el pedido", Toast.LENGTH_SHORT).show();
